@@ -10,7 +10,7 @@ import {
 } from 'rxjs/operators';
 
 @Component({
-  selector:    'app-navigation',
+  selector:    'fin-navigation',
   templateUrl: './navigation.component.html',
   styleUrls:   ['./navigation.component.scss']
 })

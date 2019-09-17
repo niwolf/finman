@@ -11,7 +11,8 @@
 </mat-toolbar>
 
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer class="sidenav" fixedInViewport [fixedTopGap]="(isMobile$ | async) ? 56 : 64" opened
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+    [fixedTopGap]="(isMobile$ | async) ? 56 : 64"
     [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
     [mode]="(isHandset$ | async) ? 'over' : 'side'"
     [opened]="(isHandset$ | async) === false">

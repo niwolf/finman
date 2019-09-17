@@ -18,7 +18,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
   }
 
-  private addButtonClicked():void
+  public addButtonClicked():void
   {
     this.navigate('/enterData');
   }

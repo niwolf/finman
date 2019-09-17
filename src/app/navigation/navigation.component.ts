@@ -1,21 +1,34 @@
 import { Component } from '@angular/core';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import {
+  BreakpointObserver,
+  Breakpoints
+} from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
-import { map, shareReplay } from 'rxjs/operators';
+import {
+  map,
+  shareReplay
+} from 'rxjs/operators';
 
 @Component({
-  selector: 'app-navigation',
+  selector:    'app-navigation',
   templateUrl: './navigation.component.html',
-  styleUrls: ['./navigation.component.scss']
+  styleUrls:   ['./navigation.component.scss']
 })
-export class NavigationComponent {
+export class NavigationComponent
+{
 
-  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
-    .pipe(
-      map(result => result.matches),
-      shareReplay()
-    );
+  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
+    map(result => result.matches),
+    shareReplay()
+  );
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  isMobile$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.XSmall).pipe(
+    map(result => result.matches),
+    shareReplay()
+  );
+
+  constructor(private breakpointObserver: BreakpointObserver)
+  {
+  }
 
 }

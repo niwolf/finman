@@ -1,10 +1,8 @@
-<button mat-fab class="buttonRow" matTooltip="Einnahme" (click)="revenueButtonClicked()">
-  <mat-icon>
-    sentiment_satisfied_alt
-  </mat-icon>
-</button>
-<button mat-fab class="buttonRow" matTooltip="Ausgabe" (click)="expenseButtonClicked()">
-  <mat-icon>
-    sentiment_very_dissatisfied
-  </mat-icon>
-</button>
+<mat-form-field>
+    <mat-label>Vorgang</mat-label>
+    <mat-select>
+      <mat-option *ngFor="let data of data" [value]="data.value">
+        {{data.viewValue}}
+      </mat-option>
+    </mat-select>
+</mat-form-field>

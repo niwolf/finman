@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DashboardComponent } from '../dashboard/dashboard.component';
+import { EnterDataInterface } from '../enter-data.interface';
 
 @Component({
   selector: 'app-enter-data',
@@ -8,21 +9,17 @@ import { DashboardComponent } from '../dashboard/dashboard.component';
 })
 export class EnterDataComponent implements OnInit {
 
+  protected EnterData: EnterDataInterface;
   constructor() { }
 
+  // Routing
   private navigate: DashboardComponent;
 
   ngOnInit() {
   }
 
-  public revenueButtonClicked(): void
-  {
-    this.navigate.navigate('/#');
-  }
-
-  public expenseButtonClicked(): void
-  {
-    this.navigate.navigate('/#');
-  }
-
+  data: EnterDataInterface[] = [
+    {value: 'receipt', viewValue: 'Einnahme'},
+    {value: 'expense', viewValue: 'Ausgabe'},
+  ];
 }

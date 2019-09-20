@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DashboardComponent } from '../dashboard/dashboard.component';
 
 @Component({
   selector: 'app-enter-data',
@@ -9,7 +10,19 @@ export class EnterDataComponent implements OnInit {
 
   constructor() { }
 
+  private navigate: DashboardComponent;
+
   ngOnInit() {
+  }
+
+  public revenueButtonClicked(): void
+  {
+    this.navigate.navigate('/#');
+  }
+
+  public expenseButtonClicked(): void
+  {
+    this.navigate.navigate('/#');
   }
 
 }

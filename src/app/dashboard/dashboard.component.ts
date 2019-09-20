@@ -23,7 +23,7 @@ export class DashboardComponent implements OnInit {
     this.navigate('/enterData');
   }
 
-  private navigate(routerLink: string): void
+  public navigate(routerLink: string): void
   {
     this.router.navigate([routerLink]);
   }

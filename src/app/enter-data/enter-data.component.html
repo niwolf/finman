@@ -1,0 +1,20 @@
+<br><br>
+<form class="center" [formGroup]="dataForm" (ngSubmit)="onSubmit()">
+  <mat-form-field class="form">
+    <mat-select placeholder="Select">
+      <mat-option value="receipt">Einnahme</mat-option>
+      <mat-option value="expense">Ausgabe</mat-option>
+    </mat-select>
+  </mat-form-field><br><br>
+  <mat-form-field class="form">
+    <input matInput type="text" formControlName="amount" placeholder="Betrag"> <!--Euro dran hängen!-->
+  </mat-form-field><br><br>
+  <mat-form-field class="form">
+    <input matInput type="text" formControlName="persOrComp" placeholder="Firma | Person">
+  </mat-form-field><br><br>
+  <mat-form-field>
+    <textarea matInput type="text" formControlName="titel" placeholder="Titel"></textarea>
+  </mat-form-field><br>
+  <button mat-flat-button color="accent" type="submit">Eintragen</button>
+</form>
+

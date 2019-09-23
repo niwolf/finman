@@ -9,7 +9,7 @@ import { EnterDataInterface } from '../enter-data.interface';
 })
 export class EnterDataComponent implements OnInit {
 
-  protected EnterData: EnterDataInterface;
+  public EnterData: EnterDataInterface;
   constructor() { }
 
   // Routing
@@ -18,8 +18,8 @@ export class EnterDataComponent implements OnInit {
   ngOnInit() {
   }
 
-  data: EnterDataInterface[] = [
-    {value: 'receipt', viewValue: 'Einnahme'},
-    {value: 'expense', viewValue: 'Ausgabe'},
-  ];
+  //newDatas: EnterDataInterface[] = [
+  //  {value: 'receipt', viewValue: 'Einnahme'},
+  //  {value: 'expense', viewValue: 'Ausgabe'},
+  //];
 }

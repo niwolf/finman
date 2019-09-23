@@ -1,4 +1,4 @@
-export interface EnterDataInterface{
+export interface EnterDataInterface {
   value: string;
   viewValue: string;
 }

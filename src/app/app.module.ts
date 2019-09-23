@@ -8,7 +8,8 @@ import {
   MatIconModule,
   MatSidenavModule,
   MatToolbarModule,
-  MatSelectModule
+  MatSelectModule,
+  MatInputModule,
 } from '@angular/material';
 import { NavigationComponent } from './navigation/navigation.component';
 import { LayoutModule } from '@angular/cdk/layout';
@@ -17,6 +18,7 @@ import { MatListModule } from '@angular/material/list';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { EnterDataComponent } from './enter-data/enter-data.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatButtonModule,
     MatListModule,
     MatTooltipModule,
-    MatSelectModule
+    MatSelectModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

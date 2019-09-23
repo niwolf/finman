@@ -26,7 +26,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     AppComponent,
     NavigationComponent,
     DashboardComponent,
-    EnterDataComponent
+    EnterDataComponent,
   ],
   imports: [
     BrowserModule,

@@ -17,9 +17,4 @@ export class EnterDataComponent implements OnInit {
 
   ngOnInit() {
   }
-
-  //newDatas: EnterDataInterface[] = [
-  //  {value: 'receipt', viewValue: 'Einnahme'},
-  //  {value: 'expense', viewValue: 'Ausgabe'},
-  //];
 }

@@ -1,10 +1,10 @@
 <div class="dashboard">
   <h2>Finman - Dein Finance Manager</h2>
   <div class="center">
-    <button mat-fab class="addButton" matTooltip="Neuer Eintrag" (click)="addButtonClicked()">
-    <mat-icon>
-      add
-    </mat-icon>
-    </button>
+    <a mat-fab class="addButton" matTooltip="Neuer Eintrag" [routerLink]="'/enterData'">
+      <mat-icon>
+        add
+      </mat-icon>
+    </a>
   </div>
 </div>

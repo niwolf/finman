@@ -15,6 +15,10 @@ import {
 import { NavigationComponent } from './navigation/navigation.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { EnterDataModule } from './enter-data/enter-data.module';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -32,7 +36,10 @@ import { EnterDataModule } from './enter-data/enter-data.module';
     MatListModule,
     MatButtonModule,
     MatTooltipModule,
-    EnterDataModule
+    EnterDataModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
+    AngularFirestoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]

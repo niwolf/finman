@@ -5,28 +5,22 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
+  MatButtonModule,
   MatIconModule,
+  MatListModule,
   MatSidenavModule,
   MatToolbarModule,
-  MatSelectModule,
-  MatInputModule,
+  MatTooltipModule,
 } from '@angular/material';
 import { NavigationComponent } from './navigation/navigation.component';
-import { LayoutModule } from '@angular/cdk/layout';
-import { MatButtonModule } from '@angular/material/button';
-import { MatListModule } from '@angular/material/list';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { EnterDataComponent } from './enter-data/enter-data.component';
-import { MatTooltipModule } from '@angular/material/tooltip';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { ReactiveFormsModule } from '@angular/forms';
+import { EnterDataModule } from './enter-data/enter-data.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavigationComponent,
-    DashboardComponent,
-    EnterDataComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -35,14 +29,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatToolbarModule,
     MatSidenavModule,
     MatIconModule,
-    LayoutModule,
-    MatButtonModule,
     MatListModule,
+    MatButtonModule,
     MatTooltipModule,
-    MatSelectModule,
-    MatFormFieldModule,
-    MatInputModule,
-    ReactiveFormsModule
+    EnterDataModule
   ],
   providers: [],
   bootstrap: [AppComponent]

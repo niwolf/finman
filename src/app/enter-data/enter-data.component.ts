@@ -21,7 +21,7 @@ export class EnterDataComponent implements OnInit {
 });
 
   onSubmit() {
-    alert(this.dataForm.value);
+    alert(JSON.stringify(this.dataForm.value));
   }
 
 

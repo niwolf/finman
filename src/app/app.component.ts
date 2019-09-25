@@ -4,16 +4,7 @@ import {
   AngularFirestoreCollection
 } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
-
-
-export interface Item
-{
-  title: string;
-  value: number;
-  createdAt: Date;
-  category: number;
-  user: number;
-}
+import { Item } from './models/item.interface';
 
 @Component({
   selector:    'fin-app',

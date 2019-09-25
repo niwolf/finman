@@ -21,6 +21,7 @@ export class DashboardComponent implements OnInit {
   public addButtonClicked():void
   {
     this.navigate('/enterData');
+
   }
 
   public navigate(routerLink: string): void

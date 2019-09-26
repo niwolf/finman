@@ -29,6 +29,7 @@ import {
 } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from 'src/environments/environment';
+import { ButtonComponent } from './button/button.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { environment } from 'src/environments/environment';
     NavigationComponent,
     DashboardComponent,
     EnterDataComponent,
+    ButtonComponent,
   ],
   imports: [
     BrowserModule,

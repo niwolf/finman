@@ -3,6 +3,10 @@ import {
   Params,
   Router
 } from '@angular/router';
+import {
+  animate,
+  style
+} from '@angular/animations';
 
 @Component({
   selector: 'app-dashboard',
@@ -18,14 +22,12 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
   }
 
-  public addButtonClicked():void
-  {
-    this.navigate('/enterData');
-
+  public addButtonClicked():void {
+    // this.navigate('/enterData');
+    this.navigate('/Button');
   }
 
-  public navigate(routerLink: string): void
-  {
+  public navigate(routerLink: string): void {
     this.router.navigate([routerLink]);
   }
 }

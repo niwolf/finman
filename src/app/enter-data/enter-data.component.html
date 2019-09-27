@@ -12,7 +12,7 @@
   <mat-form-field class="form">
     <input matInput type="text" formControlName="value" placeholder="Betrag"><!--Euro dran hängen!-->
   </mat-form-field><br><br>
-  <mat-form-field>
+  <mat-form-field class="form">
     <input matInput [matDatepicker]="picker" formControlName="date" placeholder="Choose a date">
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>

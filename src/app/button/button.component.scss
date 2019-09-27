@@ -1,8 +1,16 @@
-.addButton{
-  text-align: center;
-  background-color: #3f51b5;
+button
+{
+  margin-left: 5px;
+
+  &:last-of-type
+  {
+    margin-left: 10px;
+  }
+  
+  //transition: all 0.2s ease;
 }
-.center{
-  text-align: center;
-  white-space: nowrap;
+
+.toggled
+{
+  transform: rotate(45deg);
 }

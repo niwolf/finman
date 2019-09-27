@@ -2,6 +2,11 @@
   width: 200px;
 }
 
+.sidenav-container
+{
+  height: calc(100% - 64px)
+}
+
 .sidenav .mat-toolbar {
   background: inherit;
 }

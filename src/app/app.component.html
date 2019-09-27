@@ -1,6 +1,8 @@
 <fin-navigation>
   <router-outlet></router-outlet>
+  <div *ngFor="let item of items | async">
+    {{ item | json}}
+  </div>
 </fin-navigation>
-<div *ngFor="let item of items | async">
-  {{ item | json}}
-</div>
+<fin-button class="addButton"></fin-button>
+

@@ -1,5 +1,10 @@
 <div class="dashboard">
   <h2>Finman - Dein Finance Manager</h2>
+  
+  <div *ngFor="let item of items | async">
+    {{ item | json}}
+  </div>
+  
   <div class="center">
     <a mat-fab class="addButton" matTooltip="Neuer Eintrag" [routerLink]="'/enterData'">
       <mat-icon>

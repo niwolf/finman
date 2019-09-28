@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { Observable } from 'rxjs';
+import { User } from 'firebase';
 
 @Component({
   selector:    'fin-app',
@@ -8,4 +11,8 @@ import { Component } from '@angular/core';
 export class AppComponent
 {
   title = 'finman';
+
+  user$: Observable<User> = this.auth.user;
+
+  constructor(public auth: AngularFireAuth){}
 }

@@ -3,16 +3,8 @@ import {
   AngularFirestore,
   AngularFirestoreCollection
 } from '@angular/fire/firestore';
+import { Item } from '../models/item.interface';
 import { Observable } from 'rxjs';
-
-export interface Item
-{
-  title: string;
-  value: number;
-  createdAt: Date;
-  category: number;
-  user: number;
-}
 
 @Component({
   selector: 'fin-dashboard',
@@ -27,10 +19,5 @@ export class DashboardComponent {
   {
     this.itemsCollection = afs.collection<Item>('items');
     this.items = this.itemsCollection.valueChanges();
-  }
-
-  addItem(item: Item)
-  {
-    this.itemsCollection.add(item);
   }
 }

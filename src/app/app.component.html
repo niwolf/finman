@@ -1,9 +1,11 @@
-<fin-navigation *ngIf="user$ | async; else login">
-  <router-outlet></router-outlet>
-</fin-navigation>
-<fin-button class="addButton"></fin-button>
+<ng-container *ngIf="user$ | async; else login">
+  <fin-navigation>
+    <router-outlet></router-outlet>
+  </fin-navigation>
+  <fin-button class="addButton"></fin-button>
+</ng-container>
 
 
 <ng-template #login>
-  <fin-login ></fin-login>
+  <fin-login></fin-login>
 </ng-template>

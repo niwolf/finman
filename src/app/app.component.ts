@@ -8,11 +8,8 @@ import { User } from 'firebase';
   templateUrl: './app.component.html',
   styleUrls:   ['./app.component.scss']
 })
-export class AppComponent
-{
-  title = 'finman';
-
+export class AppComponent {
   user$: Observable<User> = this.auth.user;
 
-  constructor(public auth: AngularFireAuth){}
+  constructor(public auth: AngularFireAuth) {}
 }

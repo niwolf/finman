@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import {
   MatButtonModule,
   MatCardModule,
+  MatIconModule,
   MatInputModule,
   MatProgressSpinnerModule,
   MatSnackBarModule
@@ -25,7 +26,8 @@ import { LoginComponent } from './login.component';
     MatCardModule,
     MatButtonModule,
     MatProgressSpinnerModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatIconModule
   ],
   exports: [
     LoginComponent

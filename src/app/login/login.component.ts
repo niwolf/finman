@@ -24,6 +24,7 @@ export class LoginComponent
   });
 
   pending = false;
+  hide = true;
 
   constructor(private auth: AngularFireAuth,
               private snackBar: MatSnackBar)

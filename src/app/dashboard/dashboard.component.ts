@@ -7,7 +7,7 @@ import { Item } from '../models/item.interface';
 import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'app-dashboard',
+  selector: 'fin-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
@@ -19,10 +19,5 @@ export class DashboardComponent {
   {
     this.itemsCollection = afs.collection<Item>('items');
     this.items = this.itemsCollection.valueChanges();
-  }
-
-  addItem(item: Item)
-  {
-    this.itemsCollection.add(item);
   }
 }

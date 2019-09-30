@@ -5,38 +5,28 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
+  MatButtonModule,
   MatIconModule,
+  MatListModule,
   MatSidenavModule,
   MatToolbarModule,
-  MatSelectModule,
-  MatInputModule,
+  MatTooltipModule,
 } from '@angular/material';
 import { NavigationComponent } from './navigation/navigation.component';
-import { LayoutModule } from '@angular/cdk/layout';
-import { MatButtonModule } from '@angular/material/button';
-import { MatListModule } from '@angular/material/list';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { EnterDataComponent } from './enter-data/enter-data.component';
-import { MatTooltipModule } from '@angular/material/tooltip';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { ReactiveFormsModule } from '@angular/forms';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
+import { EnterDataModule } from './enter-data/enter-data.module';
 import { AngularFireModule } from '@angular/fire';
-import {
-  AngularFireAuth,
-  AngularFireAuthModule
-} from '@angular/fire/auth';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from 'src/environments/environment';
 import { ButtonComponent } from './button/button.component';
+import { LoginModule } from './login/login.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavigationComponent,
     DashboardComponent,
-    EnterDataComponent,
     ButtonComponent,
   ],
   imports: [
@@ -46,19 +36,14 @@ import { ButtonComponent } from './button/button.component';
     MatToolbarModule,
     MatSidenavModule,
     MatIconModule,
-    LayoutModule,
-    MatButtonModule,
     MatListModule,
+    MatButtonModule,
     MatTooltipModule,
-    MatSelectModule,
-    MatFormFieldModule,
-    MatInputModule,
-    ReactiveFormsModule,
+    EnterDataModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFirestoreModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
+    LoginModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -6,7 +6,7 @@ import { firebaseConfig } from '../../firebase.conf';
 
 export const environment = {
   production: false,
-  firebase: firebaseConfig
+  firebase:   firebaseConfig
 };
 
 /*

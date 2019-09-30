@@ -1,17 +1,15 @@
 import { Component } from '@angular/core';
-import {
-  AngularFirestore,
-  AngularFirestoreCollection
-} from '@angular/fire/firestore';
+import { AngularFireAuth } from '@angular/fire/auth';
 import { Observable } from 'rxjs';
-import { Item } from './models/item.interface';
+import { User } from 'firebase';
 
 @Component({
   selector:    'fin-app',
   templateUrl: './app.component.html',
   styleUrls:   ['./app.component.scss']
 })
-export class AppComponent
-{
-  title = 'finman';
+export class AppComponent {
+  user$: Observable<User> = this.auth.user;
+
+  constructor(public auth: AngularFireAuth) {}
 }

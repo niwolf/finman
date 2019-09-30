@@ -1,5 +1,9 @@
-<fin-navigation>
+<fin-navigation *ngIf="user$ | async; else login">
   <router-outlet></router-outlet>
 </fin-navigation>
 <fin-button class="addButton"></fin-button>
 
+
+<ng-template #login>
+  <fin-login ></fin-login>
+</ng-template>

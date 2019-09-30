@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { DashboardComponent } from '../dashboard/dashboard.component';
-import { EnterDataInterface } from '../enter-data.interface';
-import { FormControl, FormGroup } from '@angular/forms';
+import { Component } from '@angular/core';
+import {
+  FormControl,
+  FormGroup
+} from '@angular/forms';
 import {
   AngularFirestore,
   AngularFirestoreCollection
@@ -9,40 +10,31 @@ import {
 import { Item } from '../models/item.interface';
 
 @Component({
-  selector: 'app-enter-data',
+  selector:    'fin-enter-data',
   templateUrl: './enter-data.component.html',
-  styleUrls: ['./enter-data.component.scss']
+  styleUrls:   ['./enter-data.component.scss']
 })
-export class EnterDataComponent implements OnInit {
+export class EnterDataComponent
+{
   private itemsCollection: AngularFirestoreCollection<Item>;
 
-  constructor(db: AngularFirestore) {
+  constructor(db: AngularFirestore)
+  {
     this.itemsCollection = db.collection<Item>('items');
   }
-
-  public EnterData: EnterDataInterface;
 
   dataForm = new FormGroup({
     title: new FormControl(''),
     value: new FormControl(''),
-    date: new FormControl('')
-});
+    date:  new FormControl('')
+  });
 
   onSubmit()
   {
-    // alert(JSON.stringify(this.dataForm.value));
     this.itemsCollection.add({
       ...this.dataForm.value,
-      user: null,
+      user:     null,
       category: null
     });
-  }
-
-
-
-  // Routing
-  private navigate: DashboardComponent;
-
-  ngOnInit() {
   }
 }

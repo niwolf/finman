@@ -15,12 +15,15 @@ import UserCredential = firebase.auth.UserCredential;
 })
 export class LoginComponent
 {
-  public form: FormGroup = new FormGroup({
-    email:    new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required])
+  email = new FormControl('', [Validators.required, Validators.email]);
+  password = new FormControl('', [Validators.required]);
+
+  form: FormGroup = new FormGroup({
+    email:    this.email,
+    password: this.password
   });
 
-  public pending = false;
+  pending = false;
 
   constructor(private auth: AngularFireAuth,
               private snackBar: MatSnackBar)

@@ -1,5 +1,5 @@
 <mat-card>
-  <form [formGroup]="form" (ngSubmit)="login(form.value)">
+  <form *ngIf="!pending; else loading" [formGroup]="form" (ngSubmit)="onSubmit()">
     <mat-form-field>
       <mat-label>E-Mail</mat-label>
       <input matInput type="email" formControlName="email" required>
@@ -11,3 +11,7 @@
     <button mat-flat-button color="primary" type="submit">Login</button>
   </form>
 </mat-card>
+
+<ng-template #loading>
+  <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+</ng-template>

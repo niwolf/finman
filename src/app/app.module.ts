@@ -6,9 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   MatButtonModule,
-  MatCardModule,
   MatIconModule,
-  MatInputModule,
   MatListModule,
   MatSidenavModule,
   MatToolbarModule,
@@ -21,15 +19,13 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from 'src/environments/environment';
-import { LoginComponent } from './login/login.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { LoginModule } from './login/login.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavigationComponent,
-    DashboardComponent,
-    LoginComponent
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -45,9 +41,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFirestoreModule,
-    MatInputModule,
-    MatCardModule,
-    ReactiveFormsModule
+    LoginModule
   ],
   providers: [],
   bootstrap: [AppComponent]

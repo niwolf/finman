@@ -8,6 +8,7 @@ import {
   Validators
 } from '@angular/forms';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { MatSnackBar } from '@angular/material';
 import UserCredential = firebase.auth.UserCredential;
 
 @Component({
@@ -22,7 +23,10 @@ export class LoginComponent implements OnInit
     password: new FormControl('', [Validators.required])
   });
 
-  constructor(private auth: AngularFireAuth)
+  public pending = false;
+
+  constructor(private auth: AngularFireAuth,
+              private snackBar: MatSnackBar)
   {
   }
 
@@ -30,10 +34,25 @@ export class LoginComponent implements OnInit
   {
   }
 
-  public login(value: { email: string, password: string })
+  public onSubmit()
   {
-    this.auth.auth.signInWithEmailAndPassword(value.email, value.password)
-        .then((credential: UserCredential) => console.log(credential))
-        .catch((err: any) => console.error(err));
+    if(this.form.valid)
+    {
+      this.login(this.form.value.email, this.form.value.password);
+    }
   }
+
+  private login(email: string, password: string)
+  {
+    this.pending = true;
+    this.auth.auth.signInWithEmailAndPassword(email, password)
+        .then((credential: UserCredential) => console.log(credential))
+        .catch((err: any) =>
+        {
+          console.error(err);
+          this.snackBar.open('Login failed', 'dismiss', {duration: 1000});
+        })
+        .finally(() => this.pending = false);
+  }
+
 }

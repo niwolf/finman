@@ -1,7 +1,4 @@
-import {
-  Component,
-  OnInit
-} from '@angular/core';
+import { Component } from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -16,7 +13,7 @@ import UserCredential = firebase.auth.UserCredential;
   templateUrl: './login.component.html',
   styleUrls:   ['./login.component.scss']
 })
-export class LoginComponent implements OnInit
+export class LoginComponent
 {
   public form: FormGroup = new FormGroup({
     email:    new FormControl('', [Validators.required, Validators.email]),
@@ -27,17 +24,10 @@ export class LoginComponent implements OnInit
 
   constructor(private auth: AngularFireAuth,
               private snackBar: MatSnackBar)
-  {
-  }
+  {}
 
-  ngOnInit()
-  {
-  }
-
-  public onSubmit()
-  {
-    if(this.form.valid)
-    {
+  public onSubmit() {
+    if (this.form.valid) {
       this.login(this.form.value.email, this.form.value.password);
     }
   }
@@ -46,13 +36,30 @@ export class LoginComponent implements OnInit
   {
     this.pending = true;
     this.auth.auth.signInWithEmailAndPassword(email, password)
-        .then((credential: UserCredential) => console.log(credential))
+        .then((credential: UserCredential) =>
+        {
+          console.log(credential);
+          this.snackBar.dismiss();
+        })
         .catch((err: any) =>
         {
           console.error(err);
-          this.snackBar.open('Login failed', 'dismiss', {duration: 1000});
+          const message: string = this.extractAuthErrorMessage(err);
+          this.snackBar.open(message, 'dismiss');
         })
         .finally(() => this.pending = false);
+  }
+
+  private extractAuthErrorMessage(err: { code: string, message: string }): string
+  {
+    switch (err.code) {
+      case 'auth/user-not-found':
+        return 'User not found';
+      case 'auth/wrong-password':
+      case 'auth/invalid-email':
+      default:
+        return err.message;
+    }
   }
 
 }

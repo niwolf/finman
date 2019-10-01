@@ -49,7 +49,7 @@ export class LoginComponent
         {
           console.error(err);
           const message: string = this.extractAuthErrorMessage(err);
-          this.snackBar.open(message, 'dismiss');
+          this.snackBar.open(message, 'OK');
         })
         .finally(() => this.pending = false);
   }
@@ -58,9 +58,11 @@ export class LoginComponent
   {
     switch (err.code) {
       case 'auth/user-not-found':
-        return 'User not found';
+        return 'Nutzer nicht gefunden. Bitte überprüfen sie ihre E-Mail';
       case 'auth/wrong-password':
+        return 'Falsches Passwort';
       case 'auth/invalid-email':
+        return 'Ungültige E-Mail';
       default:
         return err.message;
     }

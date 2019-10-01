@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { Observable } from 'rxjs';
+import {
+  merge,
+  Observable,
+  of
+} from 'rxjs';
 import { User } from 'firebase';
 
 @Component({
@@ -9,7 +13,7 @@ import { User } from 'firebase';
   styleUrls:   ['./app.component.scss']
 })
 export class AppComponent {
-  user$: Observable<User> = this.auth.user;
+  user$: Observable<User> = merge(of(undefined), this.auth.user);
 
   constructor(public auth: AngularFireAuth) {}
 }

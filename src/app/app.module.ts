@@ -8,6 +8,7 @@ import {
   MatButtonModule,
   MatIconModule,
   MatListModule,
+  MatProgressSpinnerModule,
   MatSidenavModule,
   MatToolbarModule,
   MatTooltipModule,
@@ -43,7 +44,8 @@ import { LoginModule } from './login/login.module';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFirestoreModule,
-    LoginModule
+    LoginModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

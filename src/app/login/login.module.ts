@@ -5,13 +5,12 @@ import {
   MatCardModule,
   MatIconModule,
   MatInputModule,
-  MatProgressSpinnerModule,
+  MatProgressBarModule,
   MatSnackBarModule
 } from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { LoginComponent } from './login.component';
-
 
 
 @NgModule({
@@ -25,9 +24,9 @@ import { LoginComponent } from './login.component';
     MatInputModule,
     MatCardModule,
     MatButtonModule,
-    MatProgressSpinnerModule,
     MatSnackBarModule,
-    MatIconModule
+    MatIconModule,
+    MatProgressBarModule
   ],
   exports: [
     LoginComponent

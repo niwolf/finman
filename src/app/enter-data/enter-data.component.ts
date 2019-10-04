@@ -24,13 +24,16 @@ import { MatSnackBar } from '@angular/material';
 })
 export class EnterDataComponent
 {
-  dataForm = new FormGroup({
-    title: new FormControl('', Validators.required),
-    value: new FormControl('', Validators.required),
-    date:  new FormControl(new Date(), Validators.required)
-  });
-
   typeControl = new FormControl('');
+  titleControl = new FormControl('', Validators.required);
+  valueControl = new FormControl('', [Validators.required, Validators.min(0)]);
+  dateControl = new FormControl(new Date(), Validators.required);
+
+  dataForm = new FormGroup({
+    title: this.titleControl,
+    value: this.valueControl,
+    date:  this.dateControl
+  });
 
   private itemsCollection: AngularFirestoreCollection<Item>;
 
@@ -46,13 +49,16 @@ export class EnterDataComponent
 
   save(formValue: any)
   {
-    this.itemsCollection.add({
-      title:    formValue.title,
-      date:     formValue.date,
-      value:    formValue.value * this.typeControl.value,
-      user:     this.auth.auth.currentUser.uid,
-      category: null
-    }).then(() => this.router.navigate(['/dashboard']))
-      .catch(() => this.snack.open('Eintrag konnte nicht gespeichert werden.', 'OK', {duration: 5000}));
+    if (this.dataForm.valid)
+    {
+      this.itemsCollection.add({
+        title:    formValue.title,
+        date:     formValue.date,
+        value:    formValue.value * this.typeControl.value,
+        user:     this.auth.auth.currentUser.uid,
+        category: null
+      }).then(() => this.router.navigate(['/dashboard']))
+          .catch(() => this.snack.open('Eintrag konnte nicht gespeichert werden.', 'OK', {duration: 5000}));
+    }
   }
 }

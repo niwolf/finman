@@ -1,7 +1,7 @@
 <br><br>
 <form class="center" [formGroup]="dataForm" (ngSubmit)="onSubmit()">
   <mat-form-field class="form">
-    <mat-select placeholder="Select" [formControl]="typeControl">
+    <mat-select placeholder="Typ" [formControl]="typeControl">
       <mat-option [value]="1">Einnahme</mat-option>
       <mat-option [value]="-1">Ausgabe</mat-option>
     </mat-select>

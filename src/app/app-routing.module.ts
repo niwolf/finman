@@ -3,7 +3,6 @@ import {
   RouterModule,
   Routes
 } from '@angular/router';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { EnterDataComponent } from './enter-data/enter-data.component';
 
 
@@ -12,10 +11,6 @@ const routes: Routes = [
     path: '',
     pathMatch: 'full',
     redirectTo: 'dashboard'
-  },
-  {
-    path: 'dashboard',
-    component: DashboardComponent
   },
   {
     path:      'enterData',

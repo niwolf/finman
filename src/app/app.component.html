@@ -1,6 +1,18 @@
-<fin-navigation>
-  <router-outlet></router-outlet>
-</fin-navigation>
-<div *ngFor="let item of items | async">
-  {{ item | json}}
-</div>
+<ng-container *ngIf="user$ | async; else loading">
+  <fin-navigation>
+    <router-outlet></router-outlet>
+  </fin-navigation>
+  <fin-button class="addButton"></fin-button>
+</ng-container>
+
+<ng-template #loading>
+  <mat-progress-spinner
+    *ngIf="(user$ | async) === undefined; else login"
+    mode="indeterminate">
+  </mat-progress-spinner>
+</ng-template>
+
+<ng-template #login>
+  <fin-login></fin-login>
+</ng-template>
+

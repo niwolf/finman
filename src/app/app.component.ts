@@ -1,40 +1,19 @@
 import { Component } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
 import {
-  AngularFirestore,
-  AngularFirestoreCollection
-} from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
-
-
-export interface Item
-{
-  title: string;
-  value: number;
-  createdAt: Date;
-  category: number;
-  user: number;
-}
+  merge,
+  Observable,
+  of
+} from 'rxjs';
+import { User } from 'firebase';
 
 @Component({
   selector:    'fin-app',
   templateUrl: './app.component.html',
   styleUrls:   ['./app.component.scss']
 })
-export class AppComponent
-{
-  title = 'finman';
+export class AppComponent {
+  user$: Observable<User> = merge(of(undefined), this.auth.user);
 
-  private itemsCollection: AngularFirestoreCollection<Item>;
-  items: Observable<Item[]>;
-
-  constructor(private afs: AngularFirestore)
-  {
-    this.itemsCollection = afs.collection<Item>('items');
-    this.items = this.itemsCollection.valueChanges();
-  }
-
-  addItem(item: Item)
-  {
-    this.itemsCollection.add(item);
-  }
+  constructor(public auth: AngularFireAuth) {}
 }

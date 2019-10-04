@@ -5,7 +5,9 @@ import {
   MatButtonModule,
   MatFormFieldModule,
   MatInputModule,
-  MatSelectModule
+  MatSelectModule,
+  MatDatepickerModule,
+  MatNativeDateModule
 } from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EnterDataComponent } from './enter-data.component';
@@ -24,7 +26,9 @@ import { EnterDataRoutingModule } from './enter-data-routing.module';
     MatButtonModule,
     MatSelectModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   exports:      [EnterDataComponent]
 })

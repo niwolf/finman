@@ -1,13 +1,13 @@
-<button *ngIf="toggled" mat-mini-fab matTooltip="Einnahme" (click)="addClick()">
+<a *ngIf="toggled" mat-mini-fab matTooltip="Einnahme" routerLink="/enterData">
   <mat-icon>
     add
   </mat-icon>
-</button>
-<button *ngIf="toggled" mat-mini-fab matTooltip="Ausgabe" (click)="removeClick()">
+</a>
+<a *ngIf="toggled" mat-mini-fab matTooltip="Ausgabe" routerLink="/enterData">
   <mat-icon>
     remove
   </mat-icon>
-</button>
+</a>
 <button mat-fab matTooltip="Neuer Eintrag" [class.toggled]="toggled" (click)="toggle()">
   <mat-icon>
     add

@@ -1,5 +1,5 @@
 <br><br>
-<form class="center" [formGroup]="dataForm" (ngSubmit)="onSubmit()">
+<form class="center" [formGroup]="dataForm" (ngSubmit)="save(dataForm.value)">
   <mat-form-field class="form">
     <mat-select placeholder="Typ" [formControl]="typeControl">
       <mat-option [value]="1">Einnahme</mat-option>

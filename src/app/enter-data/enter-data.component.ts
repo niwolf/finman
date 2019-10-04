@@ -10,9 +10,10 @@ import {
 import { Item } from '../models/item.interface';
 import {
   ActivatedRoute,
-  Data,
-  ParamMap
+  ParamMap,
+  Router
 } from '@angular/router';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector:    'fin-enter-data',
@@ -31,20 +32,23 @@ export class EnterDataComponent
 
   private itemsCollection: AngularFirestoreCollection<Item>;
 
-  constructor(db: AngularFirestore, route: ActivatedRoute)
+  constructor(db: AngularFirestore,
+              route: ActivatedRoute,
+              private auth: AngularFireAuth,
+              private router: Router)
   {
     this.itemsCollection = db.collection<Item>('items');
     route.queryParamMap.subscribe((params: ParamMap) => this.typeControl.setValue(params.get('revenue') ? 1 : -1));
   }
 
-
-  onSubmit()
+  save(formValue: any)
   {
     this.itemsCollection.add({
-      ...this.dataForm.value,
-      value: this.dataForm.value.value * this.typeControl.value,
-      user:     null,
+      title:    formValue.title,
+      date:     formValue.date,
+      value:    formValue.value * this.typeControl.value,
+      user:     this.auth.auth.currentUser.uid,
       category: null
-    });
+    }).then(() => this.router.navigate(['/dashboard']));
   }
 }

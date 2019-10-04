@@ -12,7 +12,7 @@
   </mat-form-field><br><br>
   <mat-form-field class="form">
     <input matInput type="number" formControlName="value" placeholder="Betrag" required>
-    <mat-icon matSuffix>euro</mat-icon>
+    <span matSuffix>€</span>
     <mat-error *ngIf="valueControl.hasError('required')">Das Feld muss ausgefüllt sein</mat-error>
     <mat-error *ngIf="valueControl.hasError('min')">Bitte gebe einen Wert größer 0 ein</mat-error>
   </mat-form-field><br><br>

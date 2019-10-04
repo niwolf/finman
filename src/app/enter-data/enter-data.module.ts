@@ -5,13 +5,12 @@ import {
   MatButtonModule,
   MatDatepickerModule,
   MatFormFieldModule,
-  MatIconModule,
   MatInputModule,
-  MatSelectModule
+  MatSelectModule,
+  MatNativeDateModule
 } from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EnterDataComponent } from './enter-data.component';
-import { MatNativeDateModule } from '@angular/material/core';
 
 
 @NgModule({
@@ -27,8 +26,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatFormFieldModule,
     MatInputModule,
     MatDatepickerModule,
-    MatNativeDateModule,
-    MatIconModule
+    MatNativeDateModule
   ],
   exports:      [EnterDataComponent]
 })

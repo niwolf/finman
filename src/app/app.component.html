@@ -1,15 +1,18 @@
-<ng-container *ngIf="user$ | async; else login">
+<ng-container *ngIf="user$ | async; else loading">
   <fin-navigation>
     <router-outlet></router-outlet>
   </fin-navigation>
   <fin-button class="addButton"></fin-button>
 </ng-container>
 
+<ng-template #loading>
+  <mat-progress-spinner
+    *ngIf="(user$ | async) === undefined; else login"
+    mode="indeterminate">
+  </mat-progress-spinner>
+</ng-template>
 
 <ng-template #login>
-  <fin-login *ngIf="(user$ | async) !== undefined; else loading"></fin-login>
+  <fin-login></fin-login>
 </ng-template>
 
-<ng-template #loading>
-  <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
-</ng-template>

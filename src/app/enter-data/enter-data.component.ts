@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import {
   FormControl,
-  FormGroup
+  FormGroup,
+  Validators
 } from '@angular/forms';
 import {
   AngularFirestore,
@@ -24,9 +25,9 @@ import { MatSnackBar } from '@angular/material';
 export class EnterDataComponent
 {
   dataForm = new FormGroup({
-    title: new FormControl(''),
-    value: new FormControl(''),
-    date:  new FormControl(new Date())
+    title: new FormControl('', Validators.required),
+    value: new FormControl('', Validators.required),
+    date:  new FormControl(new Date(), Validators.required)
   });
 
   typeControl = new FormControl('');

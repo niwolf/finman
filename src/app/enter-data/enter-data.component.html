@@ -7,14 +7,14 @@
     </mat-select>
   </mat-form-field><br><br>
   <mat-form-field class="form">
-    <input matInput type="text" formControlName="title" placeholder="Titel">
+    <input matInput type="text" formControlName="title" placeholder="Titel" required>
   </mat-form-field><br><br>
   <mat-form-field class="form">
-    <input matInput type="number" formControlName="value" placeholder="Betrag">
+    <input matInput type="number" formControlName="value" placeholder="Betrag" required>
     <mat-icon matSuffix>euro</mat-icon>
   </mat-form-field><br><br>
   <mat-form-field class="form">
-    <input matInput [matDatepicker]="picker" formControlName="date" placeholder="Choose a date">
+    <input matInput [matDatepicker]="picker" formControlName="date" placeholder="Choose a date" required>
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field><br><br>

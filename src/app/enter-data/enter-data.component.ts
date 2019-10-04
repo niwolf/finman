@@ -16,6 +16,8 @@ import { Item } from '../models/item.interface';
 })
 export class EnterDataComponent
 {
+  typeControl = new FormControl('');
+
   private itemsCollection: AngularFirestoreCollection<Item>;
 
   constructor(db: AngularFirestore)

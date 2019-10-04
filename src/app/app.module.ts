@@ -14,7 +14,6 @@ import {
   MatTooltipModule,
 } from '@angular/material';
 import { NavigationComponent } from './navigation/navigation.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { EnterDataModule } from './enter-data/enter-data.module';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
@@ -22,12 +21,12 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from 'src/environments/environment';
 import { ButtonComponent } from './button/button.component';
 import { LoginModule } from './login/login.module';
+import { DashboardModule } from './dashboard/dashboard.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavigationComponent,
-    DashboardComponent,
     ButtonComponent,
   ],
   imports: [
@@ -45,7 +44,8 @@ import { LoginModule } from './login/login.module';
     AngularFireAuthModule,
     AngularFirestoreModule,
     LoginModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    DashboardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

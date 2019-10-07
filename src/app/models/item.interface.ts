@@ -4,5 +4,5 @@ export interface Item
   value: number;
   date: {seconds: number; nanoseconds: number};
   category: number;
-  user: number;
+  user: string;
 }

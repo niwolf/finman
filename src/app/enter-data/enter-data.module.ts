@@ -3,22 +3,21 @@ import { CommonModule } from '@angular/common';
 import { LayoutModule } from '@angular/cdk/layout';
 import {
   MatButtonModule,
+  MatDatepickerModule,
   MatFormFieldModule,
   MatInputModule,
   MatSelectModule,
-  MatDatepickerModule
-
+  MatNativeDateModule
 } from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EnterDataComponent } from './enter-data.component';
-import { MatNativeDateModule } from '@angular/material/core';
 
 
 @NgModule({
   declarations: [
     EnterDataComponent
   ],
-  imports:      [
+  imports: [
     CommonModule,
     ReactiveFormsModule,
     LayoutModule,

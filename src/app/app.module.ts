@@ -19,15 +19,14 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from 'src/environments/environment';
-import { ButtonComponent } from './button/button.component';
 import { LoginModule } from './login/login.module';
 import { DashboardModule } from './dashboard/dashboard.module';
+import { ButtonModule } from './button/button.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavigationComponent,
-    ButtonComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,7 +44,8 @@ import { DashboardModule } from './dashboard/dashboard.module';
     AngularFirestoreModule,
     LoginModule,
     MatProgressSpinnerModule,
-    DashboardModule
+    DashboardModule,
+    ButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,4 +1,13 @@
 <h2>Finman - Dein Finance Manager</h2>
-<div *ngFor="let item of items | async">
-  {{ item | json}}
-</div>
+<mat-list>
+  <ng-container *ngFor="let item of items | async; last as last">
+    <mat-list-item>
+      <div matLine>
+              <span>{{item.date | timestampToDate | date:'medium'}}</span>
+        <span>{{item.title}}</span>
+        <span>{{item.value | currency:'EUR'}}</span>
+      </div>
+    </mat-list-item>
+    <mat-divider *ngIf="!last"></mat-divider>
+  </ng-container>
+</mat-list>

@@ -2,3 +2,9 @@ h2{
   text-align: center;
 }
 
+mat-list-item div[matLine]
+{
+  display:flex;
+  justify-content: space-between;
+}
+

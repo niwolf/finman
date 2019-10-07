@@ -3,13 +3,18 @@ import { CommonModule } from '@angular/common';
 
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
+import {
+  MatListModule
+} from '@angular/material';
+import { TimestampToDatePipe } from './timestamp-to-date.pipe';
 
 
 @NgModule({
-  declarations: [DashboardComponent],
+  declarations: [DashboardComponent, TimestampToDatePipe],
   imports: [
     CommonModule,
-    DashboardRoutingModule
+    DashboardRoutingModule,
+    MatListModule
   ]
 })
 export class DashboardModule { }

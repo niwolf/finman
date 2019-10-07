@@ -6,6 +6,8 @@ import {
   of
 } from 'rxjs';
 import { User } from 'firebase';
+import { ActivatedRoute } from '@angular/router';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @Component({
   selector:    'fin-app',
@@ -15,5 +17,10 @@ import { User } from 'firebase';
 export class AppComponent {
   user$: Observable<User> = merge(of(undefined), this.auth.user);
 
-  constructor(public auth: AngularFireAuth) {}
+  constructor(public auth: AngularFireAuth, private route: ActivatedRoute) {}
+
+  public get isDashboard(): boolean
+  {
+    return this.route.firstChild.component === DashboardComponent;
+  }
 }

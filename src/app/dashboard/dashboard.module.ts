@@ -5,6 +5,7 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
 import { MatTableModule } from '@angular/material/table';
 import { FirestoreDatePipe } from './firestore-date.pipe';
+import { MatSortModule } from '@angular/material/sort';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { FirestoreDatePipe } from './firestore-date.pipe';
     CommonModule,
     DashboardRoutingModule,
     MatTableModule,
+    MatSortModule,
   ]
 })
 export class DashboardModule { }

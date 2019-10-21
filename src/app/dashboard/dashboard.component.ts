@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, } from '@angular/core';
 import {
   AngularFirestore,
   AngularFirestoreCollection
@@ -6,6 +6,7 @@ import {
 import { Item } from '../models/item.interface';
 import { Observable } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'fin-dashboard',
@@ -22,7 +23,8 @@ export class DashboardComponent {
   {
     const uid: string = this.auth.auth.currentUser.uid;
     this.itemsCollection = afs.collection<Item>(`users/${uid}/items`);
-    this.items = this.itemsCollection.valueChanges();
+    this.items = this.itemsCollection.valueChanges().pipe(
+      map((items: Item[]) => items.sort((a: Item, b: Item) => b.date.seconds - a.date.seconds))
+    );
   }
-
 }

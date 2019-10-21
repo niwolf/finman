@@ -16,7 +16,7 @@ export class DashboardComponent {
   private itemsCollection: AngularFirestoreCollection<Item>;
   items: Observable<Item[]>;
 
-  displayedColumns: string[] = ['select', 'title', 'value', 'date'];
+  displayedColumns: string[] = ['title', 'value', 'date'];
   constructor(private afs: AngularFirestore)
   {
     this.itemsCollection = afs.collection<Item>('items');

@@ -1,9 +1,5 @@
 <h2>Finman - Dein Finance Manager</h2>
 <mat-table [dataSource]="items | async">
-  <ng-container matColumnDef="select">
-    <mat-header-cell *matHeaderCellDef>Select</mat-header-cell>
-    <mat-cell *matCellDef="let items">{{items.select}}</mat-cell>
-  </ng-container>
   <ng-container matColumnDef="title">
     <mat-header-cell *matHeaderCellDef>Titel</mat-header-cell>
     <mat-cell *matCellDef="let items">{{items.title}}</mat-cell>

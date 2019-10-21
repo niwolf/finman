@@ -26,9 +26,9 @@ import { ButtonModule } from './button/button.module';
 @NgModule({
   declarations: [
     AppComponent,
-    NavigationComponent
+    NavigationComponent,
   ],
-  imports: [
+  imports:      [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -47,7 +47,9 @@ import { ButtonModule } from './button/button.module';
     DashboardModule,
     ButtonModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers:    [],
+  exports:      [
+  ],
+  bootstrap:    [AppComponent]
 })
 export class AppModule { }

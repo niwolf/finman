@@ -1,0 +1,20 @@
+{
+  "hosting": [
+    {
+      "target": "finman",
+      "public": "dist/finman",
+      "ignore": [
+        "firebase.json",
+        "firebase.conf.ts",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ]
+}

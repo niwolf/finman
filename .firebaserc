@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "finman-a0b5e": {
+      "hosting": {
+        "finman": [
+          "finman-a0b5e"
+        ]
+      }
+    }
+  }
+}

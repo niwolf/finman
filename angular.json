@@ -124,6 +124,10 @@
               "devServerTarget": "finman:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {}
         }
       }
     }

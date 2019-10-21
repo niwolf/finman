@@ -22,6 +22,8 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from 'src/environments/environment';
 import { ButtonComponent } from './button/button.component';
 import { LoginModule } from './login/login.module';
+import { DataTableComponent } from './data-table/data-table.component';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,7 @@ import { LoginModule } from './login/login.module';
     NavigationComponent,
     DashboardComponent,
     ButtonComponent,
+    DataTableComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,7 +48,8 @@ import { LoginModule } from './login/login.module';
     AngularFireAuthModule,
     AngularFirestoreModule,
     LoginModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

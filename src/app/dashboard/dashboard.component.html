@@ -1,6 +1,21 @@
 <h2>Finman - Dein Finance Manager</h2>
-<fin-data-table>
-<div *ngFor="let item of items | async">
-  {{ item | json}}
-</div>
-</fin-data-table>
+<mat-table [dataSource]="items | async">
+  <ng-container matColumnDef="select">
+    <mat-header-cell *matHeaderCellDef>Select</mat-header-cell>
+    <mat-cell *matCellDef="let items">{{items.select}}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="title">
+    <mat-header-cell *matHeaderCellDef>Titel</mat-header-cell>
+    <mat-cell *matCellDef="let items">{{items.title}}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="value">
+    <mat-header-cell *matHeaderCellDef>Betrag</mat-header-cell>
+    <mat-cell *matCellDef="let items">{{items.value}}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="date">
+    <mat-header-cell *matHeaderCellDef>Datum</mat-header-cell>
+    <mat-cell *matCellDef="let items">{{items.date}}</mat-cell>
+  </ng-container>
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+</mat-table>

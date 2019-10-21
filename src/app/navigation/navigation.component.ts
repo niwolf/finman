@@ -8,14 +8,14 @@ import {
   map,
   shareReplay
 } from 'rxjs/operators';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector:    'fin-navigation',
   templateUrl: './navigation.component.html',
   styleUrls:   ['./navigation.component.scss']
 })
-export class NavigationComponent
-{
+export class NavigationComponent {
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
     map(result => result.matches),
@@ -27,8 +27,12 @@ export class NavigationComponent
     shareReplay()
   );
 
-  constructor(private breakpointObserver: BreakpointObserver)
-  {
-  }
+  constructor(
+    private breakpointObserver: BreakpointObserver,
+    private auth: AngularFireAuth
+  ) {}
 
+  public signOut(): void {
+    this.auth.auth.signOut();
+  }
 }

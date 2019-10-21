@@ -43,7 +43,8 @@ export class EnterDataComponent
               private router: Router,
               private snack: MatSnackBar)
   {
-    this.itemsCollection = db.collection<Item>('items');
+    const uid: string = this.auth.auth.currentUser.uid;
+    this.itemsCollection = db.collection<Item>(`users/${uid}/items`);
     route.queryParamMap.subscribe((params: ParamMap) => this.typeControl.setValue(params.get('revenue') ? 1 : -1));
   }
 
@@ -55,8 +56,6 @@ export class EnterDataComponent
         title:    formValue.title,
         date:     formValue.date,
         value:    formValue.value * this.typeControl.value,
-        user:     this.auth.auth.currentUser.uid,
-        category: null
       }).then(() => this.router.navigate(['/dashboard']))
           .catch(() => this.snack.open('Eintrag konnte nicht gespeichert werden.', 'OK', {duration: 5000}));
     }

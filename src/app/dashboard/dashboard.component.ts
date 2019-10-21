@@ -5,7 +5,7 @@ import {
 } from '@angular/fire/firestore';
 import { Item } from '../models/item.interface';
 import { Observable } from 'rxjs';
-import { EnterDataComponent } from '../enter-data/enter-data.component';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'fin-dashboard',
@@ -17,9 +17,11 @@ export class DashboardComponent {
   items: Observable<Item[]>;
 
   displayedColumns: string[] = ['title', 'value', 'date'];
-  constructor(private afs: AngularFirestore)
+  constructor(private afs: AngularFirestore,
+              private auth: AngularFireAuth)
   {
-    this.itemsCollection = afs.collection<Item>('items');
+    const uid: string = this.auth.auth.currentUser.uid;
+    this.itemsCollection = afs.collection<Item>(`users/${uid}/items`);
     this.items = this.itemsCollection.valueChanges();
   }
 

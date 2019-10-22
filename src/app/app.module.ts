@@ -8,6 +8,7 @@ import {
   MatButtonModule,
   MatIconModule,
   MatListModule,
+  MatMenuModule,
   MatProgressSpinnerModule,
   MatSidenavModule,
   MatToolbarModule,
@@ -45,7 +46,8 @@ import { ButtonModule } from './button/button.module';
     LoginModule,
     MatProgressSpinnerModule,
     DashboardModule,
-    ButtonModule
+    ButtonModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]

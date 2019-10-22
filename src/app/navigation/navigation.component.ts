@@ -9,6 +9,7 @@ import {
   shareReplay
 } from 'rxjs/operators';
 import { AngularFireAuth } from '@angular/fire/auth';
+import * as md5 from 'md5';
 
 @Component({
   selector:    'fin-navigation',
@@ -26,6 +27,9 @@ export class NavigationComponent {
     map(result => result.matches),
     shareReplay()
   );
+
+  userImg: string = this.auth.auth.currentUser.photoURL ||
+                    `https://secure.gravatar.com/avatar/${md5(this.auth.auth.currentUser.email)}?d=mp`;
 
   constructor(
     private breakpointObserver: BreakpointObserver,

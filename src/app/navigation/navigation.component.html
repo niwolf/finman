@@ -9,14 +9,12 @@
   </button>
   <span class="title">finman</span>
   
-  <button
-    type="button"
-    mat-icon-button
-    matTooltip="Ausloggen"
-    (click)="signOut()">
-    <mat-icon>exit_to_app</mat-icon>
-  </button>
+  <img [src]="userImg" class="user-image" alt="user image" [matMenuTriggerFor]="userMenu">
 </mat-toolbar>
+
+<mat-menu #userMenu="matMenu">
+  <button mat-menu-item (click)="signOut()">Ausloggen</button>
+</mat-menu>
 
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #drawer class="sidenav" fixedInViewport

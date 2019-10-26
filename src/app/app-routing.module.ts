@@ -4,6 +4,7 @@ import {
   Routes
 } from '@angular/router';
 import { EnterDataComponent } from './enter-data/enter-data.component';
+import { PostsComponent } from './posts/posts.component';
 
 
 const routes: Routes = [
@@ -15,7 +16,11 @@ const routes: Routes = [
   {
     path:      'enterData',
     component: EnterDataComponent
-  }
+  },
+  {
+    path: 'posts',
+      component: PostsComponent
+    }
 ];
 
 @NgModule({

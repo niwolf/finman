@@ -23,11 +23,13 @@ import { environment } from 'src/environments/environment';
 import { LoginModule } from './login/login.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { ButtonModule } from './button/button.module';
+import { PostsComponent } from './posts/posts.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavigationComponent
+    NavigationComponent,
+    PostsComponent
   ],
   imports: [
     BrowserModule,

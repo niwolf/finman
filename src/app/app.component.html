@@ -3,6 +3,7 @@
     <router-outlet></router-outlet>
   </fin-navigation>
   <fin-button *ngIf="isDashboard" class="addButton"></fin-button>
+  <div *ngIf="button?.toggled" class="mat-drawer-backdrop mat-drawer-shown" (click)="button.toggle()"></div>
 </ng-container>
 
 <ng-template #loading>

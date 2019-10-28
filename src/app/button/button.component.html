@@ -8,7 +8,7 @@
     remove
   </mat-icon>
 </a>
-<button mat-fab matTooltip="Neuer Eintrag" [class.toggled]="toggled" (click)="toggle()">
+<button mat-fab [matTooltip]="toggled ? null : 'Neuer Eintrag'" [class.toggled]="toggled" (click)="toggle()">
   <mat-icon>
     add
   </mat-icon>

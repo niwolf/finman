@@ -1,9 +1,9 @@
-<a *ngIf="toggled" mat-mini-fab matTooltip="Einnahme" routerLink="/enterData" [queryParams]="{revenue: true}">
+<a *ngIf="toggled" mat-mini-fab matTooltip="Einnahme" routerLink="/enterData" [queryParams]="{revenue: true}" (click)="toggle()">
   <mat-icon>
     add
   </mat-icon>
 </a>
-<a *ngIf="toggled" mat-mini-fab matTooltip="Ausgabe" routerLink="/enterData">
+<a *ngIf="toggled" mat-mini-fab matTooltip="Ausgabe" routerLink="/enterData" (click)="toggle()">
   <mat-icon>
     remove
   </mat-icon>

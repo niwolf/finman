@@ -9,6 +9,7 @@ import {
   MatToolbarModule
 } from '@angular/material';
 import { NavigationComponent } from './navigation.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -21,6 +22,7 @@ import { NavigationComponent } from './navigation.component';
   ],
   imports:      [
     CommonModule,
+    RouterModule,
     MatToolbarModule,
     MatSidenavModule,
     MatListModule,

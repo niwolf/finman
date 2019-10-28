@@ -1,7 +1,4 @@
-import {
-  Component,
-  ViewChild
-} from '@angular/core';
+import { Component } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import {
   merge,
@@ -11,7 +8,6 @@ import {
 import { User } from 'firebase';
 import { ActivatedRoute } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { ButtonComponent } from './button/button.component';
 
 @Component({
   selector:    'fin-app',
@@ -20,8 +16,6 @@ import { ButtonComponent } from './button/button.component';
 })
 export class AppComponent {
   user$: Observable<User> = merge(of(undefined), this.auth.user);
-
-  @ViewChild(ButtonComponent, {static: false}) button: ButtonComponent;
 
   constructor(public auth: AngularFireAuth, private route: ActivatedRoute) {}
 

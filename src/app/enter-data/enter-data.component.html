@@ -17,7 +17,7 @@
       <mat-error *ngIf="valueControl.hasError('min')">Bitte gebe einen Wert größer 0 ein</mat-error>
     </mat-form-field>
     <mat-form-field class="form">
-      <input matInput [matDatepicker]="picker" formControlName="date" placeholder="Choose a date" required>
+      <input matInput [matDatepicker]="picker" formControlName="date" placeholder="Datum" required>
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
       <mat-error *ngIf="dateControl.hasError('required')">Das Feld muss ausgefüllt sein</mat-error>

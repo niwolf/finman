@@ -2,7 +2,6 @@ import {
   AfterViewInit,
   Component
 } from '@angular/core';
-import { isNullOrUndefined } from 'util';
 
 @Component({
   selector:    'fin-button',
@@ -12,13 +11,15 @@ import { isNullOrUndefined } from 'util';
 export class ButtonComponent implements AfterViewInit {
   toggled = false;
 
-  private readonly backdrop: HTMLDivElement = document.createElement('div');
+  private backdrop: HTMLDivElement;
   private readonly backdropId: string = 'button-backdrop';
 
   public ngAfterViewInit(): void {
     const backdropElement: HTMLDivElement = document.getElementById(this.backdropId) as HTMLDivElement;
-    if (isNullOrUndefined(backdropElement)) {
-      this.insertBackdropElement();
+    if (backdropElement) {
+      this.backdrop = backdropElement;
+    } else {
+      this.backdrop = this.createBackdropElement();
     }
   }
 
@@ -27,11 +28,13 @@ export class ButtonComponent implements AfterViewInit {
     this.backdrop.style.visibility = this.toggled ? 'visible' : 'hidden';
   }
 
-  private insertBackdropElement(): void {
-    this.backdrop.classList.value = 'mat-drawer-backdrop mat-drawer-shown';
-    this.backdrop.style.visibility = 'hidden';
-    this.backdrop.onclick = (): void => this.toggle();
-    this.backdrop.id = this.backdropId;
-    document.body.insertAdjacentElement('beforeend', this.backdrop);
+  private createBackdropElement(): HTMLDivElement {
+    const backdrop: HTMLDivElement = document.createElement('div');
+    backdrop.classList.value = 'mat-drawer-backdrop mat-drawer-shown';
+    backdrop.style.visibility = 'hidden';
+    backdrop.onclick = (): void => this.toggle();
+    backdrop.id = this.backdropId;
+    document.body.insertAdjacentElement('beforeend', backdrop);
+    return backdrop;
   }
 }

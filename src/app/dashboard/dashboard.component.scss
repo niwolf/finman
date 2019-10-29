@@ -1,3 +1,16 @@
 h2{
   text-align: center;
 }
+
+
+.mat-cell, .mat-header-cell {
+  padding: 0px 10px;
+}
+
+.mat-column-title {
+  width: 100%;
+}
+
+.mat-column-value {
+  text-align: right;
+}

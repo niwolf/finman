@@ -14,10 +14,12 @@ import { LoginModule } from './login/login.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { ButtonModule } from './button/button.module';
 import { NavigationModule } from './navigation/navigation.module';
+import { ListingsComponent } from './listings/listings.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ListingsComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,16 @@
 
+form {
+  display: flex;
+  justify-content: space-between;
+  mat-form-field {
+    padding-left: 4px;
+    flex-grow: 1;
+    &:first-child {
+      padding-left: 0px;
+    }
+  }
+}
+
 .mat-cell, .mat-header-cell {
   padding: 0px 10px;
 }

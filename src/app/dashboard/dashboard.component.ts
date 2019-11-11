@@ -3,6 +3,7 @@ import {
   BreakpointObserver,
   Breakpoints
 } from '@angular/cdk/layout';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'fin-dashboard',
@@ -10,7 +11,9 @@ import {
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent {
-  isHandset$ = this.breakpointObserver.observe(Breakpoints.Handset);
-  
+  isSmall$ = this.breakpointObserver.observe([Breakpoints.Small, Breakpoints.XSmall]).pipe(
+    map(result => result.matches)
+  );
+
   constructor(private breakpointObserver: BreakpointObserver) {}
 }

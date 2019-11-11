@@ -11,12 +11,14 @@ import { MatButtonModule } from '@angular/material/button';
 import { LayoutModule } from '@angular/cdk/layout';
 import { ActivityModule } from '../activity/activity.module';
 import { BalanceComponent } from './tiles/balance/balance.component';
+import { StatsComponent } from './tiles/stats/stats.component';
 
 
 @NgModule({
   declarations: [
     DashboardComponent,
-    BalanceComponent
+    BalanceComponent,
+    StatsComponent
   ],
   imports: [
     CommonModule,

@@ -15,6 +15,7 @@ import { DashboardModule } from './dashboard/dashboard.module';
 import { ButtonModule } from './button/button.module';
 import { NavigationModule } from './navigation/navigation.module';
 import { ActivityModule } from './activity/activity.module';
+import { DialogsModule } from './dialogs/dialogs.module';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { ActivityModule } from './activity/activity.module';
     AngularFireAuthModule,
     AngularFirestoreModule,
     NavigationModule,
+    DialogsModule,
     LoginModule,
     ButtonModule,
     EnterDataModule,

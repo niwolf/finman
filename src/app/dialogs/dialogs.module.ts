@@ -1,14 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { InitialBudgetDialogComponent } from './initial-budget-dialog/initial-budget-dialog.component';
+import { ReactiveFormsModule } from '@angular/forms';
 import {
   MatDialogModule,
   MatInputModule,
   MatButtonModule
 } from '@angular/material';
-import { ReactiveFormsModule } from '@angular/forms';
 
-
+import { InitialBudgetDialogComponent } from './initial-budget-dialog/initial-budget-dialog.component';
 
 @NgModule({
   imports: [

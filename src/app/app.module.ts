@@ -14,6 +14,7 @@ import { LoginModule } from './login/login.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { ButtonModule } from './button/button.module';
 import { NavigationModule } from './navigation/navigation.module';
+import { ActivityModule } from './activity/activity.module';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { NavigationModule } from './navigation/navigation.module';
     ButtonModule,
     EnterDataModule,
     MatProgressSpinnerModule,
-    DashboardModule
+    DashboardModule,
+    ActivityModule
   ],
   providers: [],
   bootstrap: [AppComponent]

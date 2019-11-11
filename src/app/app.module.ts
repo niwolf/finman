@@ -14,7 +14,6 @@ import { LoginModule } from './login/login.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { ButtonModule } from './button/button.module';
 import { NavigationModule } from './navigation/navigation.module';
-import { PipesModule } from './pipes/pipes.module';
 import { ActivityModule } from './activity/activity.module';
 
 @NgModule({
@@ -28,7 +27,6 @@ import { ActivityModule } from './activity/activity.module';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFirestoreModule,
-    PipesModule,
     NavigationModule,
     LoginModule,
     ButtonModule,

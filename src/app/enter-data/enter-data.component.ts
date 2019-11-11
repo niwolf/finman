@@ -8,7 +8,10 @@ import {
   AngularFirestore,
   AngularFirestoreCollection
 } from '@angular/fire/firestore';
-import { Item } from '../models/item.interface';
+import {
+  Item,
+  Origin
+} from '../models/item.interface';
 import {
   ActivatedRoute,
   ParamMap,
@@ -56,6 +59,7 @@ export class EnterDataComponent
         title:    formValue.title,
         date:     formValue.date,
         value:    formValue.value * this.typeControl.value,
+        origin:   Origin.cash
       }).then(() => this.router.navigate(['/dashboard']))
           .catch(() => this.snack.open('Eintrag konnte nicht gespeichert werden.', 'OK', {duration: 5000}));
     }

@@ -3,6 +3,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { switchMap, map } from 'rxjs/operators';
+import { UserData } from '../../../models/user-data.interface';
 
 @Component({
   selector:    'fin-balance',
@@ -19,7 +20,7 @@ export class BalanceComponent implements OnInit {
     this.balance$ = this.auth.user.pipe(switchMap(user =>
     {
       const uid: string = user.uid;
-      return this.db.doc<any>(`/users/${uid}`).get().pipe(map(snapshot => snapshot.get('initialBudget')));
+      return this.db.doc<UserData>(`/users/${uid}`).get().pipe(map(snapshot => snapshot.get('initialBudget')));
     }));
   }
 

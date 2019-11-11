@@ -14,12 +14,12 @@ import { LoginModule } from './login/login.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { ButtonModule } from './button/button.module';
 import { NavigationModule } from './navigation/navigation.module';
-import { ListingsComponent } from './listings/listings.component';
+import { PipesModule } from './pipes/pipes.module';
+import { ActivityModule } from './activity/activity.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    ListingsComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -28,12 +28,14 @@ import { ListingsComponent } from './listings/listings.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFirestoreModule,
+    PipesModule,
     NavigationModule,
     LoginModule,
     ButtonModule,
     EnterDataModule,
     MatProgressSpinnerModule,
-    DashboardModule
+    DashboardModule,
+    ActivityModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -3,7 +3,7 @@
   <mat-grid-list cols="2" rowHeight="350px">
     
     <!-- latest activity tile -->
-    <mat-grid-tile [colspan]="1" [rowspan]="2">
+    <mat-grid-tile [colspan]="(isHandset$ | async) ? 2 : 1" [rowspan]="2">
       <mat-card class="dashboard-card">
         <mat-card-header>
           <mat-card-title>

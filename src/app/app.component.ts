@@ -15,6 +15,10 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { UserData } from './models/user-data.interface';
 import { MatDialog } from '@angular/material';
 import { InitialBudgetDialogComponent } from './dialogs/initial-budget-dialog/initial-budget-dialog.component';
+import {
+  switchMap,
+  tap
+} from 'rxjs/operators';
 
 @Component({
   selector:    'fin-app',
@@ -33,10 +37,10 @@ export class AppComponent implements OnInit {
 
   public ngOnInit(): void
   {
-    this.auth.user.subscribe(user =>
+    this.auth.user.pipe(switchMap(user =>
     {
       const uid: string = user.uid;
-      this.db.doc<UserData>(`users/${uid}`).get().subscribe(data =>
+      return this.db.doc<UserData>(`users/${uid}`).get().pipe(tap(data =>
       {
         const initialBudget: {cash: number, account: number } = data.get('initialBudget');
         if(!initialBudget)
@@ -53,7 +57,7 @@ export class AppComponent implements OnInit {
             }
           });
         }
-      });
-    });
+      }));
+    })).subscribe();
   }
 }

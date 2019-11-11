@@ -24,7 +24,7 @@ export class ActivityTableComponent implements OnInit {
   private itemsCollection: AngularFirestoreCollection<Item>;
   items: Observable<Item[]>;
 
-  displayedColumns: string[] = ['date', 'title', 'value'];
+  displayedColumns: string[] = ['date', 'origin', 'title', 'value'];
   constructor(private afs: AngularFirestore, private auth: AngularFireAuth) {}
 
   public ngOnInit(): void

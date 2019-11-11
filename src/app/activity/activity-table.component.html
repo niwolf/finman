@@ -1,3 +1,16 @@
+<form *ngIf="!limit" [formGroup]="filterForm">
+  <mat-form-field>
+    <input matInput [matDatepicker]="fromDate" placeholder="Von" formControlName="from">
+    <mat-datepicker-toggle matSuffix [for]="fromDate"></mat-datepicker-toggle>
+    <mat-datepicker #fromDate></mat-datepicker>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput [matDatepicker]="toDate" placeholder="Bis" formControlName="to">
+    <mat-datepicker-toggle matSuffix [for]="toDate"></mat-datepicker-toggle>
+    <mat-datepicker #toDate></mat-datepicker>
+  </mat-form-field>
+</form>
+
 <table mat-table [dataSource]="items | async">
   <ng-container matColumnDef="title">
     <th mat-header-cell *matHeaderCellDef>Titel</th>

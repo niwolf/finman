@@ -3,11 +3,14 @@ import { CommonModule } from '@angular/common';
 
 import { ActivityRoutingModule } from './activity-routing.module';
 import {
+  MatDatepickerModule,
   MatIconModule,
   MatTableModule
 } from '@angular/material';
 import { PipesModule } from '../pipes/pipes.module';
 import { ActivityTableComponent } from './activity-table.component';
+import { MatInputModule } from '@angular/material/typings/input';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -16,7 +19,10 @@ import { ActivityTableComponent } from './activity-table.component';
     ActivityRoutingModule,
     MatTableModule,
     PipesModule,
-    MatIconModule
+    MatIconModule,
+    MatDatepickerModule,
+    MatInputModule,
+    ReactiveFormsModule
   ],
   declarations: [
     ActivityTableComponent

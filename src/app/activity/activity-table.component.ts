@@ -5,12 +5,25 @@ import {
 } from '@angular/core';
 import {
   AngularFirestore,
-  AngularFirestoreCollection
+  CollectionReference,
+  Query
 } from '@angular/fire/firestore';
 import { Item } from '../models/item.interface';
-import { Observable } from 'rxjs';
+import {
+  merge,
+  Observable,
+  of
+} from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { map } from 'rxjs/operators';
+import {
+  map,
+  switchMap,
+  tap
+} from 'rxjs/operators';
+import {
+  FormControl,
+  FormGroup
+} from '@angular/forms';
 
 @Component({
   selector:    'fin-activity',
@@ -18,10 +31,15 @@ import { map } from 'rxjs/operators';
   styleUrls:   ['./activity-table.component.scss']
 })
 export class ActivityTableComponent implements OnInit {
+
   @Input()
   public limit;
 
-  private itemsCollection: AngularFirestoreCollection<Item>;
+  filterForm = new FormGroup({
+    from: new FormControl(),
+    to: new FormControl()
+  });
+
   items: Observable<Item[]>;
 
   displayedColumns: string[] = ['date', 'origin', 'title', 'value'];
@@ -29,9 +47,32 @@ export class ActivityTableComponent implements OnInit {
 
   public ngOnInit(): void
   {
+    const today = new Date();
+    const before = new Date(today.getFullYear(), today.getMonth() - 1, today.getDate());
+    this.filterForm.setValue({
+      from: before,
+      to: today
+    });
+
     const uid: string = this.auth.auth.currentUser.uid;
-    this.itemsCollection = this.afs.collection<Item>(`users/${uid}/items`, ref => this.limit ? ref.limit(this.limit) : ref);
-    this.items = this.itemsCollection.valueChanges().pipe(
+
+    const filter$ = merge(this.filterForm.valueChanges, of(this.filterForm.value));
+    const items$: Observable<Array<Item>> = filter$.pipe(
+      tap(() => console.log('valueChanges')),
+      map(value =>
+        this.afs.collection<Item>(`users/${uid}/items`, ref =>
+        {
+          let query: CollectionReference | Query = ref.orderBy('date', 'desc');
+          if (this.limit) { query = query.limit(this.limit); }
+          if (value) { query = query.where('date', '<=', value.to)
+                                    .where('date', '>=', value.from); }
+          return query;
+        })
+      ),
+      switchMap(collection => collection.valueChanges())
+    );
+
+    this.items = items$.pipe(
       map((items: Item[]) => items.sort((a: Item, b: Item) => b.date.seconds - a.date.seconds))
     );
   }

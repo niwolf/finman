@@ -23,8 +23,7 @@ export class InitialBudgetDialogComponent {
     account: new FormControl('', Validators.required)
   });
 
-  constructor(private dialogRef: MatDialogRef<InitialBudgetDialogComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: any) { }
+  constructor(private dialogRef: MatDialogRef<InitialBudgetDialogComponent>) { }
 
   public close(): void
   {

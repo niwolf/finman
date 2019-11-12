@@ -68,21 +68,25 @@ export class ActivityTableComponent implements OnInit {
 
     const filter$ = merge(this.filterForm.valueChanges, of(this.filterForm.value));
     const items$: Observable<Array<Item>> = filter$.pipe(
-      map(value =>
-        this.afs.collection<Item>(`users/${uid}/items`, ref =>
-        {
-          let query: CollectionReference | Query = ref.orderBy('date', 'desc');
-          if (this.limit) { query = query.limit(this.limit); }
-          if (value) { query = query.where('date', '<=', value.to)
-                                    .where('date', '>=', value.from); }
-          return query;
-        })
-      ),
+      map(value => this.afs.collection<Item>(`users/${uid}/items`, ref => this.buildQuery(ref, value))),
       switchMap(collection => collection.valueChanges())
     );
 
     this.items = items$.pipe(
       map((items: Item[]) => items.sort((a: Item, b: Item) => b.date.seconds - a.date.seconds))
     );
+  }
+
+  private buildQuery(ref: CollectionReference, value: {from: Date, to: Date}): Query
+  {
+    let query: CollectionReference | Query = ref.orderBy('date', 'desc');
+    if (this.limit) {
+      query = query.limit(this.limit);
+    }
+    if (value) {
+      query = query.where('date', '<=', value.to)
+                   .where('date', '>=', value.from);
+    }
+    return query;
   }
 }

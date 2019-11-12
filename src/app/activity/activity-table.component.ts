@@ -22,15 +22,15 @@ import {
   styleUrls:   ['./activity-table.component.scss']
 })
 export class ActivityTableComponent implements OnInit {
-  @Input()
-  public limit;
-
-  private itemsCollection: AngularFirestoreCollection<Item>;
-  items: Observable<Item[]>;
+  @Input() limit: number;
+  @Input() dense: boolean;
 
   displayedColumns$: Observable<string[]> = this.breakpointObserver.observe([Breakpoints.Small, Breakpoints.XSmall]).pipe(
     map(({matches}) => matches ? ['date', 'title', 'value'] : ['date', 'origin', 'title', 'value'])
   );
+
+  items: Observable<Item[]>;
+  private itemsCollection: AngularFirestoreCollection<Item>;
 
   constructor(
     private afs: AngularFirestore,

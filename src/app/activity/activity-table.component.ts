@@ -11,6 +11,10 @@ import { Item } from '../models/item.interface';
 import { Observable } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { map } from 'rxjs/operators';
+import {
+  BreakpointObserver,
+  Breakpoints
+} from '@angular/cdk/layout';
 
 @Component({
   selector:    'fin-activity',
@@ -18,14 +22,21 @@ import { map } from 'rxjs/operators';
   styleUrls:   ['./activity-table.component.scss']
 })
 export class ActivityTableComponent implements OnInit {
-  @Input()
-  public limit;
+  @Input() limit: number;
+  @Input() dense: boolean;
 
-  private itemsCollection: AngularFirestoreCollection<Item>;
+  displayedColumns$: Observable<string[]> = this.breakpointObserver.observe([Breakpoints.Small, Breakpoints.XSmall]).pipe(
+    map(({matches}) => matches ? ['date', 'title', 'value'] : ['date', 'origin', 'title', 'value'])
+  );
+
   items: Observable<Item[]>;
+  private itemsCollection: AngularFirestoreCollection<Item>;
 
-  displayedColumns: string[] = ['date', 'origin', 'title', 'value'];
-  constructor(private afs: AngularFirestore, private auth: AngularFireAuth) {}
+  constructor(
+    private afs: AngularFirestore,
+    private auth: AngularFireAuth,
+    private breakpointObserver: BreakpointObserver
+  ) {}
 
   public ngOnInit(): void
   {

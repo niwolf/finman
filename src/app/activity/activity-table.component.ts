@@ -79,7 +79,7 @@ export class ActivityTableComponent implements OnInit {
 
   private buildQuery(ref: CollectionReference, value: {from: Date, to: Date}): Query
   {
-    let query: CollectionReference | Query = ref.orderBy('date', 'desc');
+    let query: Query = ref.orderBy('date', 'desc');
     if (this.limit) {
       query = query.limit(this.limit);
     }

@@ -58,7 +58,6 @@ export class ActivityTableComponent implements OnInit {
 
     const filter$ = merge(this.filterForm.valueChanges, of(this.filterForm.value));
     const items$: Observable<Array<Item>> = filter$.pipe(
-      tap(() => console.log('valueChanges')),
       map(value =>
         this.afs.collection<Item>(`users/${uid}/items`, ref =>
         {

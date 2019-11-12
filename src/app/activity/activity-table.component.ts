@@ -5,7 +5,8 @@ import {
 } from '@angular/core';
 import {
   AngularFirestore,
-  AngularFirestoreCollection
+  CollectionReference,
+  Query
 } from '@angular/fire/firestore';
 import { Item } from '../models/item.interface';
 import { Observable } from 'rxjs';
@@ -30,7 +31,6 @@ export class ActivityTableComponent implements OnInit {
   );
 
   items: Observable<Item[]>;
-  private itemsCollection: AngularFirestoreCollection<Item>;
 
   constructor(
     private afs: AngularFirestore,
@@ -41,9 +41,15 @@ export class ActivityTableComponent implements OnInit {
   public ngOnInit(): void
   {
     const uid: string = this.auth.auth.currentUser.uid;
-    this.itemsCollection = this.afs.collection<Item>(`users/${uid}/items`, ref => this.limit ? ref.limit(this.limit) : ref);
-    this.items = this.itemsCollection.valueChanges().pipe(
-      map((items: Item[]) => items.sort((a: Item, b: Item) => b.date.seconds - a.date.seconds))
-    );
+    this.items = this.afs.collection<Item>(`users/${uid}/items`, ref => this.buildQuery(ref)).valueChanges();
+  }
+
+  private buildQuery(ref: CollectionReference): Query
+  {
+    let query: Query = ref.orderBy('date', 'desc');
+    if (this.limit) {
+      query = query.limit(this.limit);
+    }
+    return query;
   }
 }

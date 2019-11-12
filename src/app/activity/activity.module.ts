@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { ActivityRoutingModule } from './activity-routing.module';
+import { ReactiveFormsModule } from '@angular/forms';
 import {
   MatDatepickerModule,
   MatIconModule,
+  MatInputModule,
   MatTableModule
 } from '@angular/material';
+
+import { ActivityRoutingModule } from './activity-routing.module';
 import { PipesModule } from '../pipes/pipes.module';
 import { ActivityTableComponent } from './activity-table.component';
-import { MatInputModule } from '@angular/material/typings/input';
-import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({

@@ -36,8 +36,7 @@ import {
 })
 export class ActivityTableComponent implements OnInit {
 
-  @Input()
-  public limit;
+  @Input() limit: number;
 
   filterForm = new FormGroup({
     from: new FormControl(),

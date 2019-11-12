@@ -17,8 +17,7 @@ import {
 import { AngularFireAuth } from '@angular/fire/auth';
 import {
   map,
-  switchMap,
-  tap
+  switchMap
 } from 'rxjs/operators';
 import {
   FormControl,

@@ -58,7 +58,7 @@ export class ActivityTableComponent implements OnInit {
   public ngOnInit(): void
   {
     const today = new Date();
-    const aMonthAgo = new Date(today.getFullYear(), today.getMonth() - 1, today.getDate());
+    const aMonthAgo = new Date(today.getFullYear(), today.getMonth() - 1, today.getDate(), 0, 0, 0);
     this.filterForm.setValue({
       from: aMonthAgo,
       to: today
@@ -66,14 +66,16 @@ export class ActivityTableComponent implements OnInit {
 
     const uid: string = this.auth.auth.currentUser.uid;
 
-    const filter$ = merge(this.filterForm.valueChanges, of(this.filterForm.value));
-    const items$: Observable<Array<Item>> = filter$.pipe(
+    const filterFormChanges$ = this.filterForm.valueChanges.pipe(map(value => {
+      return {
+        from: new Date(value.from.getFullYear(), value.from.getMonth(), value.from.getDate(), 0, 0, 0),
+        to: new Date(value.to.getFullYear(), value.to.getMonth(), value.to.getDate(), 23, 59, 59)
+      };
+    }));
+    const filter$ = merge(filterFormChanges$, of(this.filterForm.value));
+    this.items = filter$.pipe(
       map(value => this.afs.collection<Item>(`users/${uid}/items`, ref => this.buildQuery(ref, value))),
       switchMap(collection => collection.valueChanges())
-    );
-
-    this.items = items$.pipe(
-      map((items: Item[]) => items.sort((a: Item, b: Item) => b.date.seconds - a.date.seconds))
     );
   }
 

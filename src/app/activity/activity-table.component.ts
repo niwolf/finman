@@ -43,11 +43,11 @@ export class ActivityTableComponent implements OnInit {
     to: new FormControl()
   });
 
-  items: Observable<Item[]>;
-
   displayedColumns$: Observable<string[]> = this.breakpointObserver.observe([Breakpoints.Small, Breakpoints.XSmall]).pipe(
     map(({matches}) => matches ? ['date', 'title', 'value'] : ['date', 'origin', 'title', 'value'])
   );
+
+  items: Observable<Item[]>;
 
   constructor(
     private afs: AngularFirestore,

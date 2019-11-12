@@ -1,4 +1,18 @@
 
+form {
+  margin-top: 4px;
+  display: flex;
+  justify-content: center;
+  mat-form-field {
+    max-width: 300px;
+    padding-left: 4px;
+    flex-grow: 1;
+    &:first-child {
+      padding-left: 0px;
+    }
+  }
+}
+
 .mat-cell, .mat-header-cell {
   padding: 0px 10px;
 }

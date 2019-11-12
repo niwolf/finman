@@ -27,3 +27,15 @@ form {
 .mat-column-origin {
   text-align: center;
 }
+
+.dense {
+  .mat-header-cell, .mat-cell {
+    padding: 0px 4px;
+    &:first-of-type {
+      padding-left: 4px;
+    }
+    &:last-of-type {
+      padding-right: 4px;
+    }
+  }
+}

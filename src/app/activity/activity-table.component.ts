@@ -37,6 +37,7 @@ import {
 export class ActivityTableComponent implements OnInit {
 
   @Input() limit: number;
+  @Input() dense: boolean;
 
   filterForm = new FormGroup({
     from: new FormControl(),

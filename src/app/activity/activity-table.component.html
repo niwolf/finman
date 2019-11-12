@@ -11,7 +11,7 @@
   </mat-form-field>
 </form>
 
-<table mat-table [dataSource]="items | async">
+<table mat-table [dataSource]="items | async" [class.dense]="dense">
   <ng-container matColumnDef="title">
     <th mat-header-cell *matHeaderCellDef>Titel</th>
     <td mat-cell *matCellDef="let item">{{item.title}}</td>

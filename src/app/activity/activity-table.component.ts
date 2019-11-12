@@ -58,9 +58,9 @@ export class ActivityTableComponent implements OnInit {
   public ngOnInit(): void
   {
     const today = new Date();
-    const before = new Date(today.getFullYear(), today.getMonth() - 1, today.getDate());
+    const aMonthAgo = new Date(today.getFullYear(), today.getMonth() - 1, today.getDate());
     this.filterForm.setValue({
-      from: before,
+      from: aMonthAgo,
       to: today
     });
 

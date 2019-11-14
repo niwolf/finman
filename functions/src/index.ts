@@ -1,22 +1,19 @@
 import * as functions from 'firebase-functions';
 import * as admin from 'firebase-admin';
+admin.initializeApp();
+
 import DocumentReference = admin.firestore.DocumentReference;
 import DocumentSnapshot = admin.firestore.DocumentSnapshot;
-admin.initializeApp();
+import CollectionReference = admin.firestore.CollectionReference;
+import {
+  Item,
+  Origin
+} from '../../src/app/models/item.interface';
 
 const db = admin.firestore();
 
-
-// // Start writing Firebase Functions
-// // https://firebase.google.com/docs/functions/typescript
-//
-// export const helloWorld = functions.https.onRequest((request, response) => {
-//  response.send("Hello from Firebase!");
-// });
-
-// Listens for new messages added to /messages/:pushId/original and creates an
-// uppercase version of the message to /messages/:pushId/uppercase
-exports.calcCurrentBudget = functions.firestore.document('/users/{userId}/items/{itemId}')
+// Listens for new items created by a user and re-calculates his current budget
+exports.updateBudget = functions.firestore.document('/users/{userId}/items/{itemId}')
                                      .onCreate(async(snapshot, context) => {
                                        // Grab the current value of what was written to the Realtime Database.
                                        const value = snapshot.get('value');
@@ -31,11 +28,11 @@ exports.calcCurrentBudget = functions.firestore.document('/users/{userId}/items/
                                        if(currentBudget)
                                        {
                                          const newBudget:{cash:number, account:number} = {cash: currentBudget.cash, account: currentBudget.account};
-                                         if(origin === 'cash')
+                                         if(origin === Origin.cash)
                                          {
                                            newBudget.cash += value;
                                          }
-                                         else if(origin === 'account')
+                                         else if(origin === Origin.account)
                                          {
                                             newBudget.account += value
                                          }
@@ -43,11 +40,23 @@ exports.calcCurrentBudget = functions.firestore.document('/users/{userId}/items/
                                        }
                                        else
                                        {
-                                         // const initialBudget: {cash:number, account:number} = userDocSnap.get('initialBudget');
-                                         // const itemCollection:CollectionReference = db.collection(`/users/${userId}/items`);
-                                         // const items:DocumentReference[] = await itemCollection.listDocuments();
-                                         // const cashSum:number = items.filter(item => item.)
-                                         console.error('No current budget available');
-                                         return null;
+                                         const initialBudget: {cash:number, account:number} = userDocSnap.get('initialBudget');
+                                         const itemCollection:CollectionReference = db.collection(`/users/${userId}/items`);
+                                         const itemDocRefs:DocumentReference[] = await itemCollection.listDocuments();
+                                         const itemDocPromises: Promise<DocumentSnapshot>[] = itemDocRefs.map(doc => doc.get());
+                                         const itemDocSnaps: DocumentSnapshot[] = await Promise.all(itemDocPromises);
+                                         const items: Item[] = itemDocSnaps.map(snap => snap.data() as Item);
+
+                                         const reducer = (acc:number, curr:Item) => acc + curr.value;
+                                         const cashSum:number = items.filter(item => item.origin === Origin.cash).reduce(reducer, 0);
+                                         const accountSum:number = items.filter(item => item.origin === Origin.account).reduce(reducer, 0);
+
+                                         const newBudget = {
+                                           cash: initialBudget.cash + cashSum,
+                                           account: initialBudget.account + accountSum
+                                         };
+                                         console.log('Created currentBudget', newBudget);
+
+                                         return userDoc.update('currentBudget', newBudget);
                                        }
                                      });

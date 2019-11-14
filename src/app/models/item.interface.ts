@@ -1,14 +1,12 @@
 import {firestore} from 'firebase';
 import Timestamp = firestore.Timestamp;
 
-export enum Origin
-{
+export enum Origin {
   cash = 'cash',
   account = 'account'
 }
 
-export interface Item
-{
+export interface Item {
   title: string;
   value: number;
   date: Timestamp;

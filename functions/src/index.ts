@@ -29,8 +29,6 @@ exports.updateBudget = functions.firestore.document('/users/{userId}/items/{item
   const userDocSnap: DocumentSnapshot = await userDoc.get();
   const currentBudget: { cash: number, account: number } = userDocSnap.get('currentBudget');
 
-  console.log(userId, currentBudget);
-
   if (currentBudget)
   {
     const newBudget: { cash: number, account: number } = {
@@ -44,6 +42,7 @@ exports.updateBudget = functions.firestore.document('/users/{userId}/items/{item
     {
       newBudget.account += value;
     }
+    console.log('Budget updated for user', userId);
     return userDoc.update('currentBudget', newBudget);
   } else
   {
@@ -62,8 +61,8 @@ exports.updateBudget = functions.firestore.document('/users/{userId}/items/{item
       cash:    initialBudget.cash + cashSum,
       account: initialBudget.account + accountSum
     };
-    console.log('Created currentBudget', newBudget);
 
+    console.log('Budget created for user', userId);
     return userDoc.update('currentBudget', newBudget);
   }
 });

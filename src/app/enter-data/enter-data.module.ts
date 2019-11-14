@@ -8,10 +8,12 @@ import {
   MatInputModule,
   MatSelectModule,
   MatNativeDateModule,
-  MatCardModule
+  MatCardModule,
+  MatSnackBarModule
 } from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EnterDataComponent } from './enter-data.component';
+import { EnterDataRoutingModule } from './enter-data-routing.module';
 
 
 @NgModule({
@@ -20,6 +22,7 @@ import { EnterDataComponent } from './enter-data.component';
   ],
   imports: [
     CommonModule,
+    EnterDataRoutingModule,
     ReactiveFormsModule,
     LayoutModule,
     MatButtonModule,
@@ -28,7 +31,8 @@ import { EnterDataComponent } from './enter-data.component';
     MatInputModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatCardModule
+    MatCardModule,
+    MatSnackBarModule
   ],
   exports:      [EnterDataComponent]
 })

@@ -5,10 +5,15 @@ admin.initializeApp();
 import DocumentReference = admin.firestore.DocumentReference;
 import DocumentSnapshot = admin.firestore.DocumentSnapshot;
 import CollectionReference = admin.firestore.CollectionReference;
-import {
-  Item,
-  Origin
-} from '../../src/app/models/item.interface';
+import Timestamp = admin.firestore.Timestamp;
+
+
+interface Item {
+  title: string;
+  value: number;
+  date: Timestamp;
+  origin: 'cash' | 'account';
+}
 
 const db = admin.firestore();
 
@@ -28,11 +33,11 @@ exports.updateBudget = functions.firestore.document('/users/{userId}/items/{item
                                        if(currentBudget)
                                        {
                                          const newBudget:{cash:number, account:number} = {cash: currentBudget.cash, account: currentBudget.account};
-                                         if(origin === Origin.cash)
+                                         if(origin === 'cash')
                                          {
                                            newBudget.cash += value;
                                          }
-                                         else if(origin === Origin.account)
+                                         else if(origin === 'account')
                                          {
                                             newBudget.account += value
                                          }
@@ -48,8 +53,8 @@ exports.updateBudget = functions.firestore.document('/users/{userId}/items/{item
                                          const items: Item[] = itemDocSnaps.map(snap => snap.data() as Item);
 
                                          const reducer = (acc:number, curr:Item) => acc + curr.value;
-                                         const cashSum:number = items.filter(item => item.origin === Origin.cash).reduce(reducer, 0);
-                                         const accountSum:number = items.filter(item => item.origin === Origin.account).reduce(reducer, 0);
+                                         const cashSum:number = items.filter(item => item.origin === 'cash').reduce(reducer, 0);
+                                         const accountSum:number = items.filter(item => item.origin === 'account').reduce(reducer, 0);
 
                                          const newBudget = {
                                            cash: initialBudget.cash + cashSum,

@@ -5,7 +5,7 @@ import { ActivityTableComponent } from './activity-table.component';
 
 const routes: Routes = [
   {
-    path: 'activity',
+    path: '',
     component: ActivityTableComponent
   }
 ];

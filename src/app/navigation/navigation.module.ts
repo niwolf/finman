@@ -10,6 +10,7 @@ import {
 } from '@angular/material';
 import { NavigationComponent } from './navigation.component';
 import { RouterModule } from '@angular/router';
+import { ButtonModule } from '../button/button.module';
 
 
 
@@ -29,6 +30,7 @@ import { RouterModule } from '@angular/router';
     MatMenuModule,
     MatIconModule,
     MatButtonModule,
+    ButtonModule
   ]
 })
 export class NavigationModule { }

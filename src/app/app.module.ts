@@ -5,17 +5,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatProgressSpinnerModule, } from '@angular/material';
-import { EnterDataModule } from './enter-data/enter-data.module';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from 'src/environments/environment';
-import { LoginModule } from './login/login.module';
-import { DashboardModule } from './dashboard/dashboard.module';
-import { ButtonModule } from './button/button.module';
 import { NavigationModule } from './navigation/navigation.module';
-import { ActivityModule } from './activity/activity.module';
 import { DialogsModule } from './dialogs/dialogs.module';
+import { AngularFireAuthGuardModule } from '@angular/fire/auth-guard';
 
 @NgModule({
   declarations: [
@@ -27,15 +23,11 @@ import { DialogsModule } from './dialogs/dialogs.module';
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
+    AngularFireAuthGuardModule,
     AngularFirestoreModule,
     NavigationModule,
     DialogsModule,
-    LoginModule,
-    ButtonModule,
-    EnterDataModule,
-    MatProgressSpinnerModule,
-    DashboardModule,
-    ActivityModule
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

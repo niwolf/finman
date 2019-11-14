@@ -31,3 +31,12 @@ mat-toolbar
 .sidenav .mat-toolbar {
   background: inherit;
 }
+
+.addButton
+{
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+

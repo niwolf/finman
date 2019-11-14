@@ -9,8 +9,6 @@ import {
   of
 } from 'rxjs';
 import { User } from 'firebase';
-import { ActivatedRoute } from '@angular/router';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { UserData } from './models/user-data.interface';
 import { MatDialog } from '@angular/material';
@@ -28,12 +26,7 @@ import {
 export class AppComponent implements OnInit {
   user$: Observable<User> = merge(of(undefined), this.auth.user);
 
-  constructor(public auth: AngularFireAuth, private route: ActivatedRoute, private db: AngularFirestore, private dialog: MatDialog) {}
-
-  public get isDashboard(): boolean
-  {
-    return this.route.firstChild.component === DashboardComponent;
-  }
+  constructor(public auth: AngularFireAuth, private db: AngularFirestore, private dialog: MatDialog) {}
 
   public ngOnInit(): void
   {

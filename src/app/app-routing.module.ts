@@ -3,18 +3,33 @@ import {
   RouterModule,
   Routes
 } from '@angular/router';
-import { EnterDataComponent } from './enter-data/enter-data.component';
+import { NavigationComponent } from './navigation/navigation.component';
+import { AngularFireAuthGuard } from '@angular/fire/auth-guard';
 
 
 const routes: Routes = [
   {
-    path: '',
-    pathMatch: 'full',
-    redirectTo: 'dashboard'
+    path:        '',
+    component:   NavigationComponent,
+    canActivate: [AngularFireAuthGuard],
+    children:    [
+      {
+        path:         'dashboard',
+        loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
+      },
+      {
+        path:         'activity',
+        loadChildren: () => import('./activity/activity.module').then(m => m.ActivityModule)
+      },
+      {
+        path:         'enterData',
+        loadChildren: () => import('./enter-data/enter-data.module').then(m => m.EnterDataModule)
+      }
+    ]
   },
   {
-    path:      'enterData',
-    component: EnterDataComponent
+    path:         'login',
+    loadChildren: () => import('./login/login.module').then(m => m.LoginModule)
   }
 ];
 
@@ -22,4 +37,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

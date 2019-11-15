@@ -23,9 +23,9 @@ import { DialogsModule } from './dialogs/dialogs.module';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFirestoreModule,
+    MatProgressSpinnerModule,
     NavigationModule,
-    DialogsModule,
-    MatProgressSpinnerModule
+    DialogsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

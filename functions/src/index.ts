@@ -25,6 +25,12 @@ const db = admin.firestore();
 async function initCurrentBudget(userDocSnap: DocumentSnapshot, userId:string, userDoc: DocumentReference)
 {
   const initialBudget: { cash: number, account: number } = userDocSnap.get('initialBudget');
+  if(!initialBudget)
+  {
+    console.warn('No initial budget set for user', userId);
+    return null;
+  }
+
   const itemCollection: CollectionReference = db.collection(`/users/${userId}/items`);
   const itemDocRefs: DocumentReference[] = await itemCollection.listDocuments();
   const itemDocPromises: Promise<DocumentSnapshot>[] = itemDocRefs.map(doc => doc.get());

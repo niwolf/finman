@@ -14,6 +14,6 @@
   </form>
 </div>
 <div mat-dialog-actions>
-<!--  <button mat-button (click)="close()">Abbrechen</button>--> <!-- TODO: May be re-activated if we can handle no initial budget -->
+  <button mat-button (click)="close()">Abbrechen</button>
   <button mat-button [mat-dialog-close]="form.value" [disabled]="form.invalid">Speichern</button>
 </div>

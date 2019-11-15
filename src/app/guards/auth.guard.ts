@@ -14,12 +14,14 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
-  constructor(private auth: AngularFireAuth, private router: Router) {}
+  private readonly loginUrl: UrlTree;
 
-  canActivate(
-    next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> {
-    return this.auth.user.pipe(map(user => user ? true : this.router.parseUrl('/login')));
+  constructor(private auth: AngularFireAuth, router: Router) {
+    this.loginUrl = router.parseUrl('/login');
+  }
+
+  canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> {
+    return this.auth.user.pipe(map(user => user ? true : this.loginUrl));
   }
 
 }

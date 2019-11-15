@@ -25,7 +25,7 @@ const routes: Routes = [
         loadChildren: () => import('./activity/activity.module').then(m => m.ActivityModule)
       },
       {
-        path:         'enterData',
+        path:         'new',
         loadChildren: () => import('./enter-data/enter-data.module').then(m => m.EnterDataModule)
       },
       {

@@ -4,14 +4,17 @@ import {
   Routes
 } from '@angular/router';
 import { NavigationComponent } from './navigation/navigation.component';
-import { AuthGuard } from './guards/auth.guard';
+import {
+  AuthGuard,
+  InitialBudgetGuard
+} from './guards';
 
 
 const routes: Routes = [
   {
     path:        '',
     component:   NavigationComponent,
-    canActivate: [AuthGuard],
+    canActivate: [AuthGuard, InitialBudgetGuard],
     children:    [
       {
         path:         'dashboard',

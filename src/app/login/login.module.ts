@@ -11,6 +11,7 @@ import {
 import { ReactiveFormsModule } from '@angular/forms';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { LoginComponent } from './login.component';
+import { LoginRoutingModule } from './login-routing.module';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { LoginComponent } from './login.component';
   ],
   imports: [
     CommonModule,
+    LoginRoutingModule,
     AngularFireAuthModule,
     ReactiveFormsModule,
     MatInputModule,

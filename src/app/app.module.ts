@@ -23,7 +23,6 @@ import { AngularFireAuthGuardModule } from '@angular/fire/auth-guard';
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
-    AngularFireAuthGuardModule,
     AngularFirestoreModule,
     NavigationModule,
     DialogsModule,

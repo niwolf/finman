@@ -30,27 +30,27 @@ export class AppComponent implements OnInit {
 
   public ngOnInit(): void
   {
-    this.auth.user.pipe(switchMap(user =>
-    {
-      const uid: string = user.uid;
-      return this.db.doc<UserData>(`users/${uid}`).get().pipe(tap(data =>
-      {
-        const initialBudget: {cash: number, account: number } = data.get('initialBudget');
-        if(!initialBudget)
-        {
-          const dialogRef = this.dialog.open(InitialBudgetDialogComponent, {
-            disableClose: true,
-            autoFocus: true
-          });
-
-          dialogRef.afterClosed().subscribe(result => {
-            if(result)
-            {
-              this.db.doc<UserData>(`users/${uid}`).update({initialBudget: result});
-            }
-          });
-        }
-      }));
-    })).subscribe();
+    // this.auth.user.pipe(switchMap(user =>
+    // {
+    //   const uid: string = user.uid;
+    //   return this.db.doc<UserData>(`users/${uid}`).get().pipe(tap(data =>
+    //   {
+    //     const initialBudget: {cash: number, account: number } = data.get('initialBudget');
+    //     if(!initialBudget)
+    //     {
+    //       const dialogRef = this.dialog.open(InitialBudgetDialogComponent, {
+    //         disableClose: true,
+    //         autoFocus: true
+    //       });
+    //
+    //       dialogRef.afterClosed().subscribe(result => {
+    //         if(result)
+    //         {
+    //           this.db.doc<UserData>(`users/${uid}`).update({initialBudget: result});
+    //         }
+    //       });
+    //     }
+    //   }));
+    // })).subscribe();
   }
 }

@@ -1,8 +1,7 @@
 <router-outlet></router-outlet>
-<ng-template #loading>
-  <mat-progress-spinner
-    *ngIf="(user$ | async) === undefined"
-    mode="indeterminate">
-  </mat-progress-spinner>
-</ng-template>
+
+<mat-progress-spinner
+  *ngIf="(user$ | async) === undefined"
+  mode="indeterminate">
+</mat-progress-spinner>
 

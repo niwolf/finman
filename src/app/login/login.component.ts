@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import {
+  Component,
+  OnInit
+} from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -6,14 +9,14 @@ import {
 } from '@angular/forms';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { MatSnackBar } from '@angular/material';
-import UserCredential = firebase.auth.UserCredential;
+import { Router } from '@angular/router';
 
 @Component({
   selector:    'fin-login',
   templateUrl: './login.component.html',
   styleUrls:   ['./login.component.scss']
 })
-export class LoginComponent
+export class LoginComponent implements OnInit
 {
   email = new FormControl('', [Validators.required, Validators.email]);
   password = new FormControl('', [Validators.required]);
@@ -27,8 +30,15 @@ export class LoginComponent
   hide = true;
 
   constructor(private auth: AngularFireAuth,
+              private router: Router,
               private snackBar: MatSnackBar)
   {}
+
+  public ngOnInit(): void {
+    this.auth.user.subscribe(user => {
+      if (user) { this.router.navigate(['/dashboard']); }
+    });
+  }
 
   public onSubmit() {
     if (this.form.valid) {
@@ -40,10 +50,10 @@ export class LoginComponent
   {
     this.pending = true;
     this.auth.auth.signInWithEmailAndPassword(email, password)
-        .then((credential: UserCredential) =>
+        .then(() =>
         {
-          console.log(credential);
           this.snackBar.dismiss();
+          this.router.navigate(['/dashboard']);
         })
         .catch((err: any) =>
         {

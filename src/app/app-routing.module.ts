@@ -4,14 +4,14 @@ import {
   Routes
 } from '@angular/router';
 import { NavigationComponent } from './navigation/navigation.component';
-import { AngularFireAuthGuard } from '@angular/fire/auth-guard';
+import { AuthGuard } from './guards/auth.guard';
 
 
 const routes: Routes = [
   {
     path:        '',
     component:   NavigationComponent,
-    canActivate: [AngularFireAuthGuard],
+    canActivate: [AuthGuard],
     children:    [
       {
         path:         'dashboard',
@@ -24,13 +24,22 @@ const routes: Routes = [
       {
         path:         'enterData',
         loadChildren: () => import('./enter-data/enter-data.module').then(m => m.EnterDataModule)
+      },
+      {
+        path: '',
+        redirectTo: 'dashboard',
+        pathMatch: 'full'
       }
     ]
   },
   {
     path:         'login',
     loadChildren: () => import('./login/login.module').then(m => m.LoginModule)
-  }
+  },
+  // {
+  //   path: '**',
+  //   component: PageNotFoundComponent
+  // }
 ];
 
 @NgModule({

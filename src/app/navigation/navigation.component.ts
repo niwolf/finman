@@ -10,8 +10,7 @@ import {
 import { Observable } from 'rxjs';
 import {
   map,
-  shareReplay,
-  switchMap
+  shareReplay
 } from 'rxjs/operators';
 import { AngularFireAuth } from '@angular/fire/auth';
 import * as md5 from 'md5';
@@ -42,7 +41,7 @@ export class NavigationComponent implements OnInit {
   private readonly defaultUserImg = `https://secure.gravatar.com/avatar/${md5(this.auth.auth.currentUser.email)}?d=mp`;
   userImg: string = this.auth.auth.currentUser.photoURL || this.defaultUserImg;
 
-  @ViewChild(RouterOutlet, {static: false})
+  @ViewChild(RouterOutlet, {static: true})
   private routerOutlet: RouterOutlet;
 
   constructor(
@@ -52,31 +51,21 @@ export class NavigationComponent implements OnInit {
     private db: AngularFirestore
   ) {}
 
-  public ngOnInit(): void
-  {
-    this.auth.user.pipe(switchMap(user =>
-    {
-      const uid: string = user.uid;
-      return this.db.doc<UserData>(`users/${uid}`).get().pipe(map(data =>
-      {
-        const initialBudget: { cash: number, account: number } = data.get('initialBudget');
-        if (!initialBudget)
-        {
-          const dialogRef = this.dialog.open(InitialBudgetDialogComponent, {
-            disableClose: true,
-            autoFocus:    true
-          });
+  public ngOnInit(): void {
+    const uid: string = this.auth.auth.currentUser.uid;
+    this.db.doc<UserData>(`users/${uid}`).get().subscribe(data => {
+      const initialBudget: { cash: number, account: number } = data.get('initialBudget');
+      if (!initialBudget) {
+        const dialogRef = this.dialog.open(InitialBudgetDialogComponent, {
+          disableClose: true,
+          autoFocus:    true
+        });
 
-          dialogRef.afterClosed().subscribe(result =>
-          {
-            if (result)
-            {
-              this.db.doc<UserData>(`users/${uid}`).update({initialBudget: result});
-            }
-          });
-        }
-      }));
-    })).subscribe();
+        dialogRef.afterClosed().subscribe(result => {
+          if (result) { this.db.doc<UserData>(`users/${uid}`).update({initialBudget: result}); }
+        });
+      }
+    });
   }
 
   public get editorActivated(): boolean {

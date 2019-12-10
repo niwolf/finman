@@ -12,16 +12,16 @@ jobs:
     - name: install
       run: npm install
     - name: build
-      run: npm run build -- --configuration=ci
-
-
+      run: npm run build -- --prod
+      
+      
   test:
-
+    
     runs-on: ubuntu-latest
-
+    
     steps:
       - uses: actions/checkout@v1
       - name: install
         run: npm install
       - name: run tests
-        run: npm run test -- --watch=false
+        run: npm run test -- --watch=false 

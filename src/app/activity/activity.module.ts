@@ -8,6 +8,7 @@ import {
 } from '@angular/material';
 import { PipesModule } from '../pipes/pipes.module';
 import { ActivityTableComponent } from './activity-table.component';
+import { DirectivesModule } from '../directives/directives.module';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { ActivityTableComponent } from './activity-table.component';
     ActivityRoutingModule,
     MatTableModule,
     PipesModule,
-    MatIconModule
+    MatIconModule,
+    DirectivesModule
   ],
   declarations: [
     ActivityTableComponent

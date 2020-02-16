@@ -13,7 +13,7 @@ import { ActivityModule } from '../activity/activity.module';
 import { BalanceComponent } from './tiles/balance/balance.component';
 import { StatsComponent } from './tiles/stats/stats.component';
 import { CurrentMonthComponent } from './tiles/current-month/current-month.component';
-import { ColorDirective } from '../directives/color.directive';
+import { DirectivesModule } from '../directives/directives.module';
 
 
 @NgModule({
@@ -21,8 +21,7 @@ import { ColorDirective } from '../directives/color.directive';
     DashboardComponent,
     BalanceComponent,
     StatsComponent,
-    CurrentMonthComponent,
-    ColorDirective
+    CurrentMonthComponent
   ],
   imports: [
     CommonModule,
@@ -34,6 +33,7 @@ import { ColorDirective } from '../directives/color.directive';
     MatButtonModule,
     LayoutModule,
     ActivityModule,
+    DirectivesModule
   ]
 })
 export class DashboardModule { }

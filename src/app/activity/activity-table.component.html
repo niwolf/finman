@@ -14,7 +14,7 @@
   </ng-container>
   <ng-container matColumnDef="value">
     <th mat-header-cell *matHeaderCellDef>Betrag</th>
-    <td mat-cell *matCellDef="let item" [style.color]="item.value >= 0 ? 'green' : 'red'">
+    <td mat-cell *matCellDef="let item" [finColor]="item.value >= 0">
       <span *ngIf="item.value >= 0">+</span>
       <span>{{item.value | currency:'EUR'}}</span>
     </td>

@@ -11,7 +11,7 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent {
-  isSmall$ = this.breakpointObserver.observe([Breakpoints.Small, Breakpoints.XSmall]).pipe(
+  isSmall$ = this.breakpointObserver.observe([Breakpoints.XSmall]).pipe(
     map(result => result.matches)
   );
 

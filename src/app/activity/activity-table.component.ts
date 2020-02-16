@@ -16,6 +16,7 @@ import {
   BreakpointObserver,
   Breakpoints
 } from '@angular/cdk/layout';
+import { ItemService } from '../services/item.service';
 
 @Component({
   selector:    'fin-activity',
@@ -33,7 +34,7 @@ export class ActivityTableComponent implements OnInit {
   items: Observable<Item[]>;
 
   constructor(
-    private afs: AngularFirestore,
+    private itemService: ItemService,
     private auth: AngularFireAuth,
     private breakpointObserver: BreakpointObserver
   ) {}
@@ -41,7 +42,7 @@ export class ActivityTableComponent implements OnInit {
   public ngOnInit(): void
   {
     const uid: string = this.auth.auth.currentUser.uid;
-    this.items = this.afs.collection<Item>(`users/${uid}/items`, ref => this.buildQuery(ref)).valueChanges();
+    this.items = this.itemService.items(uid, ref => this.buildQuery(ref));
   }
 
   private buildQuery(ref: CollectionReference): Query

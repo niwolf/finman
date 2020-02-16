@@ -12,13 +12,15 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { ActivityModule } from '../activity/activity.module';
 import { BalanceComponent } from './tiles/balance/balance.component';
 import { StatsComponent } from './tiles/stats/stats.component';
+import { CurrentMonthComponent } from './tiles/current-month/current-month.component';
 
 
 @NgModule({
   declarations: [
     DashboardComponent,
     BalanceComponent,
-    StatsComponent
+    StatsComponent,
+    CurrentMonthComponent
   ],
   imports: [
     CommonModule,

@@ -9,6 +9,6 @@
   </tr>
   <tr>
     <td>Saldo</td>
-    <td>{{ currentMonth.balance}}</td>
+    <td [finColor]="currentMonth.balance >= 0">{{ currentMonth.balance}}</td>
   </tr>
 </table>

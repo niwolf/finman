@@ -13,6 +13,7 @@ import { ActivityModule } from '../activity/activity.module';
 import { BalanceComponent } from './tiles/balance/balance.component';
 import { StatsComponent } from './tiles/stats/stats.component';
 import { CurrentMonthComponent } from './tiles/current-month/current-month.component';
+import { ColorDirective } from '../directives/color.directive';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { CurrentMonthComponent } from './tiles/current-month/current-month.compo
     DashboardComponent,
     BalanceComponent,
     StatsComponent,
-    CurrentMonthComponent
+    CurrentMonthComponent,
+    ColorDirective
   ],
   imports: [
     CommonModule,

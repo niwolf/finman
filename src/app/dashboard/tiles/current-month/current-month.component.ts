@@ -37,7 +37,7 @@ export class CurrentMonthComponent {
       map(items =>
       {
         const reducer: (acc, cur) => number = (acc, cur) => acc += cur.value;
-        const expenses: number = items.filter(item => item.value < 0).reduce(reducer, 0);
+        const expenses: number = items.filter(item => item.value < 0).reduce(reducer, 0) * -1;
         const revenues: number = items.filter(item => item.value > 0).reduce(reducer, 0);
         return{
           expenses,

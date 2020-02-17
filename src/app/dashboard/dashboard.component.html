@@ -1,6 +1,6 @@
 <div class="grid-container">
   <h1 class="mat-h1">Finman - Dein Finanz Manager</h1>
-  <mat-grid-list cols="2" rowHeight="200px" gutterSize="-10px">
+  <mat-grid-list cols="2" rowHeight="160px" gutterSize="-10px">
 
     <!-- current month tile -->
     <mat-grid-tile [colspan]="(isSmall$ | async) ? 2 : 1" [rowspan]="1">
@@ -41,6 +41,9 @@
         <mat-card-content class="dashboard-card-content">
           <fin-activity [limit]="activityLimit" [dense]="true"></fin-activity>
         </mat-card-content>
+        <mat-card-actions>
+          <a mat-stroked-button routerLink="/activity">Mehr</a>
+        </mat-card-actions>
       </mat-card>
     </mat-grid-tile>
 

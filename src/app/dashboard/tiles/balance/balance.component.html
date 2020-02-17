@@ -1,14 +1,20 @@
 <table *ngIf="balance$ | async as balance">
-  <tr>
-    <td>Bar</td>
-    <td>{{ balance.cash | currency:'EUR' }}</td>
-  </tr>
-  <tr>
-    <td>Konto</td>
-    <td>{{ balance.account | currency:'EUR' }}</td>
-  </tr>
-  <tr>
-    <td>Gesamt</td>
-    <td>{{ balance.cash + balance.account | currency:'EUR' }}</td>
-  </tr>
+
+  <tbody>
+    <tr>
+      <td>Bar</td>
+      <td>{{ balance.cash | currency:'EUR' }}</td>
+    </tr>
+    <tr>
+      <td>Konto</td>
+      <td>{{ balance.account | currency:'EUR' }}</td>
+    </tr>
+  </tbody>
+
+  <tfoot>
+    <tr>
+      <td>Gesamt</td>
+      <td>{{ balance.cash + balance.account | currency:'EUR' }}</td>
+    </tr>
+  </tfoot>
 </table>

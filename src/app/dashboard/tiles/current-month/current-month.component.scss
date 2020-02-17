@@ -1,15 +1,17 @@
-table
-{
+table {
   width: 100%;
 
   tr {
-    td:first-child
-    {
+    td:first-child {
       text-align: left;
     }
 
     td:nth-child(2) {
       text-align: right;
     }
+  }
+
+  tfoot {
+    font-weight: bold;
   }
 }

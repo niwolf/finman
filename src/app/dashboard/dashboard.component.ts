@@ -15,5 +15,7 @@ export class DashboardComponent {
     map(result => result.matches)
   );
 
+  today: Date = new Date();
+
   constructor(private breakpointObserver: BreakpointObserver) {}
 }

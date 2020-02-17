@@ -17,5 +17,7 @@ export class DashboardComponent {
 
   today: Date = new Date();
 
+  readonly activityLimit: number = 9;
+
   constructor(private breakpointObserver: BreakpointObserver) {}
 }

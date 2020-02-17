@@ -1,5 +1,13 @@
-.grid-container {
-  margin: 20px;
+.grid-container
+{
+  margin: 0;
+}
+
+.mat-h1
+{
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 0;
 }
 
 .dashboard-card {
@@ -18,9 +26,4 @@
 
 .dashboard-card-content {
   text-align: center;
-}
-
-.grid-container
-{
-  margin: 0;
 }

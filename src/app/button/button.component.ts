@@ -3,6 +3,8 @@ import {
   Component
 } from '@angular/core';
 
+import * as Papa from 'papaparse';
+
 @Component({
   selector:    'fin-button',
   templateUrl: './button.component.html',
@@ -41,5 +43,8 @@ export class ButtonComponent implements AfterViewInit {
   public import(files: FileList)
   {
     console.log(files);
+    const file: File = files.item(0);
+    const parsed: any = Papa.parse(file);
+    console.log(parsed);
   }
 }

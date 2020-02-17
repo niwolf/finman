@@ -10,7 +10,7 @@ import {
 })
 export class ButtonComponent implements AfterViewInit {
   toggled = false;
-
+  file: File;
   private backdrop: HTMLDivElement;
   private readonly backdropId: string = 'button-backdrop';
 
@@ -36,5 +36,10 @@ export class ButtonComponent implements AfterViewInit {
     backdrop.id = this.backdropId;
     document.body.insertAdjacentElement('beforeend', backdrop);
     return backdrop;
+  }
+
+  public import(files: FileList)
+  {
+    console.log(files);
   }
 }

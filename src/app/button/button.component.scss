@@ -1,9 +1,9 @@
-a[mat-mini-fab] {
+[mat-mini-fab] {
   margin-left: 10px;
-  &:last-of-type
-  {
-    margin-right: 15px;
-  }
+}
+
+button[mat-mini-fab] {
+  margin-right: 15px;
 }
 
 button

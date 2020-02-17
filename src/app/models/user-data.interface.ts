@@ -7,4 +7,8 @@ export interface UserData
     cash: number,
     account: number
   };
+  currentBudget: {
+    cash: number,
+    account: number
+  };
 }

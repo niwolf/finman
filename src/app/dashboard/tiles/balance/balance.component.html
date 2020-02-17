@@ -1,6 +1,14 @@
-<div *ngIf="balance$ | async as balance">
-  Aktueller Saldo: {{balance.cash}} + {{balance.account}} = {{balance.cash + balance.account}}
-</div>
-<div>
-  Restliches Budget:
-</div>
+<table *ngIf="balance$ | async as balance">
+  <tr>
+    <td>Bar</td>
+    <td>{{ balance.cash | currency:'EUR' }}</td>
+  </tr>
+  <tr>
+    <td>Konto</td>
+    <td>{{ balance.account | currency:'EUR' }}</td>
+  </tr>
+  <tr>
+    <td>Gesamt</td>
+    <td>{{ balance.cash + balance.account | currency:'EUR' }}</td>
+  </tr>
+</table>

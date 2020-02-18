@@ -21,4 +21,4 @@
   </mat-icon>
 </button>
 
-<input #fileInput (input)="import(fileInput.files)" type="file" hidden>
+<input #fileInput type="file" accept="text/csv" hidden (input)="import(fileInput.files)">

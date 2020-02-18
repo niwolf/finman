@@ -2,8 +2,7 @@ import {
   AfterViewInit,
   Component
 } from '@angular/core';
-
-import * as Papa from 'papaparse';
+import { CsvImportService } from '../services/csv-import.service';
 
 @Component({
   selector:    'fin-button',
@@ -15,6 +14,8 @@ export class ButtonComponent implements AfterViewInit {
   file: File;
   private backdrop: HTMLDivElement;
   private readonly backdropId: string = 'button-backdrop';
+
+  constructor(private importService: CsvImportService) {}
 
   public ngAfterViewInit(): void {
     const backdropElement: HTMLDivElement = document.getElementById(this.backdropId) as HTMLDivElement;
@@ -40,11 +41,7 @@ export class ButtonComponent implements AfterViewInit {
     return backdrop;
   }
 
-  public import(files: FileList)
-  {
-    console.log(files);
-    const file: File = files.item(0);
-    const parsed: any = Papa.parse(file);
-    console.log(parsed);
+  public import(files: FileList) {
+    this.importService.import(files.item(0));
   }
 }

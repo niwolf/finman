@@ -2,7 +2,6 @@ import {
   Component,
   OnInit
 } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/auth';
 import {
   merge,
   Observable,
@@ -16,9 +15,12 @@ import { UserData } from './models/user-data.interface';
 import { MatDialog } from '@angular/material';
 import { InitialBudgetDialogComponent } from './dialogs/initial-budget-dialog/initial-budget-dialog.component';
 import {
+  filter,
   switchMap,
   tap
 } from 'rxjs/operators';
+import { AuthService } from './services/auth.service';
+import { isNullOrUndefined } from 'util';
 
 @Component({
   selector:    'fin-app',
@@ -28,7 +30,7 @@ import {
 export class AppComponent implements OnInit {
   user$: Observable<User> = merge(of(undefined), this.auth.user);
 
-  constructor(public auth: AngularFireAuth, private route: ActivatedRoute, private db: AngularFirestore, private dialog: MatDialog) {}
+  constructor(private auth: AuthService, private route: ActivatedRoute, private db: AngularFirestore, private dialog: MatDialog) {}
 
   public get isDashboard(): boolean
   {
@@ -37,27 +39,31 @@ export class AppComponent implements OnInit {
 
   public ngOnInit(): void
   {
-    this.auth.user.pipe(switchMap(user =>
-    {
-      const uid: string = user.uid;
-      return this.db.doc<UserData>(`users/${uid}`).get().pipe(tap(data =>
+    this.auth.user.pipe(
+      filter(user => !isNullOrUndefined(user)),
+      switchMap(user =>
       {
-        const initialBudget: {cash: number, account: number } = data.get('initialBudget');
-        if(!initialBudget)
+        const uid: string = user.uid;
+        return this.db.doc<UserData>(`users/${uid}`).get().pipe(tap(data =>
         {
-          const dialogRef = this.dialog.open(InitialBudgetDialogComponent, {
-            disableClose: true,
-            autoFocus: true
-          });
+          const initialBudget: { cash: number, account: number } = data.get('initialBudget');
+          if (!initialBudget)
+          {
+            const dialogRef = this.dialog.open(InitialBudgetDialogComponent, {
+              disableClose: true,
+              autoFocus:    true
+            });
 
-          dialogRef.afterClosed().subscribe(result => {
-            if(result)
+            dialogRef.afterClosed().subscribe(result =>
             {
-              this.db.doc<UserData>(`users/${uid}`).update({initialBudget: result});
-            }
-          });
-        }
-      }));
-    })).subscribe();
+              if (result)
+              {
+                this.db.doc<UserData>(`users/${uid}`).update({initialBudget: result});
+              }
+            });
+          }
+        }));
+      })
+    ).subscribe();
   }
 }

@@ -9,6 +9,7 @@ import {
   Origin
 } from '../models/item.interface';
 import { firestore } from 'firebase';
+import * as moment from 'moment';
 import Timestamp = firestore.Timestamp;
 
 @Injectable({
@@ -35,11 +36,11 @@ export class CsvImportService {
     const valueIndex: number = header.indexOf('Betrag');
     const dateIndex: number = header.indexOf('Valutadatum');
     const items: Item[] = result.data.slice(0, result.data.length - 1).map((entry: string[]) => {
-      const date: number = Date.parse(entry[dateIndex]);
+      const date: Date = moment(entry[dateIndex], 'DD.MM.YY').toDate();
       return {
-        title: entry[receiverIndex],
-        value: parseFloat(entry[valueIndex].replace(',', '.')),
-        date: Timestamp.fromMillis(date),
+        title:  entry[receiverIndex],
+        value:  parseFloat(entry[valueIndex].replace(',', '.')),
+        date:   Timestamp.fromDate(date),
         origin: Origin.account
       };
     });

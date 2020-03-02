@@ -2,16 +2,15 @@ import {
   Component,
   OnInit
 } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import {
   filter,
-  map,
   switchMap
 } from 'rxjs/operators';
-import { UserData } from '../../../models/user-data.interface';
-import { AuthService } from '../../../services/auth.service';
 import { isNullOrUndefined } from 'util';
+import { BudgetService } from '../../../services/budget.service';
+import { AuthService } from '../../../services/auth.service';
+import { Budget } from '../../../models/budget.interface';
 
 @Component({
   selector:    'fin-balance',
@@ -19,16 +18,16 @@ import { isNullOrUndefined } from 'util';
   styleUrls:   ['./balance.component.scss']
 })
 export class BalanceComponent implements OnInit {
-  balance$: Observable<{ cash: number, account: number }>;
+  balance$: Observable<Budget>;
 
-  constructor(private db: AngularFirestore, private auth: AuthService) {}
+  constructor(private budgetService: BudgetService, private auth: AuthService) {}
 
   ngOnInit() {
     this.balance$ = this.auth.user.pipe(
       filter(user => !isNullOrUndefined(user)),
       switchMap(user => {
         const uid: string = user.uid;
-        return this.db.doc<UserData>(`/users/${uid}`).get().pipe(map(snapshot => snapshot.get('initialBudget')));
+        return this.budgetService.getInitialBudget(uid);
       })
     );
   }

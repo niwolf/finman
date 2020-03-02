@@ -4,10 +4,7 @@ import {
   FormGroup,
   Validators
 } from '@angular/forms';
-import {
-  AngularFirestore,
-  AngularFirestoreCollection
-} from '@angular/fire/firestore';
+import { AngularFirestoreCollection } from '@angular/fire/firestore';
 import {
   Item,
   Origin
@@ -19,6 +16,7 @@ import {
 } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { MatSnackBar } from '@angular/material';
+import { ItemService } from '../services/item.service';
 
 @Component({
   selector:    'fin-enter-data',
@@ -40,14 +38,14 @@ export class EnterDataComponent
 
   private itemsCollection: AngularFirestoreCollection<Item>;
 
-  constructor(db: AngularFirestore,
-              route: ActivatedRoute,
+  constructor(route: ActivatedRoute,
               private auth: AngularFireAuth,
               private router: Router,
-              private snack: MatSnackBar)
+              private snack: MatSnackBar,
+              private itemService: ItemService)
   {
     const uid: string = this.auth.auth.currentUser.uid;
-    this.itemsCollection = db.collection<Item>(`users/${uid}/items`);
+    this.itemsCollection = this.itemService.getItems(uid);
     route.queryParamMap.subscribe((params: ParamMap) => this.typeControl.setValue(params.get('revenue') ? 1 : -1));
   }
 

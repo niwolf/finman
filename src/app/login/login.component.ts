@@ -4,9 +4,9 @@ import {
   FormGroup,
   Validators
 } from '@angular/forms';
-import { AngularFireAuth } from '@angular/fire/auth';
 import { MatSnackBar } from '@angular/material';
 import UserCredential = firebase.auth.UserCredential;
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector:    'fin-login',
@@ -26,9 +26,7 @@ export class LoginComponent
   pending = false;
   hide = true;
 
-  constructor(private auth: AngularFireAuth,
-              private snackBar: MatSnackBar)
-  {}
+  constructor(private auth: AuthService, private snackBar: MatSnackBar) {}
 
   public onSubmit() {
     if (this.form.valid) {
@@ -39,7 +37,7 @@ export class LoginComponent
   private login(email: string, password: string)
   {
     this.pending = true;
-    this.auth.auth.signInWithEmailAndPassword(email, password)
+    this.auth.signIn(email, password)
         .then((credential: UserCredential) =>
         {
           console.log(credential);

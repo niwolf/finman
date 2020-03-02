@@ -1,14 +1,8 @@
 import { Item } from './item.interface';
+import { Budget } from './budget.interface';
 
-export interface UserData
-{
+export interface UserData {
   items: Array<Item>;
-  initialBudget: {
-    cash: number,
-    account: number
-  };
-  currentBudget: {
-    cash: number,
-    account: number
-  };
+  initialBudget: Budget;
+  currentBudget: Budget;
 }

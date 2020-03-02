@@ -30,7 +30,7 @@ export class CurrentMonthComponent {
     const today: Date = new Date();
     const currentMonth: Date = new Date(today.getFullYear(), today.getMonth());
     const nextMonth: Date = new Date(today.getFullYear(), today.getMonth() + 1);
-    return this.itemService.items(userId, ref => ref
+    return this.itemService.getItems(userId, ref => ref
       .where('date', '>', currentMonth)
       .where('date', '<', nextMonth)
     ).pipe(

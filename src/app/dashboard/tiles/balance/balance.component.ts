@@ -1,8 +1,13 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
-import { AngularFireAuth } from '@angular/fire/auth';
-import { switchMap } from 'rxjs/operators';
+import {
+  filter,
+  switchMap
+} from 'rxjs/operators';
+import { isNullOrUndefined } from 'util';
 import { BudgetService } from '../../../services/budget.service';
+import { AuthService } from '../../../services/auth.service';
+import { Budget } from '../../../models/budget.interface';
 
 @Component({
   selector:    'fin-balance',
@@ -11,10 +16,11 @@ import { BudgetService } from '../../../services/budget.service';
 })
 export class BalanceComponent {
 
-  balance$: Observable<{cash: number, account: number}> = this.auth.user.pipe(
-    switchMap(user => this.budgetService.currentBudget(user.uid))
+  balance$: Observable<Budget> = this.auth.user.pipe(
+    filter(user => !isNullOrUndefined(user)),
+    switchMap(user => this.budgetService.getCurrentBudget(user.uid))
   );
 
-  constructor(private budgetService: BudgetService, private auth: AngularFireAuth) { }
+  constructor(private budgetService: BudgetService, private auth: AuthService) {}
 
 }

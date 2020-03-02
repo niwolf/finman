@@ -10,8 +10,6 @@ import {
 import { User } from 'firebase';
 import { ActivatedRoute } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { AngularFirestore } from '@angular/fire/firestore';
-import { UserData } from './models/user-data.interface';
 import { MatDialog } from '@angular/material';
 import { InitialBudgetDialogComponent } from './dialogs/initial-budget-dialog/initial-budget-dialog.component';
 import {
@@ -19,8 +17,9 @@ import {
   switchMap,
   tap
 } from 'rxjs/operators';
-import { AuthService } from './services/auth.service';
 import { isNullOrUndefined } from 'util';
+import { AuthService } from './services/auth.service';
+import { BudgetService } from './services/budget.service';
 
 @Component({
   selector:    'fin-app',
@@ -30,7 +29,7 @@ import { isNullOrUndefined } from 'util';
 export class AppComponent implements OnInit {
   user$: Observable<User> = merge(of(undefined), this.auth.user);
 
-  constructor(private auth: AuthService, private route: ActivatedRoute, private db: AngularFirestore, private dialog: MatDialog) {}
+  constructor(private auth: AuthService, private budgetService: BudgetService, private route: ActivatedRoute, private dialog: MatDialog) {}
 
   public get isDashboard(): boolean
   {
@@ -44,9 +43,8 @@ export class AppComponent implements OnInit {
       switchMap(user =>
       {
         const uid: string = user.uid;
-        return this.db.doc<UserData>(`users/${uid}`).get().pipe(tap(data =>
+        return this.budgetService.getInitialBudget(uid).pipe(tap(initialBudget =>
         {
-          const initialBudget: { cash: number, account: number } = data.get('initialBudget');
           if (!initialBudget)
           {
             const dialogRef = this.dialog.open(InitialBudgetDialogComponent, {
@@ -58,7 +56,7 @@ export class AppComponent implements OnInit {
             {
               if (result)
               {
-                this.db.doc<UserData>(`users/${uid}`).update({initialBudget: result});
+                this.budgetService.setInitialBudget(uid, result);
               }
             });
           }

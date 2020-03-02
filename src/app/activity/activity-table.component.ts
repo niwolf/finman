@@ -41,7 +41,7 @@ export class ActivityTableComponent implements OnInit {
   public ngOnInit(): void
   {
     const uid: string = this.auth.currentUser.uid;
-    this.items = this.itemService.getItems(uid, ref => this.buildQuery(ref)).valueChanges();
+    this.items = this.itemService.getItems(uid, ref => this.buildQuery(ref));
   }
 
   private buildQuery(ref: CollectionReference): Query

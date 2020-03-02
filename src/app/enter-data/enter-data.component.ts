@@ -4,11 +4,7 @@ import {
   FormGroup,
   Validators
 } from '@angular/forms';
-import { AngularFirestoreCollection } from '@angular/fire/firestore';
-import {
-  Item,
-  Origin
-} from '../models/item.interface';
+import { Origin } from '../models/item.interface';
 import {
   ActivatedRoute,
   ParamMap,
@@ -36,16 +32,12 @@ export class EnterDataComponent
     date:  this.dateControl
   });
 
-  private itemsCollection: AngularFirestoreCollection<Item>;
-
   constructor(route: ActivatedRoute,
               private auth: AuthService,
               private router: Router,
               private snack: MatSnackBar,
               private itemService: ItemService)
   {
-    const uid: string = this.auth.currentUser.uid;
-    this.itemsCollection = this.itemService.getItems(uid);
     route.queryParamMap.subscribe((params: ParamMap) => this.typeControl.setValue(params.get('revenue') ? 1 : -1));
   }
 
@@ -53,7 +45,8 @@ export class EnterDataComponent
   {
     if (this.dataForm.valid)
     {
-      this.itemsCollection.add({
+      const uid: string = this.auth.currentUser.uid;
+      this.itemService.addItem(uid, {
         title:    formValue.title,
         date:     formValue.date,
         value:    formValue.value * this.typeControl.value,

@@ -9,13 +9,13 @@ import {
 } from '@angular/fire/firestore';
 import { Item } from '../models/item.interface';
 import { Observable } from 'rxjs';
-import { AngularFireAuth } from '@angular/fire/auth';
 import { map } from 'rxjs/operators';
 import {
   BreakpointObserver,
   Breakpoints
 } from '@angular/cdk/layout';
 import { ItemService } from '../services/item.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector:    'fin-activity',
@@ -34,13 +34,13 @@ export class ActivityTableComponent implements OnInit {
 
   constructor(
     private itemService: ItemService,
-    private auth: AngularFireAuth,
+    private auth: AuthService,
     private breakpointObserver: BreakpointObserver
   ) {}
 
   public ngOnInit(): void
   {
-    const uid: string = this.auth.auth.currentUser.uid;
+    const uid: string = this.auth.currentUser.uid;
     this.items = this.itemService.getItems(uid, ref => this.buildQuery(ref)).valueChanges();
   }
 

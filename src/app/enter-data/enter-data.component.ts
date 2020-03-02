@@ -14,9 +14,9 @@ import {
   ParamMap,
   Router
 } from '@angular/router';
-import { AngularFireAuth } from '@angular/fire/auth';
 import { MatSnackBar } from '@angular/material';
 import { ItemService } from '../services/item.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector:    'fin-enter-data',
@@ -39,12 +39,12 @@ export class EnterDataComponent
   private itemsCollection: AngularFirestoreCollection<Item>;
 
   constructor(route: ActivatedRoute,
-              private auth: AngularFireAuth,
+              private auth: AuthService,
               private router: Router,
               private snack: MatSnackBar,
               private itemService: ItemService)
   {
-    const uid: string = this.auth.auth.currentUser.uid;
+    const uid: string = this.auth.currentUser.uid;
     this.itemsCollection = this.itemService.getItems(uid);
     route.queryParamMap.subscribe((params: ParamMap) => this.typeControl.setValue(params.get('revenue') ? 1 : -1));
   }

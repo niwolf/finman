@@ -1,9 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  OnInit
+} from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
-import { AngularFireAuth } from '@angular/fire/auth';
-import { switchMap, map } from 'rxjs/operators';
+import {
+  map,
+  switchMap
+} from 'rxjs/operators';
 import { UserData } from '../../../models/user-data.interface';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector:    'fin-balance',
@@ -14,7 +20,7 @@ export class BalanceComponent implements OnInit {
 
   balance$: Observable<{cash: number, account: number}>;
 
-  constructor(private db: AngularFirestore, private auth: AngularFireAuth) { }
+  constructor(private db: AngularFirestore, private auth: AuthService) { }
 
   ngOnInit() {
     this.balance$ = this.auth.user.pipe(switchMap(user =>

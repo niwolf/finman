@@ -2,7 +2,6 @@ import {
   Component,
   OnInit
 } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/auth';
 import {
   merge,
   Observable,
@@ -19,6 +18,7 @@ import {
   switchMap,
   tap
 } from 'rxjs/operators';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector:    'fin-app',
@@ -28,7 +28,7 @@ import {
 export class AppComponent implements OnInit {
   user$: Observable<User> = merge(of(undefined), this.auth.user);
 
-  constructor(public auth: AngularFireAuth, private route: ActivatedRoute, private db: AngularFirestore, private dialog: MatDialog) {}
+  constructor(private auth: AuthService, private route: ActivatedRoute, private db: AngularFirestore, private dialog: MatDialog) {}
 
   public get isDashboard(): boolean
   {

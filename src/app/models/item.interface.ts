@@ -13,4 +13,5 @@ export interface Item
   value: number;
   date: Timestamp;
   origin: Origin;
+  importId?: string;
 }

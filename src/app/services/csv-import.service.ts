@@ -41,24 +41,7 @@ export class CsvImportService {
   }
 
   private handleParseResult(result: ParseResult): void {
-    console.log('Parsed: ', result);
-    const header: string[] = result.data.shift();
-    const receiverIndex: number = header.indexOf('Beguenstigter/Zahlungspflichtiger');
-    const valueIndex: number = header.indexOf('Betrag');
-    const dateIndex: number = header.indexOf('Valutadatum');
-
-    const items: Item[] = result.data.slice(0, result.data.length - 1).map((entry: string[]) => {
-      const date: Date = moment(entry[dateIndex], 'DD.MM.YY').toDate();
-      const timestamp: Timestamp = Timestamp.fromDate(date);
-      return {
-        importId: md5(entry.toString()),
-        title:    entry[receiverIndex],
-        value:    parseFloat(entry[valueIndex].replace(',', '.')),
-        date:     timestamp,
-        origin:   Origin.account
-      };
-    });
-    console.log('Items: ', items);
+    const items = this.parseSparkasseExport(result);
 
     const uid: string = this.authService.currentUser.uid;
     this.getExistingItems(uid, items).pipe(
@@ -71,6 +54,26 @@ export class CsvImportService {
         return items.map(item => this.itemService.addItem(uid, item));
       })
     ).subscribe();
+  }
+
+  private parseSparkasseExport(result: ParseResult): Item[] {
+    const header: string[] = result.data.shift();
+    const receiverIndex: number = header.indexOf('Beguenstigter/Zahlungspflichtiger');
+    const valueIndex: number = header.indexOf('Betrag');
+    const dateIndex: number = header.indexOf('Valutadatum');
+
+    return result.data.slice(0, result.data.length - 1).map((entry: string[]) =>
+    {
+      const date: Date = moment(entry[dateIndex], 'DD.MM.YY').toDate();
+      const timestamp: Timestamp = Timestamp.fromDate(date);
+      return {
+        importId: md5(entry.toString()),
+        title:    entry[receiverIndex],
+        value:    parseFloat(entry[valueIndex].replace(',', '.')),
+        date:     timestamp,
+        origin:   Origin.account
+      };
+    });
   }
 
   private getExistingItems(userId: string, items: Item[]): Observable<Item[]> {

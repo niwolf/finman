@@ -17,18 +17,24 @@ import { AuthService } from './auth.service';
 import {
   map,
   switchMap,
-  take
+  take,
+  tap
 } from 'rxjs/operators';
-import Timestamp = firestore.Timestamp;
 import { isNullOrUndefined } from 'util';
-import { Observable } from 'rxjs';
+import {
+  combineLatest,
+  from,
+  Observable
+} from 'rxjs';
+import { MatSnackBar } from '@angular/material';
+import Timestamp = firestore.Timestamp;
 
 @Injectable({
   providedIn: 'root'
 })
 export class CsvImportService {
 
-  constructor(private papa: Papa, private itemService: ItemService, private authService: AuthService) {}
+  constructor(private papa: Papa, private itemService: ItemService, private authService: AuthService, private snackBar: MatSnackBar) {}
 
   public import(file: File) {
     const config: ParseConfig = {
@@ -51,8 +57,9 @@ export class CsvImportService {
           const filtered: Item[] = items.filter(item => !existingItems.find(existingItem => existingItem.importId === item.importId));
           return filtered.map(item => this.itemService.addItem(uid, item));
         }
-        return items.map(item => this.itemService.addItem(uid, item));
-      })
+        return combineLatest(items.map(item => from(this.itemService.addItem(uid, item))));
+      }),
+      tap((results: any[]) => this.snackBar.open(`${results.length} Einträge erfolgreich importiert.`, '', {duration: 2000}))
     ).subscribe();
   }
 

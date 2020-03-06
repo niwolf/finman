@@ -1,19 +1,12 @@
 import { Injectable } from '@angular/core';
-import {
-  Papa,
-  ParseConfig,
-  ParseResult
-} from 'ngx-papaparse';
-import {
-  Item,
-  Origin
-} from '../models/item.interface';
-import { firestore } from 'firebase';
-import * as md5 from 'md5';
-import * as moment from 'moment';
 import { QueryFn } from '@angular/fire/firestore';
-import { ItemService } from './item.service';
-import { AuthService } from './auth.service';
+import { MatSnackBar } from '@angular/material';
+import { firestore } from 'firebase';
+import {
+  combineLatest,
+  from,
+  Observable
+} from 'rxjs';
 import {
   map,
   switchMap,
@@ -22,11 +15,18 @@ import {
 } from 'rxjs/operators';
 import { isNullOrUndefined } from 'util';
 import {
-  combineLatest,
-  from,
-  Observable
-} from 'rxjs';
-import { MatSnackBar } from '@angular/material';
+  parse,
+  ParseConfig,
+  ParseResult
+} from 'papaparse';
+import {
+  Item,
+  Origin
+} from '../models/item.interface';
+import { ItemService } from './item.service';
+import { AuthService } from './auth.service';
+import * as md5 from 'md5';
+import * as moment from 'moment';
 import Timestamp = firestore.Timestamp;
 
 @Injectable({
@@ -34,7 +34,7 @@ import Timestamp = firestore.Timestamp;
 })
 export class CsvImportService {
 
-  constructor(private papa: Papa, private itemService: ItemService, private authService: AuthService, private snackBar: MatSnackBar) {}
+  constructor(private itemService: ItemService, private authService: AuthService, private snackBar: MatSnackBar) {}
 
   public import(file: File) {
     const config: ParseConfig = {
@@ -42,8 +42,7 @@ export class CsvImportService {
       // Add your options here
       worker: true
     };
-
-    this.papa.parse(file, config);
+    parse(file, config);
   }
 
   private handleParseResult(result: ParseResult): void {

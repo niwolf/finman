@@ -11,7 +11,6 @@ import { CsvImportService } from '../services/csv-import.service';
 })
 export class ButtonComponent implements AfterViewInit {
   toggled = false;
-  file: File;
   private backdrop: HTMLDivElement;
   private readonly backdropId: string = 'button-backdrop';
 

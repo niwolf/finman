@@ -54,7 +54,7 @@ export class CsvImportService {
         if (existingItems.length > 0)
         {
           const filtered: Item[] = items.filter(item => !existingItems.find(existingItem => existingItem.importId === item.importId));
-          return filtered.map(item => this.itemService.addItem(uid, item));
+          return combineLatest(filtered.map(item => from(this.itemService.addItem(uid, item))));
         }
         return combineLatest(items.map(item => from(this.itemService.addItem(uid, item))));
       }),

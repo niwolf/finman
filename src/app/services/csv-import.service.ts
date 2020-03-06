@@ -61,7 +61,7 @@ export class CsvImportService {
     console.log('Items: ', items);
 
     const uid: string = this.authService.currentUser.uid;
-    this.getExistingItems(uid).pipe(
+    this.getExistingItems(uid, items).pipe(
       switchMap(existingItems => {
         if (existingItems.length > 0)
         {
@@ -73,7 +73,7 @@ export class CsvImportService {
     ).subscribe();
   }
 
-  private getExistingItems(userId: string): Observable<Item[]> {
+  private getExistingItems(userId: string, items: Item[]): Observable<Item[]> {
     const queryFn: QueryFn = this.createExistingItemQuery(items);
 
     return this.itemService.getItems(userId, queryFn).pipe(

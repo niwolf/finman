@@ -1,13 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
+import {
+  FormsModule,
+  ReactiveFormsModule
+} from '@angular/forms';
 import {
   MatDialogModule,
   MatInputModule,
-  MatButtonModule
+  MatButtonModule,
+  MatTableModule,
+  MatCheckboxModule
 } from '@angular/material';
 
 import { InitialBudgetDialogComponent } from './initial-budget-dialog/initial-budget-dialog.component';
+import { ImportPreviewDialogComponent } from './import-preview-dialog/import-preview-dialog.component';
+import { PipesModule } from '../pipes/pipes.module';
 
 @NgModule({
   imports: [
@@ -16,15 +23,22 @@ import { InitialBudgetDialogComponent } from './initial-budget-dialog/initial-bu
     MatDialogModule,
     MatInputModule,
     MatButtonModule,
+    MatTableModule,
+    PipesModule,
+    FormsModule,
+    MatCheckboxModule,
   ],
   declarations: [
-    InitialBudgetDialogComponent
+    InitialBudgetDialogComponent,
+    ImportPreviewDialogComponent
   ],
   exports: [
-    InitialBudgetDialogComponent
+    InitialBudgetDialogComponent,
+    ImportPreviewDialogComponent
   ],
   entryComponents: [
-    InitialBudgetDialogComponent
+    InitialBudgetDialogComponent,
+    ImportPreviewDialogComponent
   ]
 })
 export class DialogsModule { }

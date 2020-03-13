@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { QueryFn } from '@angular/fire/firestore';
-import { MatSnackBar } from '@angular/material';
+import {
+  MatDialog,
+  MatSnackBar
+} from '@angular/material';
 import { firestore } from 'firebase';
 import {
   combineLatest,
@@ -8,6 +11,7 @@ import {
   Observable
 } from 'rxjs';
 import {
+  filter,
   map,
   switchMap,
   take,
@@ -28,13 +32,14 @@ import { AuthService } from './auth.service';
 import * as md5 from 'md5';
 import * as moment from 'moment';
 import Timestamp = firestore.Timestamp;
+import { ImportPreviewDialogComponent } from '../dialogs/import-preview-dialog/import-preview-dialog.component';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CsvImportService {
 
-  constructor(private itemService: ItemService, private authService: AuthService, private snackBar: MatSnackBar) {}
+  constructor(private itemService: ItemService, private authService: AuthService, private snackBar: MatSnackBar, private dialog: MatDialog) {}
 
   public import(file: File) {
     const config: ParseConfig = {
@@ -50,13 +55,19 @@ export class CsvImportService {
 
     const uid: string = this.authService.currentUser.uid;
     this.getExistingItems(uid, items).pipe(
-      switchMap(existingItems => {
-        if (existingItems.length > 0)
-        {
-          const filtered: Item[] = items.filter(item => !existingItems.find(existingItem => existingItem.importId === item.importId));
-          return combineLatest(filtered.map(item => from(this.itemService.addItem(uid, item))));
+      map(existingItems => {
+        if (existingItems.length > 0) {
+          return items.filter(item => !existingItems.some(existingItem => existingItem.importId === item.importId));
         }
-        return combineLatest(items.map(item => from(this.itemService.addItem(uid, item))));
+        return items;
+      }),
+      filter(itemsToImport => itemsToImport.length > 0), // TODO: pop a snack when there is nothing to import!
+      switchMap(itemsToImport => {
+        const dialogRef = this.dialog.open(ImportPreviewDialogComponent, {data : itemsToImport, width: '700px'});
+        return dialogRef.afterClosed();
+      }), // TODO: catch cancel click
+      switchMap(itemsToImport => {
+        return combineLatest(itemsToImport.map(item => from(this.itemService.addItem(uid, item))));
       }),
       tap((results: any[]) => this.snackBar.open(`${results.length} Einträge erfolgreich importiert.`, '', {duration: 2000}))
     ).subscribe();

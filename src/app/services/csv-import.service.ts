@@ -73,7 +73,7 @@ export class CsvImportService {
       }),
       filter(itemsToImport => itemsToImport.length > 0),
       switchMap(itemsToImport => {
-        const dialogRef = this.dialog.open(ImportPreviewDialogComponent, {data : itemsToImport, width: '700px'});
+        const dialogRef = this.dialog.open(ImportPreviewDialogComponent, {data : itemsToImport});
         return dialogRef.afterClosed();
       }),
       filter(itemsToImport => itemsToImport && itemsToImport.length > 0), // catch cancel click or no selected elements

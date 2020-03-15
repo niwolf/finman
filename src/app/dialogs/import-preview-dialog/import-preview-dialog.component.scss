@@ -1,6 +1,22 @@
 table {
-  width: 100%;
+  width: 500px;
 }
+
+// reset padding of the first cell
+td.mat-cell:first-of-type, td.mat-footer-cell:first-of-type, th.mat-header-cell:first-of-type {
+  padding-left: 0;
+}
+
+.mat-table-sticky:first-child {
+  border-right: 1px solid #e0e0e0;
+}
+
 .mat-column-select {
-  overflow: initial;
+  width: 30px;
+}
+
+.mat-column-title {
+  input{
+    width: 100%;
+  }
 }

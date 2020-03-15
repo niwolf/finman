@@ -17,7 +17,7 @@ import { SelectionModel } from '@angular/cdk/collections';
 })
 export class ImportPreviewDialogComponent {
 
-  readonly columns = ['select', 'date', 'value', 'title'];
+  readonly columns = ['select', 'date', 'title', 'value'];
 
   selection = new SelectionModel<Item>(true, this.data);
 

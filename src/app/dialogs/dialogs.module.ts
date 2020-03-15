@@ -15,6 +15,7 @@ import {
 import { InitialBudgetDialogComponent } from './initial-budget-dialog/initial-budget-dialog.component';
 import { ImportPreviewDialogComponent } from './import-preview-dialog/import-preview-dialog.component';
 import { PipesModule } from '../pipes/pipes.module';
+import { FinCommonModule } from '../common/common.module';
 
 @NgModule({
   imports: [
@@ -27,6 +28,7 @@ import { PipesModule } from '../pipes/pipes.module';
     PipesModule,
     FormsModule,
     MatCheckboxModule,
+    FinCommonModule,
   ],
   declarations: [
     InitialBudgetDialogComponent,

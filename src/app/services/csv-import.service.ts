@@ -70,7 +70,8 @@ export class CsvImportService {
       switchMap(itemsToImport => {
         const dialogRef = this.dialog.open(ImportPreviewDialogComponent, {data : itemsToImport, width: '700px'});
         return dialogRef.afterClosed();
-      }), // TODO: catch cancel click
+      }),
+      filter(itemsToImport => itemsToImport && itemsToImport.length > 0), // catch cancel click or no selected elements
       switchMap(itemsToImport => {
         return combineLatest(itemsToImport.map(item => from(this.itemService.addItem(uid, item))));
       }),

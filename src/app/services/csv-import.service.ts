@@ -39,7 +39,12 @@ import { ImportPreviewDialogComponent } from '../dialogs/import-preview-dialog/i
 })
 export class CsvImportService {
 
-  constructor(private itemService: ItemService, private authService: AuthService, private snackBar: MatSnackBar, private dialog: MatDialog) {}
+  constructor(
+    private itemService: ItemService,
+    private authService: AuthService,
+    private snackBar: MatSnackBar,
+    private dialog: MatDialog
+  ) {}
 
   public import(file: File) {
     const config: ParseConfig = {

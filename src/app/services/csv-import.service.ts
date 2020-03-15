@@ -66,7 +66,12 @@ export class CsvImportService {
         }
         return items;
       }),
-      filter(itemsToImport => itemsToImport.length > 0), // TODO: pop a snack when there is nothing to import!
+      tap(itemsToImport => {
+        if (itemsToImport.length === 0) {
+          this.snackBar.open('Nichts zu importieren', 'OK');
+        }
+      }),
+      filter(itemsToImport => itemsToImport.length > 0),
       switchMap(itemsToImport => {
         const dialogRef = this.dialog.open(ImportPreviewDialogComponent, {data : itemsToImport, width: '700px'});
         return dialogRef.afterClosed();
@@ -75,7 +80,7 @@ export class CsvImportService {
       switchMap(itemsToImport => {
         return combineLatest(itemsToImport.map(item => from(this.itemService.addItem(uid, item))));
       }),
-      tap((results: any[]) => this.snackBar.open(`${results.length} Einträge erfolgreich importiert.`, '', {duration: 2000}))
+      tap((results: any[]) => this.snackBar.open(`${results.length} ${results.length > 1 ? 'Einträge' : 'Eintrag'} erfolgreich importiert.`, '', {duration: 2000}))
     ).subscribe();
   }
 

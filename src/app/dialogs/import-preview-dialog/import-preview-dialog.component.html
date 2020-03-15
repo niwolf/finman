@@ -26,7 +26,9 @@
     <ng-container matColumnDef="title">
       <th mat-header-cell *matHeaderCellDef> Titel </th>
       <td mat-cell *matCellDef="let element;">
-        <input matInput [(ngModel)]="element.title">
+        <mat-form-field>
+          <input matInput [(ngModel)]="element.title">
+        </mat-form-field>
       </td>
     </ng-container>
     <tr mat-header-row *matHeaderRowDef="columns"></tr>

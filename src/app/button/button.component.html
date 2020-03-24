@@ -1,12 +1,7 @@
 <ng-container *ngIf="toggled">
-  <a mat-mini-fab matTooltip="Einnahme" routerLink="/enterData" [queryParams]="{revenue: true}" (click)="toggle()">
+  <a mat-mini-fab matTooltip="Manuell" routerLink="/enterData" (click)="toggle()">
     <mat-icon>
-      add
-    </mat-icon>
-  </a>
-  <a mat-mini-fab matTooltip="Ausgabe" routerLink="/enterData" (click)="toggle()">
-    <mat-icon>
-      remove
+      compare_arrows
     </mat-icon>
   </a>
   <button mat-mini-fab matTooltip="Import" (click)="toggle(); fileInput.click()">

@@ -13,7 +13,7 @@ import { ActivityModule } from '../activity/activity.module';
 import { BalanceComponent } from './tiles/balance/balance.component';
 import { StatsComponent } from './tiles/stats/stats.component';
 import { CurrentMonthComponent } from './tiles/current-month/current-month.component';
-import { DirectivesModule } from '../directives/directives.module';
+import { FinCommonModule } from '../common/common.module';
 
 
 @NgModule({
@@ -25,6 +25,7 @@ import { DirectivesModule } from '../directives/directives.module';
   ],
   imports: [
     CommonModule,
+    FinCommonModule,
     DashboardRoutingModule,
     MatGridListModule,
     MatCardModule,
@@ -32,8 +33,7 @@ import { DirectivesModule } from '../directives/directives.module';
     MatIconModule,
     MatButtonModule,
     LayoutModule,
-    ActivityModule,
-    DirectivesModule
+    ActivityModule
   ]
 })
 export class DashboardModule { }

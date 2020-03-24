@@ -7,7 +7,7 @@ import {
   MatTableModule
 } from '@angular/material';
 import { ActivityTableComponent } from './activity-table.component';
-import { FinCommonModule } from '../common/common.module';
+import { FinCommonModule } from '@common/common.module';
 
 
 @NgModule({

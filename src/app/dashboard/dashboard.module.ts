@@ -12,13 +12,16 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { ActivityModule } from '../activity/activity.module';
 import { BalanceComponent } from './tiles/balance/balance.component';
 import { StatsComponent } from './tiles/stats/stats.component';
+import { CurrentMonthComponent } from './tiles/current-month/current-month.component';
+import { DirectivesModule } from '../directives/directives.module';
 
 
 @NgModule({
   declarations: [
     DashboardComponent,
     BalanceComponent,
-    StatsComponent
+    StatsComponent,
+    CurrentMonthComponent
   ],
   imports: [
     CommonModule,
@@ -30,6 +33,7 @@ import { StatsComponent } from './tiles/stats/stats.component';
     MatButtonModule,
     LayoutModule,
     ActivityModule,
+    DirectivesModule
   ]
 })
 export class DashboardModule { }

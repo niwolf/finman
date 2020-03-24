@@ -1,7 +1,4 @@
-import {
-  Component,
-  OnInit
-} from '@angular/core';
+import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import {
   filter,
@@ -17,19 +14,13 @@ import { Budget } from '../../../models/budget.interface';
   templateUrl: './balance.component.html',
   styleUrls:   ['./balance.component.scss']
 })
-export class BalanceComponent implements OnInit {
-  balance$: Observable<Budget>;
+export class BalanceComponent {
+
+  balance$: Observable<Budget> = this.auth.user.pipe(
+    filter(user => !isNullOrUndefined(user)),
+    switchMap(user => this.budgetService.getCurrentBudget(user.uid))
+  );
 
   constructor(private budgetService: BudgetService, private auth: AuthService) {}
-
-  ngOnInit() {
-    this.balance$ = this.auth.user.pipe(
-      filter(user => !isNullOrUndefined(user)),
-      switchMap(user => {
-        const uid: string = user.uid;
-        return this.budgetService.getInitialBudget(uid);
-      })
-    );
-  }
 
 }

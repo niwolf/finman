@@ -5,8 +5,8 @@ import {
   DocumentReference,
   QueryFn
 } from '@angular/fire/firestore';
-import { Item } from '../models/item.interface';
 import { Observable } from 'rxjs';
+import { Item } from '../models/item.interface';
 
 @Injectable({
   providedIn: 'root'

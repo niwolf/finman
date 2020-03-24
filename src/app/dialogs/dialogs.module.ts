@@ -14,7 +14,7 @@ import {
 
 import { InitialBudgetDialogComponent } from './initial-budget-dialog/initial-budget-dialog.component';
 import { ImportPreviewDialogComponent } from './import-preview-dialog/import-preview-dialog.component';
-import { FinCommonModule } from '../common/common.module';
+import { FinCommonModule } from '@common/common.module';
 
 @NgModule({
   imports: [

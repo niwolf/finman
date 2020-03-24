@@ -6,19 +6,17 @@ import {
   MatIconModule,
   MatTableModule
 } from '@angular/material';
-import { PipesModule } from '../pipes/pipes.module';
 import { ActivityTableComponent } from './activity-table.component';
-import { DirectivesModule } from '../directives/directives.module';
+import { FinCommonModule } from '../common/common.module';
 
 
 @NgModule({
   imports: [
     CommonModule,
+    FinCommonModule,
     ActivityRoutingModule,
     MatTableModule,
-    PipesModule,
-    MatIconModule,
-    DirectivesModule
+    MatIconModule
   ],
   declarations: [
     ActivityTableComponent

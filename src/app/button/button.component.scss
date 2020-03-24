@@ -1,0 +1,15 @@
+[mat-mini-fab] {
+  margin-left: 10px;
+}
+
+button[mat-mini-fab] {
+  margin-right: 15px;
+}
+
+button
+{
+  transition: 0.2s ease;
+  &.toggled {
+    transform: rotate(45deg);
+  }
+}

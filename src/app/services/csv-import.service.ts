@@ -76,7 +76,7 @@ export class CsvImportService {
       switchMap(itemsToImport => {
         return this.itemService.addItems(uid, itemsToImport);
       }),
-      tap((results: any[]) => this.snackBar.open(`${results.length} ${results.length > 1 ? 'Einträge' : 'Eintrag'} erfolgreich importiert.`, '', {duration: 2000}))
+      tap(itemCount => this.snackBar.open(`${itemCount} ${itemCount > 1 ? 'Einträge' : 'Eintrag'} erfolgreich importiert.`, '', {duration: 2000}))
     ).subscribe();
   }
 

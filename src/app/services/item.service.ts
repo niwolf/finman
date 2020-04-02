@@ -10,7 +10,10 @@ import {
   from,
   Observable
 } from 'rxjs';
-import { map } from 'rxjs/operators';
+import {
+  count,
+  map
+} from 'rxjs/operators';
 import { Item } from '../models/item.interface';
 
 @Injectable({
@@ -28,10 +31,9 @@ export class ItemService {
     return this.getItemCollection(userId).add(item);
   }
 
-  public addItems(userId, items: Item[]): Observable<Item[]> {
-    return concat(items.map(item => from(this.addItem(userId, item)))).pipe(
-      map(() => items)
-    );
+  public addItems(userId, items: Item[]): Observable<number> {
+    const reqs$: Observable<DocumentReference>[] = items.map(item => from(this.addItem(userId, item)));
+    return concat(reqs$).pipe(count());
   }
 
   private getItemCollection(userId: string, queryFn?: QueryFn): AngularFirestoreCollection<Item> {

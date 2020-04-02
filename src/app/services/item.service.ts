@@ -5,7 +5,12 @@ import {
   DocumentReference,
   QueryFn
 } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
+import {
+  concat,
+  from,
+  Observable
+} from 'rxjs';
+import { map } from 'rxjs/operators';
 import { Item } from '../models/item.interface';
 
 @Injectable({
@@ -21,6 +26,12 @@ export class ItemService {
 
   public addItem(userId: string, item: Item): Promise<DocumentReference> {
     return this.getItemCollection(userId).add(item);
+  }
+
+  public addItems(userId, items: Item[]): Observable<Item[]> {
+    return concat(items.map(item => from(this.addItem(userId, item)))).pipe(
+      map(() => items)
+    );
   }
 
   private getItemCollection(userId: string, queryFn?: QueryFn): AngularFirestoreCollection<Item> {

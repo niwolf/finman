@@ -5,12 +5,7 @@ import {
   MatSnackBar
 } from '@angular/material';
 import { firestore } from 'firebase';
-import {
-  combineLatest,
-  concat,
-  from,
-  Observable
-} from 'rxjs';
+import { Observable } from 'rxjs';
 import {
   filter,
   map,
@@ -32,8 +27,8 @@ import { ItemService } from './item.service';
 import { AuthService } from './auth.service';
 import * as md5 from 'md5';
 import * as moment from 'moment';
-import Timestamp = firestore.Timestamp;
 import { ImportPreviewDialogComponent } from '../dialogs/import-preview-dialog/import-preview-dialog.component';
+import Timestamp = firestore.Timestamp;
 
 @Injectable({
   providedIn: 'root'
@@ -79,7 +74,7 @@ export class CsvImportService {
       }),
       filter(itemsToImport => itemsToImport && itemsToImport.length > 0), // catch cancel click or no selected elements
       switchMap(itemsToImport => {
-        return concat(itemsToImport.map(item => from(this.itemService.addItem(uid, item))));
+        return this.itemService.addItems(uid, itemsToImport);
       }),
       tap((results: any[]) => this.snackBar.open(`${results.length} ${results.length > 1 ? 'Einträge' : 'Eintrag'} erfolgreich importiert.`, '', {duration: 2000}))
     ).subscribe();

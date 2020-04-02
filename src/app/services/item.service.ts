@@ -7,6 +7,8 @@ import {
 } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { Item } from '../models/item.interface';
+import { fromPromise } from 'rxjs/internal-compatibility';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +23,14 @@ export class ItemService {
 
   public addItem(userId: string, item: Item): Promise<DocumentReference> {
     return this.getItemCollection(userId).add(item);
+  }
+
+  public addItems(userId, items: Item[]): Observable<Item[]> {
+    const batch = this.afs.firestore.batch();
+    items.forEach(item => {
+      batch.set(this.getItemCollection(userId).doc(this.afs.createId()).ref, item);
+    });
+    return fromPromise(batch.commit()).pipe(map(() => items));
   }
 
   private getItemCollection(userId: string, queryFn?: QueryFn): AngularFirestoreCollection<Item> {

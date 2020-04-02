@@ -79,7 +79,7 @@ export class CsvImportService {
       }),
       filter(itemsToImport => itemsToImport && itemsToImport.length > 0), // catch cancel click or no selected elements
       switchMap(itemsToImport => {
-        return concat(itemsToImport.map(item => from(this.itemService.addItem(uid, item))));
+        return this.itemService.addItems(uid, itemsToImport);
       }),
       tap((results: any[]) => this.snackBar.open(`${results.length} ${results.length > 1 ? 'Einträge' : 'Eintrag'} erfolgreich importiert.`, '', {duration: 2000}))
     ).subscribe();

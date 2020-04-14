@@ -9,7 +9,10 @@ import {
 } from '@angular/fire/firestore';
 import { Item } from '../models/item.interface';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import {
+  map,
+  switchMap
+} from 'rxjs/operators';
 import {
   BreakpointObserver,
   Breakpoints
@@ -40,8 +43,9 @@ export class ActivityTableComponent implements OnInit {
 
   public ngOnInit(): void
   {
-    const uid: string = this.auth.currentUser.uid;
-    this.items = this.itemService.getItems(uid, ref => this.buildQuery(ref));
+    this.items = this.auth.user.pipe(
+      switchMap(user => this.itemService.getItems(user.uid, ref => this.buildQuery(ref)))
+    );
   }
 
   private buildQuery(ref: CollectionReference): Query

@@ -28,8 +28,9 @@ export class NavigationComponent {
     shareReplay()
   );
 
-  userImg: string = this.auth.currentUser.photoURL ||
-                    `https://secure.gravatar.com/avatar/${md5(this.auth.currentUser.email)}?d=mp`;
+  userImg: Observable<string> = this.auth.user.pipe(
+    map(user => user.photoURL || `https://secure.gravatar.com/avatar/${md5(user.email)}?d=mp`)
+  );
 
   constructor(
     private breakpointObserver: BreakpointObserver,

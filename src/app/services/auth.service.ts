@@ -1,30 +1,49 @@
-import { Injectable } from '@angular/core';
+import {
+  Injectable,
+  OnDestroy
+} from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { User } from 'firebase';
-import { Observable } from 'rxjs';
-import UserCredential = firebase.auth.UserCredential;
+import {
+  Observable,
+  Subject
+} from 'rxjs';
+import {
+  takeUntil,
+  tap
+} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
+export class AuthService implements OnDestroy {
 
-  constructor(private auth: AngularFireAuth) {}
+  public currentUser: User;
+
+  private destroy$: Subject<void> = new Subject();
+
+  constructor(private auth: AngularFireAuth) {
+    this.auth.user.pipe(
+      takeUntil(this.destroy$),
+      tap(user => this.currentUser = user)
+    );
+  }
 
   public get user(): Observable<User>
   {
     return this.auth.user;
   }
 
-  public get currentUser(): User {
-    return this.auth.auth.currentUser;
-  }
-
-  public signIn(email: string, password: string): Promise<UserCredential> {
-    return this.auth.auth.signInWithEmailAndPassword(email, password);
+  public signIn(email: string, password: string) {
+    return this.auth.signInWithEmailAndPassword(email, password);
   }
 
   public signOut(): Promise<void> {
-    return this.auth.auth.signOut();
+    return this.auth.signOut();
+  }
+
+  public ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 }

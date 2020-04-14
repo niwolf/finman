@@ -17,9 +17,6 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "localize": [
-              "de"
-            ],
             "outputPath": "dist/finman",
             "index": "src/index.html",
             "main": "src/main.ts",

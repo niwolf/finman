@@ -3,10 +3,7 @@ import {
   Inject,
   OnInit
 } from '@angular/core';
-import {
-  MAT_DIALOG_DATA,
-  MatDialogRef
-} from '@angular/material';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Item } from '../../models/item.interface';
 import { SelectionModel } from '@angular/cdk/collections';
 

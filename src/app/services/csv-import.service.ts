@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import { QueryFn } from '@angular/fire/firestore';
-import {
-  MatDialog,
-  MatSnackBar
-} from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { firestore } from 'firebase';
 import {
   combineLatest,

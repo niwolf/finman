@@ -10,7 +10,7 @@ import {
 import { User } from 'firebase';
 import { ActivatedRoute } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { InitialBudgetDialogComponent } from './dialogs/initial-budget-dialog/initial-budget-dialog.component';
 import {
   filter,

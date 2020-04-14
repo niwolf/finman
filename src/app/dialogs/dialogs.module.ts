@@ -4,13 +4,11 @@ import {
   FormsModule,
   ReactiveFormsModule
 } from '@angular/forms';
-import {
-  MatDialogModule,
-  MatInputModule,
-  MatButtonModule,
-  MatTableModule,
-  MatCheckboxModule
-} from '@angular/material';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
+import { MatTableModule } from '@angular/material/table';
 
 import { InitialBudgetDialogComponent } from './initial-budget-dialog/initial-budget-dialog.component';
 import { ImportPreviewDialogComponent } from './import-preview-dialog/import-preview-dialog.component';

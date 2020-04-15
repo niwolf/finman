@@ -10,7 +10,7 @@ import {
   ParamMap,
   Router
 } from '@angular/router';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ItemService } from '../services/item.service';
 import { AuthService } from '../services/auth.service';
 

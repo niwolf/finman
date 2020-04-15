@@ -4,7 +4,7 @@ import {
   FormGroup,
   Validators
 } from '@angular/forms';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import UserCredential = firebase.auth.UserCredential;
 import { AuthService } from '../services/auth.service';
 

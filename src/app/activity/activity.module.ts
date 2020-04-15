@@ -2,10 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { ActivityRoutingModule } from './activity-routing.module';
-import {
-  MatIconModule,
-  MatTableModule
-} from '@angular/material';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTableModule } from '@angular/material/table';
 import { ActivityTableComponent } from './activity-table.component';
 import { FinCommonModule } from '@common/common.module';
 

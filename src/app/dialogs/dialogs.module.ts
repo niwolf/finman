@@ -13,6 +13,7 @@ import { MatTableModule } from '@angular/material/table';
 import { InitialBudgetDialogComponent } from './initial-budget-dialog/initial-budget-dialog.component';
 import { ImportPreviewDialogComponent } from './import-preview-dialog/import-preview-dialog.component';
 import { FinCommonModule } from '@common/common.module';
+import { MatTableExtensionsModule } from 'angular-material-extensions';
 
 @NgModule({
   imports: [
@@ -25,6 +26,7 @@ import { FinCommonModule } from '@common/common.module';
     MatTableModule,
     FormsModule,
     MatCheckboxModule,
+    MatTableExtensionsModule
   ],
   declarations: [
     InitialBudgetDialogComponent,

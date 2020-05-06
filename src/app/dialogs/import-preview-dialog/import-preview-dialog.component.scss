@@ -11,7 +11,7 @@ td.mat-cell:first-of-type, td.mat-footer-cell:first-of-type, th.mat-header-cell:
   border-right: 1px solid #e0e0e0;
 }
 
-.mat-column-select {
+:host::ng-deep .mat-column-select {
   width: 30px;
 }
 

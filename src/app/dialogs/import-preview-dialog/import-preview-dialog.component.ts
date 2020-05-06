@@ -24,18 +24,4 @@ export class ImportPreviewDialogComponent {
   public close(): void {
     this.dialogRef.close();
   }
-
-  /** Whether the number of selected elements matches the total number of rows. */
-  isAllSelected() {
-    const numSelected = this.selection.selected.length;
-    const numRows = this.data.length;
-    return numSelected === numRows;
-  }
-
-  /** Selects all rows if they are not all selected; otherwise clear selection. */
-  masterToggle() {
-    this.isAllSelected() ?
-      this.selection.clear() :
-      this.data.forEach(row => this.selection.select(row));
-  }
 }

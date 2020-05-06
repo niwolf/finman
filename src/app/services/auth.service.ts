@@ -25,8 +25,7 @@ export class AuthService implements OnDestroy {
   constructor(private auth: AngularFireAuth) {
     this.auth.user.pipe(
       takeUntil(this.destroy$),
-      tap(user => this.currentUser = user)
-    );
+    ).subscribe(user => this.currentUser = user);
   }
 
   public get user(): Observable<User>

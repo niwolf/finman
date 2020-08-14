@@ -17,6 +17,7 @@ import {
   switchMap,
   tap
 } from 'rxjs/operators';
+import { isNullOrUndefined } from 'util';
 import { AuthService } from './services/auth.service';
 import { BudgetService } from './services/budget.service';
 
@@ -38,7 +39,7 @@ export class AppComponent implements OnInit {
   public ngOnInit(): void
   {
     this.auth.user.pipe(
-      filter(user => !!user),
+      filter(user => !isNullOrUndefined(user)),
       switchMap(user =>
       {
         const uid: string = user.uid;

@@ -15,6 +15,7 @@ import {
   take,
   tap
 } from 'rxjs/operators';
+import { isNullOrUndefined } from 'util';
 import {
   parse,
   ParseConfig,
@@ -106,7 +107,7 @@ export class CsvImportService {
 
     return this.itemService.getItems(userId, queryFn).pipe(
       take(1),
-      map(existingItems => existingItems.filter(item => !!item.importId))
+      map(existingItems => existingItems.filter(item => !isNullOrUndefined(item.importId)))
     );
   }
 

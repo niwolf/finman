@@ -4,7 +4,6 @@ import {
   filter,
   switchMap
 } from 'rxjs/operators';
-import { isNullOrUndefined } from 'util';
 import { BudgetService } from '../../../services/budget.service';
 import { AuthService } from '../../../services/auth.service';
 import { Budget } from '../../../models/budget.interface';
@@ -17,7 +16,7 @@ import { Budget } from '../../../models/budget.interface';
 export class BalanceComponent {
 
   balance$: Observable<Budget> = this.auth.user.pipe(
-    filter(user => !isNullOrUndefined(user)),
+    filter(user => !!user),
     switchMap(user => this.budgetService.getCurrentBudget(user.uid))
   );
 

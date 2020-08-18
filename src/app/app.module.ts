@@ -16,6 +16,7 @@ import { ButtonModule } from './button/button.module';
 import { NavigationModule } from './navigation/navigation.module';
 import { ActivityModule } from './activity/activity.module';
 import { DialogsModule } from './dialogs/dialogs.module';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { DialogsModule } from './dialogs/dialogs.module';
     EnterDataModule,
     MatProgressSpinnerModule,
     DashboardModule,
-    ActivityModule
+    ActivityModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]

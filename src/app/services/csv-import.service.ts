@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { QueryFn } from '@angular/fire/firestore';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { firestore } from 'firebase';
+import { firestore } from 'firebase/app';
 import {
   combineLatest,
   from,
@@ -15,7 +15,6 @@ import {
   take,
   tap
 } from 'rxjs/operators';
-import { isNullOrUndefined } from 'util';
 import {
   parse,
   ParseConfig,
@@ -107,7 +106,7 @@ export class CsvImportService {
 
     return this.itemService.getItems(userId, queryFn).pipe(
       take(1),
-      map(existingItems => existingItems.filter(item => !isNullOrUndefined(item.importId)))
+      map(existingItems => existingItems.filter(item => !!item.importId))
     );
   }
 

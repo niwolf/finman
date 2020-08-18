@@ -3,7 +3,7 @@ import {
   OnDestroy
 } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { User } from 'firebase';
+import { User } from 'firebase/app';
 import {
   Observable,
   Subject

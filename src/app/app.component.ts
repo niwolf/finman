@@ -27,7 +27,7 @@ import { BudgetService } from './services/budget.service';
 })
 export class AppComponent implements OnInit {
   user$: Observable<User> = merge(
-    of(JSON.parse(sessionStorage.getItem('user'))),
+    of(JSON.parse(sessionStorage.getItem('user')) ?? undefined),
     this.auth.user
   );
 

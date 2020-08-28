@@ -10,7 +10,6 @@ import {
   Subject
 } from 'rxjs';
 import {
-  startWith,
   takeUntil,
   tap
 } from 'rxjs/operators';

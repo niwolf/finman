@@ -5,8 +5,8 @@ import {
   Validators
 } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import UserCredential = firebase.auth.UserCredential;
 import { AuthService } from '../services/auth.service';
+import { finalize } from 'rxjs/operators';
 
 @Component({
   selector:    'fin-login',
@@ -37,19 +37,17 @@ export class LoginComponent
   private login(email: string, password: string)
   {
     this.pending = true;
-    this.auth.signIn(email, password)
-        .then((credential: UserCredential) =>
-        {
-          console.log(credential);
-          this.snackBar.dismiss();
-        })
-        .catch((err: any) =>
+    this.auth.signIn(email, password).pipe(
+      finalize(() => this.pending = false)
+    ).subscribe(
+      () => this.snackBar.dismiss(),
+        (err: any) =>
         {
           console.error(err);
           const message: string = this.extractAuthErrorMessage(err);
           this.snackBar.open(message, 'OK');
-        })
-        .finally(() => this.pending = false);
+        }
+    );
   }
 
   private extractAuthErrorMessage(err: { code: string, message: string }): string

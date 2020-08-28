@@ -26,13 +26,16 @@ import { BudgetService } from './services/budget.service';
   styleUrls:   ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  user$: Observable<User> = merge(of(undefined), this.auth.user);
+  user$: Observable<User> = merge(
+    of(JSON.parse(sessionStorage.getItem('user'))),
+    this.auth.user
+  );
 
   constructor(private auth: AuthService, private budgetService: BudgetService, private route: ActivatedRoute, private dialog: MatDialog) {}
 
   public get isDashboard(): boolean
   {
-    return this.route.firstChild.component === DashboardComponent;
+    return this.route.firstChild?.component === DashboardComponent;
   }
 
   public ngOnInit(): void

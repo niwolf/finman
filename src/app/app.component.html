@@ -1,5 +1,5 @@
-<ng-container *ngIf="user$ | async; else loading">
-  <fin-navigation>
+<ng-container *ngIf="user$ | async as user; else loading">
+  <fin-navigation [user]="user">
     <router-outlet></router-outlet>
   </fin-navigation>
   <fin-button *ngIf="isDashboard" class="addButton"></fin-button>

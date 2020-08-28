@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import {
+  Component,
+  Input
+} from '@angular/core';
 import {
   BreakpointObserver,
   Breakpoints
@@ -10,6 +13,7 @@ import {
 } from 'rxjs/operators';
 import * as md5 from 'md5';
 import { AuthService } from '../services/auth.service';
+import { User } from 'firebase/app';
 
 @Component({
   selector:    'fin-navigation',
@@ -17,6 +21,12 @@ import { AuthService } from '../services/auth.service';
   styleUrls:   ['./navigation.component.scss']
 })
 export class NavigationComponent {
+
+  @Input() set user(user: User) {
+    this.userImg = user.photoURL || `https://secure.gravatar.com/avatar/${md5(user.email)}?d=mp`;
+  }
+
+  userImg: string;
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
     map(result => result.matches),
@@ -28,16 +38,12 @@ export class NavigationComponent {
     shareReplay()
   );
 
-  userImg: Observable<string> = this.auth.user.pipe(
-    map(user => user.photoURL || `https://secure.gravatar.com/avatar/${md5(user.email)}?d=mp`)
-  );
-
   constructor(
     private breakpointObserver: BreakpointObserver,
     private auth: AuthService
   ) {}
 
   public signOut(): void {
-    this.auth.signOut();
+    this.auth.signOut().subscribe();
   }
 }

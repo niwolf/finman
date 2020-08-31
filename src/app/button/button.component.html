@@ -7,12 +7,12 @@
   (backdropClick)="toggle()"
 >
   <div class="d-grid">
-    <a mat-mini-fab matTooltip="Manuell" matTooltipPosition="before" routerLink="/enterData">
+    <a mat-mini-fab matTooltip="Manuell" matTooltipPosition="before" finTooltipShow routerLink="/enterData">
       <mat-icon>
         compare_arrows
       </mat-icon>
     </a>
-    <button mat-mini-fab matTooltip="Import" matTooltipPosition="before" (click)="toggle(); fileInput.click()">
+    <button mat-mini-fab matTooltip="Import" matTooltipPosition="before" finTooltipShow (click)="toggle(); fileInput.click()">
       <mat-icon>
         cloud_upload
       </mat-icon>

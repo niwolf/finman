@@ -7,9 +7,10 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { OverlayModule } from '@angular/cdk/overlay';
 
 import { ButtonComponent } from './button.component';
+import { TooltipShowDirective } from './tooltip-show.directive';
 
 @NgModule({
-  declarations: [ButtonComponent],
+  declarations: [ButtonComponent, TooltipShowDirective],
   imports:      [
     CommonModule,
     RouterModule,

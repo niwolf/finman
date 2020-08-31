@@ -1,19 +1,33 @@
-<ng-container *ngIf="toggled">
-  <a mat-mini-fab matTooltip="Manuell" routerLink="/enterData" (click)="toggle()">
-    <mat-icon>
-      compare_arrows
-    </mat-icon>
-  </a>
-  <button mat-mini-fab matTooltip="Import" (click)="toggle(); fileInput.click()">
-    <mat-icon>
-      cloud_upload
-    </mat-icon>
-  </button>
-</ng-container>
-<button mat-fab [matTooltip]="toggled ? null : 'Neuer Eintrag'" [class.toggled]="toggled" (click)="toggle()">
-  <mat-icon>
-    add
-  </mat-icon>
+<ng-template
+  cdkConnectedOverlay
+  cdkConnectedOverlayHasBackdrop
+  [cdkConnectedOverlayOrigin]="trigger"
+  [cdkConnectedOverlayOpen]="toggled"
+  [cdkConnectedOverlayPositions]="positions"
+  (backdropClick)="toggle()"
+>
+  <div class="d-grid">
+    <a mat-mini-fab matTooltip="Manuell" matTooltipPosition="before" routerLink="/enterData">
+      <mat-icon>
+        compare_arrows
+      </mat-icon>
+    </a>
+    <button mat-mini-fab matTooltip="Import" matTooltipPosition="before" (click)="toggle(); fileInput.click()">
+      <mat-icon>
+        cloud_upload
+      </mat-icon>
+    </button>
+  </div>
+</ng-template>
+<button
+  mat-fab
+  cdkOverlayOrigin #trigger="cdkOverlayOrigin"
+  [matTooltip]="toggled ? null : 'Neuer Eintrag'"
+  matTooltipPosition="before"
+  [class.toggled]="toggled"
+  (click)="toggle()"
+>
+  <mat-icon>add</mat-icon>
 </button>
 
 <input #fileInput type="file" accept="text/csv" hidden (input)="import(fileInput.files)">

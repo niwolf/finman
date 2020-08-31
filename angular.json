@@ -20,7 +20,10 @@
           "options": {
             "allowedCommonJsDependencies": [
               "md5",
-              "papaparse"
+              "papaparse",
+              "firebase/app",
+              "@firebase/app",
+              "@firebase/firestore"
             ],
             "outputPath": "dist/finman",
             "index": "src/index.html",

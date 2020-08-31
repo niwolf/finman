@@ -37,13 +37,13 @@ export class AuthService implements OnDestroy {
 
   public signIn(email: string, password: string): Observable<UserCredential> {
     return from(this.auth.signInWithEmailAndPassword(email, password)).pipe(
-      tap((credentials: UserCredential) => sessionStorage.setItem('user', JSON.stringify(credentials.user)))
+      tap((credentials: UserCredential) => localStorage.setItem('user', JSON.stringify(credentials.user)))
     );
   }
 
   public signOut(): Observable<void> {
     return from(this.auth.signOut()).pipe(
-      tap(() => sessionStorage.removeItem('user'))
+      tap(() => localStorage.removeItem('user'))
     );
   }
 

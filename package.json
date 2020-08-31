@@ -42,9 +42,6 @@
     "@types/papaparse": "^5.2.2",
     "codelyzer": "^6.0.0",
     "firebase-tools": "^8.9.2",
-    "fuzzy": "^0.1.3",
-    "inquirer": "^6.2.2",
-    "inquirer-autocomplete-prompt": "^1.0.1",
     "ts-node": "~7.0.0",
     "tslint": "~6.1.0",
     "typescript": "~3.9.7"

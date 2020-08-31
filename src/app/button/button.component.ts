@@ -1,7 +1,8 @@
 import {
-  AfterViewInit,
-  Component
+  Component,
+  HostBinding
 } from '@angular/core';
+import { ConnectedPosition } from '@angular/cdk/overlay';
 import { CsvImportService } from '../services/csv-import.service';
 
 @Component({
@@ -9,35 +10,24 @@ import { CsvImportService } from '../services/csv-import.service';
   templateUrl: './button.component.html',
   styleUrls:   ['./button.component.scss']
 })
-export class ButtonComponent implements AfterViewInit {
+export class ButtonComponent {
   toggled = false;
-  private backdrop: HTMLDivElement;
-  private readonly backdropId: string = 'button-backdrop';
+  positions: ConnectedPosition[] = [{
+    originX: 'center',
+    originY: 'top',
+    overlayX: 'center',
+    overlayY: 'bottom'
+  }];
+
+  @HostBinding('style.zIndex')
+  get zIndex() {
+    return this.toggled ? 1001 : null;
+  }
 
   constructor(private importService: CsvImportService) {}
 
-  public ngAfterViewInit(): void {
-    const backdropElement: HTMLDivElement = document.getElementById(this.backdropId) as HTMLDivElement;
-    if (backdropElement) {
-      this.backdrop = backdropElement;
-    } else {
-      this.backdrop = this.createBackdropElement();
-    }
-  }
-
   public toggle(): void {
     this.toggled = !this.toggled;
-    this.backdrop.style.visibility = this.toggled ? 'visible' : 'hidden';
-  }
-
-  private createBackdropElement(): HTMLDivElement {
-    const backdrop: HTMLDivElement = document.createElement('div');
-    backdrop.classList.value = 'mat-drawer-backdrop mat-drawer-shown';
-    backdrop.style.visibility = 'hidden';
-    backdrop.onclick = (): void => this.toggle();
-    backdrop.id = this.backdropId;
-    document.body.insertAdjacentElement('beforeend', backdrop);
-    return backdrop;
   }
 
   public import(files: FileList) {

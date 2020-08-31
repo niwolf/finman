@@ -52,7 +52,7 @@ export class CsvImportService {
     parse(file, config);
   }
 
-  private handleParseResult(result: ParseResult): void {
+  private handleParseResult(result: ParseResult<any>): void {
     const items = this.parseSparkasseExport(result);
 
     const uid: string = this.authService.currentUser.uid;
@@ -81,7 +81,7 @@ export class CsvImportService {
     ).subscribe();
   }
 
-  private parseSparkasseExport(result: ParseResult): Item[] {
+  private parseSparkasseExport(result: ParseResult<any>): Item[] {
     const header: string[] = result.data.shift();
     const receiverIndex: number = header.indexOf('Beguenstigter/Zahlungspflichtiger');
     const valueIndex: number = header.indexOf('Betrag');

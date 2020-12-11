@@ -8,7 +8,7 @@
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss",
-          "spec": false
+          "skipTests": true
         }
       },
       "root": "",
@@ -41,7 +41,9 @@
               "src/styles.scss"
             ],
             "scripts": [],
-            "i18nLocale": "de"
+            "localize": [
+              "de"
+            ]
           },
           "configurations": {
             "production": {
@@ -54,7 +56,6 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "extractLicenses": true,
               "vendorChunk": false,

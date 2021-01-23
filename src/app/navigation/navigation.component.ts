@@ -14,6 +14,7 @@ import {
 import * as md5 from 'md5';
 import { AuthService } from '../services/auth.service';
 import { User } from 'firebase/app';
+import { Router } from '@angular/router';
 
 @Component({
   selector:    'fin-navigation',
@@ -40,10 +41,15 @@ export class NavigationComponent {
 
   constructor(
     private breakpointObserver: BreakpointObserver,
-    private auth: AuthService
+    private auth: AuthService,
+    private router: Router
   ) {}
 
   public signOut(): void {
     this.auth.signOut().subscribe();
+  }
+
+  public routeToProfile(): void {
+    this.router.navigateByUrl('/profile');
   }
 }

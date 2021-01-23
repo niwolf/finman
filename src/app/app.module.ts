@@ -17,10 +17,12 @@ import { NavigationModule } from './navigation/navigation.module';
 import { ActivityModule } from './activity/activity.module';
 import { DialogsModule } from './dialogs/dialogs.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

@@ -4,6 +4,7 @@ import {
   Routes
 } from '@angular/router';
 import { EnterDataComponent } from './enter-data/enter-data.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 const routes: Routes = [
@@ -15,6 +16,10 @@ const routes: Routes = [
   {
     path:      'enterData',
     component: EnterDataComponent
+  },
+  {
+    path:      'profile',
+    component: ProfileComponent
   }
 ];
 

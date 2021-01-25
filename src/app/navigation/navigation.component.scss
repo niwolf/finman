@@ -35,17 +35,9 @@ mat-toolbar
     padding-bottom: 24px;
     line-height: 16px;
 
-    div {
-      visibility: hidden;
-    }
-
     &.active {
       padding-top: 14px;
       padding-bottom: 16px;
-
-      div {
-        visibility: visible;
-      }
     }
   }
 }

@@ -19,17 +19,35 @@ mat-toolbar
   }
 }
 
-.sidenav {
-  width: 200px;
-}
-
 .sidenav-container
 {
-  height: calc(100% - 64px)
+  height: calc(100% - 64px);
 }
 
-.sidenav .mat-toolbar {
-  background: inherit;
+.sidenav {
+  width: 72px; // has to be "dp" aka "Density-independent pixels"
+  padding-top: 8px;
+
+  .nav-item {
+    height: 72px;
+    width: 72px;
+    padding-top: 24px;
+    padding-bottom: 24px;
+    line-height: 16px;
+
+    div {
+      visibility: hidden;
+    }
+
+    &.active {
+      padding-top: 14px;
+      padding-bottom: 16px;
+
+      div {
+        visibility: visible;
+      }
+    }
+  }
 }
 
 .bottom-nav {
@@ -39,7 +57,7 @@ mat-toolbar
   display: flex;
   justify-content: space-evenly;
 
-  .bottom-nav-item {
+  .nav-item {
     min-width: 80px; // has to be "dp" aka "Density-independent pixels"
     max-width: 168px; // has to be "dp" aka "Density-independent pixels"
     flex-grow: 1;

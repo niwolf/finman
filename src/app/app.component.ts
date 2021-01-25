@@ -14,11 +14,17 @@ import { MatDialog } from '@angular/material/dialog';
 import { InitialBudgetDialogComponent } from './dialogs/initial-budget-dialog/initial-budget-dialog.component';
 import {
   filter,
+  map,
+  shareReplay,
   switchMap,
   tap
 } from 'rxjs/operators';
 import { AuthService } from './services/auth.service';
 import { BudgetService } from './services/budget.service';
+import {
+  BreakpointObserver,
+  Breakpoints
+} from '@angular/cdk/layout';
 
 @Component({
   selector:    'fin-app',
@@ -31,7 +37,18 @@ export class AppComponent implements OnInit {
     this.auth.user
   );
 
-  constructor(private auth: AuthService, private budgetService: BudgetService, private route: ActivatedRoute, private dialog: MatDialog) {}
+  isMobile$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.XSmall).pipe(
+    map(result => result.matches),
+    shareReplay()
+  );
+
+  constructor(
+    private auth: AuthService,
+    private budgetService: BudgetService,
+    private route: ActivatedRoute,
+    private dialog: MatDialog,
+    private breakpointObserver: BreakpointObserver
+  ) {}
 
   public get isDashboard(): boolean
   {

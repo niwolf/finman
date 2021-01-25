@@ -36,12 +36,15 @@ mat-toolbar
   position: fixed;
   bottom: 0;
   height: 56px;
+  display: flex;
+  justify-content: space-evenly;
 
   .bottom-nav-item {
     min-width: 80px; // has to be "dp" aka "Density-independent pixels"
     max-width: 168px; // has to be "dp" aka "Density-independent pixels"
     padding-left: 12px;
     padding-right: 12px;
+    flex-grow: 1;
 
     div {
       line-height: 12px;

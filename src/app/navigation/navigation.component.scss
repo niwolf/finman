@@ -1,12 +1,12 @@
 mat-toolbar
 {
   display: flex;
-  
+
   .title
   {
     flex: 1 1 auto;
   }
-  
+
   .user-image
   {
     height: 40px;
@@ -30,4 +30,31 @@ mat-toolbar
 
 .sidenav .mat-toolbar {
   background: inherit;
+}
+
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  height: 56px;
+
+  .bottom-nav-item {
+    min-width: 80px; // has to be "dp" aka "Density-independent pixels"
+    max-width: 168px; // has to be "dp" aka "Density-independent pixels"
+    padding-left: 12px;
+    padding-right: 12px;
+
+    div {
+      line-height: 12px;
+      visibility: hidden;
+    }
+
+    &.active {
+      padding-top: 8px;
+      padding-bottom: 12px;
+
+      div {
+        visibility: visible;
+      }
+    }
+  }
 }

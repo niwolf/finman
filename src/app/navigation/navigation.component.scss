@@ -42,22 +42,17 @@ mat-toolbar
   .bottom-nav-item {
     min-width: 80px; // has to be "dp" aka "Density-independent pixels"
     max-width: 168px; // has to be "dp" aka "Density-independent pixels"
-    padding-left: 12px;
-    padding-right: 12px;
     flex-grow: 1;
+    line-height: 16px;
+    padding: 16px 12px;
 
     div {
       line-height: 12px;
-      visibility: hidden;
     }
 
     &.active {
       padding-top: 8px;
       padding-bottom: 12px;
-
-      div {
-        visibility: visible;
-      }
     }
   }
 }

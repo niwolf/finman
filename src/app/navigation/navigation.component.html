@@ -20,15 +20,15 @@
 
 <!-- bottom navigation for mobile -->
 <ng-container *ngIf="isMobile$ | async">
-  <ng-content></ng-content>
+  <ng-template [ngTemplateOutlet]="content"></ng-template>
   <mat-toolbar color="primary" class="bottom-nav">
-    <a routerLink="/dashboard" routerLinkActive="active" mat-button class="bottom-nav-item">
+    <a routerLink="/dashboard" routerLinkActive="active" #rlaDashboard="routerLinkActive" mat-button class="bottom-nav-item">
       <mat-icon>dashboard</mat-icon>
-      <div>Dashboard</div>
+      <div *ngIf="rlaDashboard.isActive">Dashboard</div>
     </a>
-    <a routerLink="/activity" routerLinkActive="active" mat-button class="bottom-nav-item">
+    <a routerLink="/activity" routerLinkActive="active" #rlaActivity="routerLinkActive" mat-button class="bottom-nav-item">
       <mat-icon>view_list</mat-icon>
-      <div>Umsätze</div>
+      <div *ngIf="rlaActivity.isActive">Umsätze</div>
     </a>
   </mat-toolbar>
 </ng-container>
@@ -49,3 +49,6 @@
 <!--    <ng-content></ng-content>-->
 <!--  </mat-sidenav-content>-->
 <!--</mat-sidenav-container>-->
+<ng-template #content>
+  <ng-content></ng-content>
+</ng-template>

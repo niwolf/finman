@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  OnInit
+} from '@angular/core';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'fin-profile',
@@ -7,9 +11,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authService: AuthService) { }
 
-  ngOnInit(): void {
+  public ngOnInit(): void
+  {
+  }
+
+  public get user(): any
+  {
+    return this.authService.currentUser.email;
   }
 
 }

@@ -1,3 +1,6 @@
+// Import theming functions
+// @import '~@angular/material/theming';
+
 mat-toolbar
 {
   display: flex;
@@ -32,7 +35,7 @@ mat-toolbar
     height: 72px;
     width: 72px;
     line-height: 16px;
-    padding: 24px 16px;
+    padding: 14px 16px 16px;
     opacity: 0.6;
 
     div {
@@ -41,11 +44,8 @@ mat-toolbar
     }
 
     &.active {
-      padding-top: 14px;
-      padding-bottom: 16px;
       opacity: 1;
-      //color: mat-color($primary);
-      color: #3f51b5;
+      color: #3f51b5; // TODO: use `mat-color($primary)` instead
     }
   }
 }
@@ -62,7 +62,7 @@ mat-toolbar
     max-width: 168px; // has to be "dp" aka "Density-independent pixels"
     flex-grow: 1;
     line-height: 16px;
-    padding: 16px 12px;
+    padding: 8px 12px 12px;
     opacity: 0.6;
 
     div {
@@ -70,8 +70,6 @@ mat-toolbar
     }
 
     &.active {
-      padding-top: 8px;
-      padding-bottom: 12px;
       opacity: 1;
     }
   }

@@ -34,12 +34,12 @@
 
 <ng-template #links>
   <a routerLink="/dashboard" routerLinkActive="active" #rlaDashboard="routerLinkActive" mat-button class="nav-item">
-    <mat-icon>dashboard</mat-icon>
-    <div *ngIf="rlaDashboard.isActive">Dashboard</div>
+    <mat-icon [fontSet]="rlaDashboard.isActive ? 'material-icons' : 'material-icons-outlined'">dashboard</mat-icon>
+    <div>Dashboard</div>
   </a>
   <a routerLink="/activity" routerLinkActive="active" #rlaActivity="routerLinkActive" mat-button class="nav-item">
-    <mat-icon>view_list</mat-icon>
-    <div *ngIf="rlaActivity.isActive">Umsätze</div>
+    <mat-icon [fontSet]="rlaActivity.isActive ? 'material-icons' : 'material-icons-outlined'">view_list</mat-icon>
+    <div>Umsätze</div>
   </a>
 </ng-template>
 

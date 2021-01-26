@@ -2,7 +2,7 @@
   <fin-navigation [user]="user">
     <router-outlet></router-outlet>
   </fin-navigation>
-  <fin-button *ngIf="isDashboard" class="addButton"></fin-button>
+  <fin-button *ngIf="isDashboard" class="addButton" [class.mobile]="isMobile$ | async"></fin-button>
 </ng-container>
 
 <ng-template #loading>

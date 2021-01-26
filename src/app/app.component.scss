@@ -1,9 +1,13 @@
 .addButton
 {
-  position: absolute;
+  position: fixed;
   bottom: 20px;
   right: 20px;
   z-index: 1000;
+
+  &.mobile {
+    bottom: 76px;
+  }
 }
 
 mat-progress-spinner

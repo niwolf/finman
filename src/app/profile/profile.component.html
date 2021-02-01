@@ -8,8 +8,10 @@
       </mat-card-header>
       <mat-card-content>
         <p>
-          <img class="photo" src="https://avatars.githubusercontent.com/u/47743312?s=400&u=a9baed21a434e1f19befb73da959b4798f1fbd4a&v=4"
-               alt="Profile photo">
+          <ng-container *ngIf="hasProfilePic; else avatar">
+            <img class="photo" src="https://avatars.githubusercontent.com/u/47743312?s=400&u=a9baed21a434e1f19befb73da959b4798f1fbd4a&v=4"
+                 alt="Profile photo">
+          </ng-container>
         </p>
         <p class="content">
           <b>Email: </b>{{ user }}
@@ -18,3 +20,8 @@
     </mat-card>
   </mat-grid-tile>
 </mat-grid-list>
+
+<ng-template #avatar>
+  <img class="photo" src="https://secure.gravatar.com/avatar/1b429dd04342f4a66ea313d78a2086d9?d=mp"
+       alt="Profile photo">
+</ng-template>

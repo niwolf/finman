@@ -13,6 +13,8 @@ export class ProfileComponent implements OnInit {
 
   constructor(private authService: AuthService) { }
 
+  public hasProfilePic = false;
+
   public ngOnInit(): void
   {
   }

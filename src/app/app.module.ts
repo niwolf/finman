@@ -17,12 +17,11 @@ import { NavigationModule } from './navigation/navigation.module';
 import { ActivityModule } from './activity/activity.module';
 import { DialogsModule } from './dialogs/dialogs.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
-import { ProfileComponent } from './profile/profile.component';
+import { ProfileModule } from './profile/profile.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    ProfileComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +38,8 @@ import { ProfileComponent } from './profile/profile.component';
     MatProgressSpinnerModule,
     DashboardModule,
     ActivityModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
+    ProfileModule
   ],
   providers: [],
   bootstrap: [AppComponent]

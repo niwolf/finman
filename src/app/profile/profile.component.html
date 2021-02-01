@@ -1,1 +1,20 @@
-<p>{{ user }}</p>
+<mat-grid-list cols="2" rowHeight="160px" gutterSize="10px">
+  <mat-grid-tile [colspan]="1" [rowspan]="2">
+    <mat-card class="profile-card">
+      <mat-card-header>
+        <mat-card-title>
+          Daten
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>
+          <img class="photo" src="https://avatars.githubusercontent.com/u/47743312?s=400&u=a9baed21a434e1f19befb73da959b4798f1fbd4a&v=4"
+               alt="Profile photo">
+        </p>
+        <p class="content">
+          <b>Email: </b>{{ user }}
+        </p>
+      </mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>

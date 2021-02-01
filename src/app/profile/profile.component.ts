@@ -17,9 +17,8 @@ export class ProfileComponent implements OnInit {
   {
   }
 
-  public get user(): any
+  public get user(): string
   {
     return this.authService.currentUser.email;
   }
-
 }

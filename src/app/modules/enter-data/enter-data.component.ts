@@ -4,15 +4,15 @@ import {
   FormGroup,
   Validators
 } from '@angular/forms';
-import { Origin } from '../models/item.interface';
+import { Origin } from '../../core/models/item.interface';
 import {
   ActivatedRoute,
   ParamMap,
   Router
 } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ItemService } from '../services/item.service';
-import { AuthService } from '../services/auth.service';
+import { ItemService } from '../../core/services/item.service';
+import { AuthService } from '../../core/services/auth.service';
 
 @Component({
   selector:    'fin-enter-data',

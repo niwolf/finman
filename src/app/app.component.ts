@@ -9,7 +9,7 @@ import {
 } from 'rxjs';
 import { User } from '@firebase/auth-types';
 import { ActivatedRoute } from '@angular/router';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { DashboardComponent } from './modules/dashboard/dashboard.component';
 import { MatDialog } from '@angular/material/dialog';
 import { InitialBudgetDialogComponent } from './dialogs/initial-budget-dialog/initial-budget-dialog.component';
 import {
@@ -19,8 +19,8 @@ import {
   switchMap,
   tap
 } from 'rxjs/operators';
-import { AuthService } from './services/auth.service';
-import { BudgetService } from './services/budget.service';
+import { AuthService } from './core/services/auth.service';
+import { BudgetService } from './core/services/budget.service';
 import {
   BreakpointObserver,
   Breakpoints

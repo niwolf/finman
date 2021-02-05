@@ -10,6 +10,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EnterDataComponent } from './enter-data.component';
+import { EnterDataRoutingModule } from './enter-data-routing.module';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { EnterDataComponent } from './enter-data.component';
   ],
   imports: [
     CommonModule,
+    EnterDataRoutingModule,
     ReactiveFormsModule,
     LayoutModule,
     MatButtonModule,

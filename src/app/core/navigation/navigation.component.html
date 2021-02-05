@@ -41,6 +41,10 @@
     <mat-icon [fontSet]="rlaActivity.isActive ? 'material-icons' : 'material-icons-outlined'">view_list</mat-icon>
     <div>Umsätze</div>
   </a>
+  <a routerLink="/statistics" routerLinkActive="active" #rlaStatistics="routerLinkActive" mat-button class="nav-item">
+    <mat-icon [fontSet]="rlaStatistics.isActive ? 'material-icons' : 'material-icons-outlined'">pie_chart</mat-icon>
+    <div>Statistiken</div>
+  </a>
 </ng-template>
 
 <ng-template #content>

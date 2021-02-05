@@ -4,9 +4,9 @@ import {
   filter,
   switchMap
 } from 'rxjs/operators';
-import { BudgetService } from '../../../services/budget.service';
-import { AuthService } from '../../../services/auth.service';
-import { Budget } from '../../../models/budget.interface';
+import { BudgetService } from '../../../../core/services/budget.service';
+import { AuthService } from '../../../../core/services/auth.service';
+import { Budget } from '../../../../core/models/budget.interface';
 
 @Component({
   selector:    'fin-balance',

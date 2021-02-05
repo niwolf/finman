@@ -27,7 +27,7 @@ import { ItemService } from './item.service';
 import { AuthService } from './auth.service';
 import * as md5 from 'md5';
 import * as moment from 'moment';
-import { ImportPreviewDialogComponent } from '../dialogs/import-preview-dialog/import-preview-dialog.component';
+import { ImportPreviewDialogComponent } from '../../dialogs/import-preview-dialog/import-preview-dialog.component';
 import firebase from 'firebase/app';
 import Timestamp = firebase.firestore.Timestamp;
 

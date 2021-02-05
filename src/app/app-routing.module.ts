@@ -3,7 +3,6 @@ import {
   RouterModule,
   Routes
 } from '@angular/router';
-import { EnterDataComponent } from './enter-data/enter-data.component';
 
 
 const routes: Routes = [
@@ -14,11 +13,11 @@ const routes: Routes = [
   },
   {
     path:      'enterData',
-    component: EnterDataComponent
+    loadChildren: () => import('./modules/enter-data/enter-data.module').then(m => m.EnterDataModule)
   },
   {
     path: 'statistics',
-    loadChildren: () => import('./statistics/statistics.module').then(m => m.StatisticsModule)
+    loadChildren: () => import('./modules/statistics/statistics.module').then(m => m.StatisticsModule)
   }
 ];
 

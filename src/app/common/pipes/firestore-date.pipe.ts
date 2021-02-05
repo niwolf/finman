@@ -7,10 +7,8 @@ import {Timestamp} from '@firebase/firestore-types';
 })
 export class FirestoreDatePipe implements PipeTransform {
 
-  constructor(@Inject(LOCALE_ID) private locale: string) {
-  }
+  constructor(@Inject(LOCALE_ID) private locale: string) {}
 
-  // TODO: fix localization!
   transform(timestamp: Timestamp, format?: string): string {
     return formatDate(timestamp.toDate(), format || 'medium', this.locale);
   }

@@ -1,5 +1,5 @@
 // Import theming functions
-// @import '~@angular/material/theming';
+@import '~@angular/material/theming';
 
 mat-toolbar
 {
@@ -45,7 +45,7 @@ mat-toolbar
 
     &.active {
       opacity: 1;
-      color: #3f51b5; // TODO: use `mat-color($primary)` instead
+      color: mat-color($mat-indigo, 500);
     }
   }
 }

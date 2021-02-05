@@ -7,7 +7,7 @@ import {
   Observable,
   of
 } from 'rxjs';
-import { User } from 'firebase/app';
+import { User } from '@firebase/auth-types';
 import { ActivatedRoute } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MatDialog } from '@angular/material/dialog';

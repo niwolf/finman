@@ -28,11 +28,6 @@ export class NavigationComponent {
 
   userImg: string;
 
-  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
-    map(result => result.matches),
-    shareReplay()
-  );
-
   isMobile$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.XSmall).pipe(
     map(result => result.matches),
     shareReplay()

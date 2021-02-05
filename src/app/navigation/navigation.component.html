@@ -1,12 +1,4 @@
 <mat-toolbar color="primary">
-  <button
-    type="button"
-    aria-label="Toggle sidenav"
-    mat-icon-button
-    (click)="drawer.toggle()"
-    *ngIf="isHandset$ | async">
-    <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-  </button>
   <span class="title">finman</span>
 
   <img [src]="userImg" class="user-image" alt="user image" [matMenuTriggerFor]="userMenu">
@@ -16,19 +8,41 @@
   <button mat-menu-item (click)="signOut()">Ausloggen</button>
 </mat-menu>
 
-<mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer class="sidenav" fixedInViewport
-    [fixedTopGap]="(isMobile$ | async) ? 56 : 64"
-    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-    [mode]="(isHandset$ | async) ? 'over' : 'side'"
-    [opened]="(isHandset$ | async) === false">
-    <mat-nav-list>
-      <a mat-list-item routerLink="/dashboard">Dashboard</a>
-      <a mat-list-item routerLink="/activity">Umsätze</a>
-      <a mat-list-item href="#">Link 3</a>
-    </mat-nav-list>
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <ng-content></ng-content>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+<!-- navigation rail for desktop and tablet devices -->
+<ng-container *ngIf="!(isMobile$ | async)">
+  <mat-sidenav-container class="sidenav-container">
+    <mat-sidenav
+      class="sidenav"
+      [attr.role]="'navigation'"
+      mode="side"
+      opened>
+      <ng-template [ngTemplateOutlet]="links"></ng-template>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <ng-template [ngTemplateOutlet]="content"></ng-template>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</ng-container>
+
+<!-- bottom navigation for mobile -->
+<ng-container *ngIf="isMobile$ | async">
+  <ng-template [ngTemplateOutlet]="content"></ng-template>
+  <mat-toolbar color="primary" class="bottom-nav">
+    <ng-template [ngTemplateOutlet]="links"></ng-template>
+  </mat-toolbar>
+</ng-container>
+
+<ng-template #links>
+  <a routerLink="/dashboard" routerLinkActive="active" #rlaDashboard="routerLinkActive" mat-button class="nav-item">
+    <mat-icon [fontSet]="rlaDashboard.isActive ? 'material-icons' : 'material-icons-outlined'">dashboard</mat-icon>
+    <div>Dashboard</div>
+  </a>
+  <a routerLink="/activity" routerLinkActive="active" #rlaActivity="routerLinkActive" mat-button class="nav-item">
+    <mat-icon [fontSet]="rlaActivity.isActive ? 'material-icons' : 'material-icons-outlined'">view_list</mat-icon>
+    <div>Umsätze</div>
+  </a>
+</ng-template>
+
+<ng-template #content>
+  <ng-content></ng-content>
+</ng-template>

@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { QueryFn } from '@angular/fire/firestore';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { firestore } from 'firebase/app';
 import {
   combineLatest,
   from,
@@ -28,8 +27,9 @@ import { ItemService } from './item.service';
 import { AuthService } from './auth.service';
 import * as md5 from 'md5';
 import * as moment from 'moment';
-import Timestamp = firestore.Timestamp;
 import { ImportPreviewDialogComponent } from '../dialogs/import-preview-dialog/import-preview-dialog.component';
+import firebase from 'firebase/app';
+import Timestamp = firebase.firestore.Timestamp;
 
 @Injectable({
   providedIn: 'root'

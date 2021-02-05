@@ -13,7 +13,7 @@ import {
 } from 'rxjs/operators';
 import * as md5 from 'md5';
 import { AuthService } from '../services/auth.service';
-import { User } from 'firebase/app';
+import { User } from '@firebase/auth-types';
 
 @Component({
   selector:    'fin-navigation',

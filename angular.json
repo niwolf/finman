@@ -8,22 +8,22 @@
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss",
-          "spec": false
+          "skipTests": true
         }
       },
       "root": "",
       "sourceRoot": "src",
       "prefix": "fin",
+      "i18n": {
+        "sourceLocale": "de"
+      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "allowedCommonJsDependencies": [
               "md5",
-              "papaparse",
-              "firebase/app",
-              "@firebase/app",
-              "@firebase/firestore"
+              "papaparse"
             ],
             "outputPath": "dist/finman",
             "index": "src/index.html",
@@ -40,8 +40,7 @@
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss"
             ],
-            "scripts": [],
-            "i18nLocale": "de"
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -54,7 +53,6 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "extractLicenses": true,
               "vendorChunk": false,

@@ -15,6 +15,10 @@ const routes: Routes = [
   {
     path:      'enterData',
     component: EnterDataComponent
+  },
+  {
+    path: 'statistics',
+    loadChildren: () => import('./statistics/statistics.module').then(m => m.StatisticsModule)
   }
 ];
 

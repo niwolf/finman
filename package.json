@@ -41,7 +41,7 @@
     "@types/md5": "^2.2.0",
     "@types/papaparse": "^5.2.2",
     "codelyzer": "^6.0.1",
-    "firebase-tools": "^8.9.2",
+    "firebase-tools": "^9.3.0",
     "ts-node": "~7.0.0",
     "tslint": "~6.1.0",
     "typescript": "~4.0.5"

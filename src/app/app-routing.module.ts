@@ -3,7 +3,6 @@ import {
   RouterModule,
   Routes
 } from '@angular/router';
-import { EnterDataComponent } from './enter-data/enter-data.component';
 import { ProfileComponent } from './profile/profile.component';
 
 
@@ -15,7 +14,11 @@ const routes: Routes = [
   },
   {
     path:      'enterData',
-    component: EnterDataComponent
+    loadChildren: () => import('./modules/enter-data/enter-data.module').then(m => m.EnterDataModule)
+},
+  {
+    path: 'statistics',
+    loadChildren: () => import('./modules/statistics/statistics.module').then(m => m.StatisticsModule)
   },
   {
     path:      'profile',
@@ -24,7 +27,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

@@ -6,9 +6,9 @@ import {
 import { map } from 'rxjs/operators';
 
 @Component({
-  selector: 'fin-dashboard',
+  selector:    'fin-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+  styleUrls:   ['./dashboard.component.scss']
 })
 export class DashboardComponent {
   isSmall$ = this.breakpointObserver.observe([Breakpoints.XSmall]).pipe(

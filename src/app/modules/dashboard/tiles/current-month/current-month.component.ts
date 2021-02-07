@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { Item } from '../../../models/item.interface';
+import { Item } from '../../../../core/models/item.interface';
 import { Observable } from 'rxjs';
-import { ItemService } from '../../../services/item.service';
+import { ItemService } from '../../../../core/services/item.service';
 import { AngularFireAuth } from '@angular/fire/auth';
 import {
   map,
@@ -9,9 +9,9 @@ import {
 } from 'rxjs/operators';
 
 @Component({
-  selector: 'fin-current-month',
+  selector:    'fin-current-month',
   templateUrl: './current-month.component.html',
-  styleUrls: ['./current-month.component.scss']
+  styleUrls:   ['./current-month.component.scss']
 })
 export class CurrentMonthComponent {
 

@@ -3,7 +3,7 @@ import {
   OnDestroy
 } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { User } from 'firebase/app';
+import { User, UserCredential } from '@firebase/auth-types';
 import {
   from,
   Observable,
@@ -13,7 +13,6 @@ import {
   takeUntil,
   tap
 } from 'rxjs/operators';
-import UserCredential = firebase.auth.UserCredential;
 
 @Injectable({
   providedIn: 'root'

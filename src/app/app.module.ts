@@ -5,16 +5,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { EnterDataModule } from './enter-data/enter-data.module';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from 'src/environments/environment';
-import { LoginModule } from './login/login.module';
-import { DashboardModule } from './dashboard/dashboard.module';
-import { ButtonModule } from './button/button.module';
-import { NavigationModule } from './navigation/navigation.module';
-import { ActivityModule } from './activity/activity.module';
+import { LoginModule } from './modules/login/login.module';
+import { DashboardModule } from './modules/dashboard/dashboard.module';
+import { ButtonModule } from './core/button/button.module';
+import { NavigationModule } from './core/navigation/navigation.module';
+import { ActivityModule } from './modules/activity/activity.module';
 import { DialogsModule } from './dialogs/dialogs.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { ProfileModule } from './profile/profile.module';
@@ -34,7 +33,6 @@ import { ProfileModule } from './profile/profile.module';
     DialogsModule,
     LoginModule,
     ButtonModule,
-    EnterDataModule,
     MatProgressSpinnerModule,
     DashboardModule,
     ActivityModule,

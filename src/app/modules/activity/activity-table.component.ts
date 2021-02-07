@@ -7,7 +7,7 @@ import {
   CollectionReference,
   Query
 } from '@angular/fire/firestore';
-import { Item } from '../models/item.interface';
+import { Item } from '../../core/models/item.interface';
 import { Observable } from 'rxjs';
 import {
   map,
@@ -17,8 +17,8 @@ import {
   BreakpointObserver,
   Breakpoints
 } from '@angular/cdk/layout';
-import { ItemService } from '../services/item.service';
-import { AuthService } from '../services/auth.service';
+import { ItemService } from '../../core/services/item.service';
+import { AuthService } from '../../core/services/auth.service';
 
 @Component({
   selector:    'fin-activity',

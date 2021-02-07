@@ -3,7 +3,6 @@ import {
   RouterModule,
   Routes
 } from '@angular/router';
-import { ProfileComponent } from './profile/profile.component';
 
 
 const routes: Routes = [
@@ -22,7 +21,7 @@ const routes: Routes = [
   },
   {
     path:      'profile',
-    component: ProfileComponent
+    loadChildren: () => import('./modules/profile/profile.module').then(m => m.ProfileModule)
   }
 ];
 

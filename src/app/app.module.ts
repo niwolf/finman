@@ -16,7 +16,7 @@ import { NavigationModule } from './core/navigation/navigation.module';
 import { ActivityModule } from './modules/activity/activity.module';
 import { DialogsModule } from './dialogs/dialogs.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
-import { ProfileModule } from './profile/profile.module';
+import { ProfileModule } from './modules/profile/profile.module';
 
 @NgModule({
   declarations: [

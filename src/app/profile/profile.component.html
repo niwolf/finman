@@ -9,12 +9,11 @@
       <mat-card-content>
         <p>
           <ng-container *ngIf="hasProfilePic; else avatar">
-            <img class="photo" src="https://avatars.githubusercontent.com/u/47743312?s=400&u=a9baed21a434e1f19befb73da959b4798f1fbd4a&v=4"
-                 alt="Profile photo">
+            <<img [src]="userImg" alt="Profile photo">
           </ng-container>
         </p>
         <p class="content">
-          <b>Email: </b>{{ user }}
+          <b>Email: </b>{{ userMail }}
         </p>
       </mat-card-content>
     </mat-card>

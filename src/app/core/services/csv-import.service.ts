@@ -26,7 +26,6 @@ import {
 import { ItemService } from './item.service';
 import { AuthService } from './auth.service';
 import * as md5 from 'md5';
-import * as moment from 'moment';
 import { ImportPreviewDialogComponent } from '../../dialogs/import-preview-dialog/import-preview-dialog.component';
 import firebase from 'firebase/app';
 import Timestamp = firebase.firestore.Timestamp;
@@ -89,7 +88,10 @@ export class CsvImportService {
 
     return result.data.slice(0, result.data.length - 1).map((entry: string[]) =>
     {
-      const date: Date = moment(entry[dateIndex], 'DD.MM.YY').toDate();
+      const pattern = /(\d{2})\.(\d{2})\.(\d{2})/;
+      const dateStr: string = entry[dateIndex];
+      const matches = pattern.exec(dateStr);
+      const date: Date = new Date(+matches[3], +matches[2], +matches[1]);
       const timestamp: Timestamp = Timestamp.fromDate(date);
       return {
         importId: md5(entry.toString()),

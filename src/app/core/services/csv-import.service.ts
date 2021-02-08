@@ -89,7 +89,9 @@ export class CsvImportService {
     return result.data.slice(0, result.data.length - 1).map((entry: string[]) =>
     {
       const pattern = /(\d{2})\.(\d{2})\.(\d{2})/;
-      const date: Date = new Date(entry[dateIndex].replace(pattern, '$3-$2-$1'));
+      const dateStr: string = entry[dateIndex];
+      const matches = pattern.exec(dateStr);
+      const date: Date = new Date(+matches[3], +matches[2], +matches[1]);
       const timestamp: Timestamp = Timestamp.fromDate(date);
       return {
         importId: md5(entry.toString()),

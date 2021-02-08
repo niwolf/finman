@@ -1,15 +1,13 @@
-mat-card
-{
-  margin: 100px auto;
-  width: 300px;
-  
-  mat-form-field, button
-  {
-    width: 100%;
-  }
+mat-card {
+    margin: 100px auto;
+    width: 300px;
+
+    mat-form-field,
+    button {
+        width: 100%;
+    }
 }
 
-mat-progress-spinner
-{
-  margin: 0 auto;
+mat-progress-spinner {
+    margin: 0 auto;
 }

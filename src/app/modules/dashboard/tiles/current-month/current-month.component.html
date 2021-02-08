@@ -1,18 +1,18 @@
 <table *ngIf="currentMonth$ | async as currentMonth">
-  <tbody>
-    <tr>
-      <td>Einnahmen</td>
-      <td>{{ currentMonth.revenues | currency:'EUR' }}</td>
-    </tr>
-    <tr>
-      <td>Ausgaben</td>
-      <td>{{ currentMonth.expenses | currency:'EUR' }}</td>
-    </tr>
-  </tbody>
-  <tfoot>
-    <tr>
-      <td>Saldo</td>
-      <td [finColor]="currentMonth.balance >= 0">{{ currentMonth.balance | currency:'EUR' }}</td>
-    </tr>
-  </tfoot>
+    <tbody>
+        <tr>
+            <td>Einnahmen</td>
+            <td>{{ currentMonth.revenues | currency: 'EUR' }}</td>
+        </tr>
+        <tr>
+            <td>Ausgaben</td>
+            <td>{{ currentMonth.expenses | currency: 'EUR' }}</td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td>Saldo</td>
+            <td [finColor]="currentMonth.balance >= 0">{{ currentMonth.balance | currency: 'EUR' }}</td>
+        </tr>
+    </tfoot>
 </table>

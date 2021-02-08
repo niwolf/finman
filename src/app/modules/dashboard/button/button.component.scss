@@ -1,16 +1,14 @@
 [mat-mini-fab] {
-  margin-bottom: 15px;
+    margin-bottom: 15px;
 }
 
-button[mat-fab]
-{
-  transition: 0.2s ease;
-  &.toggled {
-    transform: rotate(45deg);
-  }
+button[mat-fab] {
+    transition: 0.2s ease;
+    &.toggled {
+        transform: rotate(45deg);
+    }
 }
 
-.d-grid
-{
-  display: grid;
+.d-grid {
+    display: grid;
 }

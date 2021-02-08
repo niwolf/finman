@@ -4,16 +4,8 @@ import { FirestoreDatePipe } from './pipes';
 import { ColorDirective } from './directives';
 
 @NgModule({
-  imports: [
-    CommonModule
-  ],
-  declarations: [
-    FirestoreDatePipe,
-    ColorDirective
-  ],
-  exports: [
-    FirestoreDatePipe,
-    ColorDirective
-  ]
+    imports: [CommonModule],
+    declarations: [FirestoreDatePipe, ColorDirective],
+    exports: [FirestoreDatePipe, ColorDirective]
 })
-export class FinCommonModule { }
+export class FinCommonModule {}

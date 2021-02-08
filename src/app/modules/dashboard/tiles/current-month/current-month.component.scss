@@ -1,17 +1,17 @@
 table {
-  width: 100%;
+    width: 100%;
 
-  tr {
-    td:first-child {
-      text-align: left;
+    tr {
+        td:first-child {
+            text-align: left;
+        }
+
+        td:nth-child(2) {
+            text-align: right;
+        }
     }
 
-    td:nth-child(2) {
-      text-align: right;
+    tfoot {
+        font-weight: bold;
     }
-  }
-
-  tfoot {
-    font-weight: bold;
-  }
 }

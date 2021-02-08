@@ -1,22 +1,24 @@
 table {
-  width: 500px;
+    width: 500px;
 }
 
 // reset padding of the first cell
-td.mat-cell:first-of-type, td.mat-footer-cell:first-of-type, th.mat-header-cell:first-of-type {
-  padding-left: 0;
+td.mat-cell:first-of-type,
+td.mat-footer-cell:first-of-type,
+th.mat-header-cell:first-of-type {
+    padding-left: 0;
 }
 
 .mat-table-sticky:first-child {
-  border-right: 1px solid #e0e0e0;
+    border-right: 1px solid #e0e0e0;
 }
 
 :host::ng-deep .mat-column-select {
-  width: 30px;
+    width: 30px;
 }
 
 .mat-column-title {
-  mat-form-field{
-    width: 95%;
-  }
+    mat-form-field {
+        width: 95%;
+    }
 }

@@ -1,57 +1,53 @@
 <mat-toolbar color="primary">
-  <span class="title">finman</span>
+    <span class="title">finman</span>
 
-  <div *ngIf="!(isMobile$ | async)" class="slogan">
-    <span>Dein Finanz Manager</span>
-  </div>
+    <div *ngIf="!(isMobile$ | async)" class="slogan">
+        <span>Dein Finanz Manager</span>
+    </div>
 
-  <img [src]="userImg" class="user-image" alt="user image" [matMenuTriggerFor]="userMenu">
+    <img [src]="userImg" class="user-image" alt="user image" [matMenuTriggerFor]="userMenu" />
 </mat-toolbar>
 
 <mat-menu #userMenu="matMenu">
-  <button mat-menu-item routerLink="/profile">Profil</button>
-  <button mat-menu-item (click)="signOut()">Ausloggen</button>
+    <button mat-menu-item routerLink="/profile">Profil</button>
+    <button mat-menu-item (click)="signOut()">Ausloggen</button>
 </mat-menu>
 
 <!-- navigation rail for desktop and tablet devices -->
 <ng-container *ngIf="!(isMobile$ | async)">
-  <mat-sidenav-container class="sidenav-container">
-    <mat-sidenav
-      class="sidenav"
-      [attr.role]="'navigation'"
-      mode="side"
-      opened>
-      <ng-template [ngTemplateOutlet]="links"></ng-template>
-    </mat-sidenav>
-    <mat-sidenav-content>
-      <ng-template [ngTemplateOutlet]="content"></ng-template>
-    </mat-sidenav-content>
-  </mat-sidenav-container>
+    <mat-sidenav-container class="sidenav-container">
+        <mat-sidenav class="sidenav" [attr.role]="'navigation'" mode="side" opened>
+            <ng-template [ngTemplateOutlet]="links"></ng-template>
+        </mat-sidenav>
+        <mat-sidenav-content>
+            <ng-template [ngTemplateOutlet]="content"></ng-template>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
 </ng-container>
 
 <!-- bottom navigation for mobile -->
 <ng-container *ngIf="isMobile$ | async">
-  <ng-template [ngTemplateOutlet]="content"></ng-template>
-  <mat-toolbar color="primary" class="bottom-nav">
-    <ng-template [ngTemplateOutlet]="links"></ng-template>
-  </mat-toolbar>
+    <ng-template [ngTemplateOutlet]="content"></ng-template>
+    <mat-toolbar color="primary" class="bottom-nav">
+        <ng-template [ngTemplateOutlet]="links"></ng-template>
+    </mat-toolbar>
 </ng-container>
 
 <ng-template #links>
-  <a routerLink="/dashboard" routerLinkActive="active" #rlaDashboard="routerLinkActive" mat-button class="nav-item">
-    <mat-icon [fontSet]="rlaDashboard.isActive ? 'material-icons' : 'material-icons-outlined'">dashboard</mat-icon>
-    <div>Dashboard</div>
-  </a>
-  <a routerLink="/activity" routerLinkActive="active" #rlaActivity="routerLinkActive" mat-button class="nav-item">
-    <mat-icon [fontSet]="rlaActivity.isActive ? 'material-icons' : 'material-icons-outlined'">view_list</mat-icon>
-    <div>Umsätze</div>
-  </a>
-  <a routerLink="/statistics" routerLinkActive="active" #rlaStatistics="routerLinkActive" mat-button class="nav-item">
-    <mat-icon [fontSet]="rlaStatistics.isActive ? 'material-icons' : 'material-icons-outlined'">pie_chart</mat-icon>
-    <div>Statistiken</div>
-  </a>
+    <a routerLink="/dashboard" routerLinkActive="active" #rlaDashboard="routerLinkActive" mat-button class="nav-item">
+        <mat-icon [fontSet]="rlaDashboard.isActive ? 'material-icons' : 'material-icons-outlined'">dashboard</mat-icon>
+        <div>Dashboard</div>
+    </a>
+    <a routerLink="/activity" routerLinkActive="active" #rlaActivity="routerLinkActive" mat-button class="nav-item">
+        <mat-icon [fontSet]="rlaActivity.isActive ? 'material-icons' : 'material-icons-outlined'">view_list</mat-icon>
+        <div>Umsätze</div>
+    </a>
+    <a routerLink="/statistics" routerLinkActive="active" #rlaStatistics="routerLinkActive" mat-button class="nav-item">
+        <mat-icon [fontSet]="rlaStatistics.isActive ? 'material-icons' : 'material-icons-outlined'">pie_chart</mat-icon>
+        <div>Statistiken</div>
+    </a>
 </ng-template>
 
 <ng-template #content>
-  <ng-content></ng-content>
+    <ng-content></ng-content>
 </ng-template>

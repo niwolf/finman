@@ -7,24 +7,28 @@ import { Budget } from '../models/budget.interface';
 import { AngularFirestoreDocument } from '@angular/fire/firestore/document/document';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class BudgetService {
-  constructor(private afs: AngularFirestore) {}
+    constructor(private afs: AngularFirestore) {}
 
-  public getInitialBudget(userId: string): Observable<Budget> {
-    return this.getUserDoc(userId).get().pipe(map(snapshot => snapshot.get('initialBudget')));
-  }
+    public getInitialBudget(userId: string): Observable<Budget> {
+        return this.getUserDoc(userId)
+            .get()
+            .pipe(map((snapshot) => snapshot.get('initialBudget')));
+    }
 
-  public setInitialBudget(userId: string, budget: Budget): Promise<void> {
-    return this.getUserDoc(userId).update({initialBudget: budget});
-  }
+    public setInitialBudget(userId: string, budget: Budget): Promise<void> {
+        return this.getUserDoc(userId).update({ initialBudget: budget });
+    }
 
-  public getCurrentBudget(userId: string): Observable<Budget> {
-    return this.getUserDoc(userId).get().pipe(map(snapshot => snapshot.get('currentBudget')));
-  }
+    public getCurrentBudget(userId: string): Observable<Budget> {
+        return this.getUserDoc(userId)
+            .get()
+            .pipe(map((snapshot) => snapshot.get('currentBudget')));
+    }
 
-  private getUserDoc(userId: string): AngularFirestoreDocument<UserData> {
-    return this.afs.doc<UserData>(`/users/${userId}`);
-  }
+    private getUserDoc(userId: string): AngularFirestoreDocument<UserData> {
+        return this.afs.doc<UserData>(`/users/${userId}`);
+    }
 }

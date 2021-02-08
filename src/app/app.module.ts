@@ -19,6 +19,10 @@ import { NavigationModule } from './core/navigation/navigation.module';
 import { ActivityModule } from './modules/activity/activity.module';
 import { DialogsModule } from './dialogs/dialogs.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { registerLocaleData } from '@angular/common';
+import localeDe from '@angular/common/locales/de';
+
+registerLocaleData(localeDe);
 
 @NgModule({
   declarations: [

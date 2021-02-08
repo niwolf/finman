@@ -14,6 +14,7 @@ import { BalanceComponent } from './tiles/balance/balance.component';
 import { StatsComponent } from './tiles/stats/stats.component';
 import { CurrentMonthComponent } from './tiles/current-month/current-month.component';
 import { FinCommonModule } from '@common/common.module';
+import { ButtonModule } from './button/button.module';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { FinCommonModule } from '@common/common.module';
     MatIconModule,
     MatButtonModule,
     LayoutModule,
-    ActivityTableModule
+    ActivityTableModule,
+    ButtonModule
   ]
 })
 export class DashboardModule { }

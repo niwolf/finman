@@ -43,8 +43,4 @@ export class NavigationComponent {
   public signOut(): void {
     this.auth.signOut().subscribe();
   }
-
-  public routeToProfile(): void {
-    this.router.navigateByUrl('/profile');
-  }
 }

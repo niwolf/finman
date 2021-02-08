@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ActivityTableComponent } from '@shared/activity-table/activity-table.component';
+import { ActivityComponent } from './activity.component';
 
 
 const routes: Routes = [
   {
     path: '',
-    component: ActivityTableComponent
+    component: ActivityComponent
   }
 ];
 

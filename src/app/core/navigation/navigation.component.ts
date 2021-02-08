@@ -13,7 +13,6 @@ import {
 } from 'rxjs/operators';
 import * as md5 from 'md5';
 import { AuthService } from '../services/auth.service';
-import { Router } from '@angular/router';
 import { User } from '@firebase/auth-types';
 
 @Component({
@@ -36,8 +35,7 @@ export class NavigationComponent {
 
   constructor(
     private breakpointObserver: BreakpointObserver,
-    private auth: AuthService,
-    private router: Router
+    private auth: AuthService
   ) {}
 
   public signOut(): void {

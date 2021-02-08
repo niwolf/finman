@@ -9,6 +9,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v1
+
       - name: Cache node modules
         uses: actions/cache@v2
         env:

@@ -3,7 +3,7 @@ import {
   HostBinding
 } from '@angular/core';
 import { ConnectedPosition } from '@angular/cdk/overlay';
-import { CsvImportService } from '../services/csv-import.service';
+import { CsvImportService } from '@core/services/csv-import.service';
 
 @Component({
   selector:    'fin-button',

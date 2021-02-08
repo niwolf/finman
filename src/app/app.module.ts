@@ -13,10 +13,8 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from 'src/environments/environment';
 import { LoginModule } from './modules/login/login.module';
-import { DashboardModule } from './modules/dashboard/dashboard.module';
-import { ButtonModule } from './core/button/button.module';
+import { ButtonModule } from './modules/dashboard/button/button.module';
 import { NavigationModule } from './core/navigation/navigation.module';
-import { ActivityModule } from './modules/activity/activity.module';
 import { DialogsModule } from './dialogs/dialogs.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { registerLocaleData } from '@angular/common';
@@ -40,8 +38,6 @@ registerLocaleData(localeDe);
     LoginModule,
     ButtonModule,
     MatProgressSpinnerModule,
-    DashboardModule,
-    ActivityModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'de' }],

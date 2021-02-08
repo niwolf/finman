@@ -1,7 +1,9 @@
 <mat-toolbar color="primary">
   <span class="title">finman</span>
 
-  <span class="slogan">Dein Finanz Manager</span>
+  <div *ngIf="!(isMobile$ | async)" class="slogan">
+    <span>Dein Finanz Manager</span>
+  </div>
 
   <img [src]="userImg" class="user-image" alt="user image" [matMenuTriggerFor]="userMenu">
 </mat-toolbar>

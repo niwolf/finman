@@ -8,9 +8,7 @@
       </mat-card-header>
       <mat-card-content>
         <p>
-          <ng-container *ngIf="hasProfilePic; else avatar">
-            <img [src]="userImg" alt="Profile photo">
-          </ng-container>
+          <img [src]="userPic" class="photo" alt="Profile photo">
         </p>
         <p class="content">
           <b>Email: </b>{{ userMail }}

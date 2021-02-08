@@ -26,6 +26,10 @@ const routes: Routes = [
   {
     path: 'enterData',
     loadChildren: () => import('./modules/enter-data/enter-data.module').then(m => m.EnterDataModule)
+  },
+  {
+    path: 'profile',
+    loadChildren: () => import('./modules/profile/profile.module').then(m => m.ProfileModule)
   }
 ];
 

@@ -1,26 +1,28 @@
 name: CI
 
-on: [ pull_request ]
+on: [pull_request]
 
 jobs:
-  build:
+    build:
+        runs-on: ubuntu-latest
 
-    runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v1
 
-    steps:
-      - uses: actions/checkout@v1
+            - name: Cache node modules
+              uses: actions/cache@v2
+              env:
+                  cache-name: cache-node-modules
+              with:
+                  # npm cache files are stored in `~/.npm` on Linux/macOS
+                  path: ./node_modules
+                  key: ${{ hashFiles('**/package-lock.json') }}
 
-      - name: Cache node modules
-        uses: actions/cache@v2
-        env:
-          cache-name: cache-node-modules
-        with:
-          # npm cache files are stored in `~/.npm` on Linux/macOS
-          path: ./node_modules
-          key: ${{ hashFiles('**/package-lock.json') }}
+            - name: Install Dependencies
+              run: npm install
 
-      - name: Install Dependencies
-        run: npm install
+            - name: build
+              run: npm run build -- --configuration=ci
 
-      - name: build
-        run: npm run build -- --configuration=ci
+            - name: prettier
+              run: npm run prettier

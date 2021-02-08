@@ -9,7 +9,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { LayoutModule } from '@angular/cdk/layout';
-import { ActivityModule } from '../activity/activity.module';
+import { ActivityTableModule } from '@shared/activity-table';
 import { BalanceComponent } from './tiles/balance/balance.component';
 import { StatsComponent } from './tiles/stats/stats.component';
 import { CurrentMonthComponent } from './tiles/current-month/current-month.component';
@@ -33,7 +33,7 @@ import { FinCommonModule } from '@common/common.module';
     MatIconModule,
     MatButtonModule,
     LayoutModule,
-    ActivityModule
+    ActivityTableModule
   ]
 })
 export class DashboardModule { }

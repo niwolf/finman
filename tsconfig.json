@@ -19,7 +19,9 @@
       "dom"
     ],
     "paths": {
-      "@common/*": ["./src/app/common/*"]
+      "@common/*": ["./src/app/common/*"],
+      "@core/*": ["./src/app/core/*"],
+      "@shared/*": ["./src/app/shared/*"]
     }
   },
   "angularCompilerOptions": {

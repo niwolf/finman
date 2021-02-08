@@ -7,7 +7,7 @@ import {
   CollectionReference,
   Query
 } from '@angular/fire/firestore';
-import { Item } from '../../core/models/item.interface';
+import { Item } from '@core/models/item.interface';
 import { Observable } from 'rxjs';
 import {
   map,
@@ -17,11 +17,11 @@ import {
   BreakpointObserver,
   Breakpoints
 } from '@angular/cdk/layout';
-import { ItemService } from '../../core/services/item.service';
-import { AuthService } from '../../core/services/auth.service';
+import { ItemService } from '@core/services/item.service';
+import { AuthService } from '@core/services/auth.service';
 
 @Component({
-  selector:    'fin-activity',
+  selector:    'fin-activity-table',
   templateUrl: './activity-table.component.html',
   styleUrls:   ['./activity-table.component.scss']
 })

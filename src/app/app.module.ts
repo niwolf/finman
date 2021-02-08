@@ -1,5 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {
+  LOCALE_ID,
+  NgModule
+} from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,13 +13,14 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from 'src/environments/environment';
 import { LoginModule } from './modules/login/login.module';
-import { DashboardModule } from './modules/dashboard/dashboard.module';
-import { ButtonModule } from './core/button/button.module';
+import { ButtonModule } from './modules/dashboard/button/button.module';
 import { NavigationModule } from './core/navigation/navigation.module';
-import { ActivityModule } from './modules/activity/activity.module';
 import { DialogsModule } from './dialogs/dialogs.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
-import { ProfileModule } from './modules/profile/profile.module';
+import { registerLocaleData } from '@angular/common';
+import localeDe from '@angular/common/locales/de';
+
+registerLocaleData(localeDe);
 
 @NgModule({
   declarations: [
@@ -34,12 +38,9 @@ import { ProfileModule } from './modules/profile/profile.module';
     LoginModule,
     ButtonModule,
     MatProgressSpinnerModule,
-    DashboardModule,
-    ActivityModule,
-    ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
-    ProfileModule
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
-  providers: [],
+  providers: [{ provide: LOCALE_ID, useValue: 'de' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

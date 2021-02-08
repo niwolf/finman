@@ -3,13 +3,6 @@
   margin: 0;
 }
 
-.mat-h1
-{
-  text-align: center;
-  margin-top: 10px;
-  margin-bottom: 0;
-}
-
 .dashboard-card {
   position: absolute;
   top: 15px;
@@ -26,4 +19,16 @@
 
 .dashboard-card-content {
   text-align: center;
+}
+
+.addButton
+{
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+
+  &.mobile {
+    bottom: 76px;
+  }
 }

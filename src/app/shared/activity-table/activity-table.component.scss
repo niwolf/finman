@@ -1,24 +1,24 @@
 .mat-cell,
 .mat-header-cell {
-    padding: 0px 10px;
+  padding: 0px 10px;
 }
 
 .mat-column-title {
-    width: 100%;
-    text-align: left;
+  width: 100%;
+  text-align: left;
 }
 
 .mat-column-value {
-    text-align: right;
+  text-align: right;
 }
 
 .mat-column-origin {
-    text-align: center;
+  text-align: center;
 }
 
 .dense {
-    .mat-header-cell,
-    .mat-cell {
-        padding: 0px 4px;
-    }
+  .mat-header-cell,
+  .mat-cell {
+    padding: 0px 4px;
+  }
 }

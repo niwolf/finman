@@ -13,20 +13,20 @@ import { FinCommonModule } from '@common/common.module';
 import { MatTableExtensionsModule } from 'angular-material-extensions';
 
 @NgModule({
-    imports: [
-        CommonModule,
-        FinCommonModule,
-        ReactiveFormsModule,
-        MatDialogModule,
-        MatInputModule,
-        MatButtonModule,
-        MatTableModule,
-        FormsModule,
-        MatCheckboxModule,
-        MatTableExtensionsModule
-    ],
-    declarations: [InitialBudgetDialogComponent, ImportPreviewDialogComponent],
-    exports: [InitialBudgetDialogComponent, ImportPreviewDialogComponent],
-    entryComponents: [InitialBudgetDialogComponent, ImportPreviewDialogComponent]
+  imports: [
+    CommonModule,
+    FinCommonModule,
+    ReactiveFormsModule,
+    MatDialogModule,
+    MatInputModule,
+    MatButtonModule,
+    MatTableModule,
+    FormsModule,
+    MatCheckboxModule,
+    MatTableExtensionsModule,
+  ],
+  declarations: [InitialBudgetDialogComponent, ImportPreviewDialogComponent],
+  exports: [InitialBudgetDialogComponent, ImportPreviewDialogComponent],
+  entryComponents: [InitialBudgetDialogComponent, ImportPreviewDialogComponent],
 })
 export class DialogsModule {}

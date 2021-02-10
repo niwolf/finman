@@ -1,36 +1,48 @@
 <ng-template
-    cdkConnectedOverlay
-    cdkConnectedOverlayHasBackdrop
-    [cdkConnectedOverlayOrigin]="trigger"
-    [cdkConnectedOverlayOpen]="toggled"
-    [cdkConnectedOverlayPositions]="positions"
-    (backdropClick)="toggle()"
+  cdkConnectedOverlay
+  cdkConnectedOverlayHasBackdrop
+  [cdkConnectedOverlayOrigin]="trigger"
+  [cdkConnectedOverlayOpen]="toggled"
+  [cdkConnectedOverlayPositions]="positions"
+  (backdropClick)="toggle()"
 >
-    <div class="d-grid">
-        <a mat-mini-fab matTooltip="Manuell" matTooltipPosition="before" finTooltipShow routerLink="/enterData">
-            <mat-icon fontSet="material-icons-outlined"> keyboard </mat-icon>
-        </a>
-        <button
-            mat-mini-fab
-            matTooltip="Import"
-            matTooltipPosition="before"
-            finTooltipShow
-            (click)="toggle(); fileInput.click()"
-        >
-            <mat-icon> file_upload </mat-icon>
-        </button>
-    </div>
+  <div class="d-grid">
+    <a
+      mat-mini-fab
+      matTooltip="Manuell"
+      matTooltipPosition="before"
+      finTooltipShow
+      routerLink="/enterData"
+    >
+      <mat-icon fontSet="material-icons-outlined"> keyboard </mat-icon>
+    </a>
+    <button
+      mat-mini-fab
+      matTooltip="Import"
+      matTooltipPosition="before"
+      finTooltipShow
+      (click)="toggle(); fileInput.click()"
+    >
+      <mat-icon> file_upload </mat-icon>
+    </button>
+  </div>
 </ng-template>
 <button
-    mat-fab
-    cdkOverlayOrigin
-    #trigger="cdkOverlayOrigin"
-    [matTooltip]="toggled ? null : 'Neuer Eintrag'"
-    matTooltipPosition="before"
-    [class.toggled]="toggled"
-    (click)="toggle()"
+  mat-fab
+  cdkOverlayOrigin
+  #trigger="cdkOverlayOrigin"
+  [matTooltip]="toggled ? null : 'Neuer Eintrag'"
+  matTooltipPosition="before"
+  [class.toggled]="toggled"
+  (click)="toggle()"
 >
-    <mat-icon>add</mat-icon>
+  <mat-icon>add</mat-icon>
 </button>
 
-<input #fileInput type="file" accept="text/csv" hidden (input)="import(fileInput.files)" />
+<input
+  #fileInput
+  type="file"
+  accept="text/csv"
+  hidden
+  (input)="import(fileInput.files)"
+/>

@@ -10,17 +10,17 @@ import { NavigationComponent } from './navigation.component';
 import { RouterModule } from '@angular/router';
 
 @NgModule({
-    declarations: [NavigationComponent],
-    exports: [NavigationComponent],
-    imports: [
-        CommonModule,
-        RouterModule,
-        MatToolbarModule,
-        MatSidenavModule,
-        MatListModule,
-        MatMenuModule,
-        MatIconModule,
-        MatButtonModule
-    ]
+  declarations: [NavigationComponent],
+  exports: [NavigationComponent],
+  imports: [
+    CommonModule,
+    RouterModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatListModule,
+    MatMenuModule,
+    MatIconModule,
+    MatButtonModule,
+  ],
 })
 export class NavigationModule {}

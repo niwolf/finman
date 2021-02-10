@@ -5,7 +5,7 @@ import { StatisticsRoutingModule } from './statistics-routing.module';
 import { StatisticsComponent } from './statistics.component';
 
 @NgModule({
-    declarations: [StatisticsComponent],
-    imports: [CommonModule, StatisticsRoutingModule]
+  declarations: [StatisticsComponent],
+  imports: [CommonModule, StatisticsRoutingModule],
 })
 export class StatisticsModule {}

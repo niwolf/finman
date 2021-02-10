@@ -4,7 +4,7 @@ import { ActivityTableModule } from '@shared/activity-table';
 import { ActivityComponent } from './activity.component';
 
 @NgModule({
-    imports: [ActivityRoutingModule, ActivityTableModule],
-    declarations: [ActivityComponent]
+  imports: [ActivityRoutingModule, ActivityTableModule],
+  declarations: [ActivityComponent],
 })
 export class ActivityModule {}

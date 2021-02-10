@@ -2,74 +2,74 @@
 @import '~@angular/material/theming';
 
 mat-toolbar {
-    display: flex;
+  display: flex;
 
-    .title {
-        flex: 1 1 auto;
-    }
+  .title {
+    flex: 1 1 auto;
+  }
 
-    .slogan {
-        flex: 1 1 auto;
-    }
+  .slogan {
+    flex: 1 1 auto;
+  }
 
-    .user-image {
-        height: 40px;
-        width: 40px;
-        border-radius: 40px;
-        &:hover {
-            cursor: pointer;
-        }
+  .user-image {
+    height: 40px;
+    width: 40px;
+    border-radius: 40px;
+    &:hover {
+      cursor: pointer;
     }
+  }
 }
 
 .sidenav-container {
-    height: calc(100% - 64px);
+  height: calc(100% - 64px);
 }
 
 .sidenav {
-    width: 72px; // has to be "dp" aka "Density-independent pixels"
-    padding-top: 8px;
+  width: 72px; // has to be "dp" aka "Density-independent pixels"
+  padding-top: 8px;
 
-    .nav-item {
-        height: 72px;
-        width: 72px;
-        line-height: 16px;
-        padding: 14px 16px 16px;
-        opacity: 0.6;
+  .nav-item {
+    height: 72px;
+    width: 72px;
+    line-height: 16px;
+    padding: 14px 16px 16px;
+    opacity: 0.6;
 
-        div {
-            margin-left: -16px;
-            width: 72px;
-        }
-
-        &.active {
-            opacity: 1;
-            color: mat-color($mat-indigo, 500);
-        }
+    div {
+      margin-left: -16px;
+      width: 72px;
     }
+
+    &.active {
+      opacity: 1;
+      color: mat-color($mat-indigo, 500);
+    }
+  }
 }
 
 .bottom-nav {
-    position: fixed;
-    bottom: 0;
-    height: 56px;
-    display: flex;
-    justify-content: space-evenly;
+  position: fixed;
+  bottom: 0;
+  height: 56px;
+  display: flex;
+  justify-content: space-evenly;
 
-    .nav-item {
-        min-width: 80px; // has to be "dp" aka "Density-independent pixels"
-        max-width: 168px; // has to be "dp" aka "Density-independent pixels"
-        flex-grow: 1;
-        line-height: 16px;
-        padding: 8px 12px 12px;
-        opacity: 0.6;
+  .nav-item {
+    min-width: 80px; // has to be "dp" aka "Density-independent pixels"
+    max-width: 168px; // has to be "dp" aka "Density-independent pixels"
+    flex-grow: 1;
+    line-height: 16px;
+    padding: 8px 12px 12px;
+    opacity: 0.6;
 
-        div {
-            line-height: 12px;
-        }
-
-        &.active {
-            opacity: 1;
-        }
+    div {
+      line-height: 12px;
     }
+
+    &.active {
+      opacity: 1;
+    }
+  }
 }

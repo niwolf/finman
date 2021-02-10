@@ -10,8 +10,15 @@ import { ButtonComponent } from './button.component';
 import { TooltipShowDirective } from './tooltip-show.directive';
 
 @NgModule({
-    declarations: [ButtonComponent, TooltipShowDirective],
-    imports: [CommonModule, RouterModule, MatButtonModule, MatIconModule, MatTooltipModule, OverlayModule],
-    exports: [ButtonComponent]
+  declarations: [ButtonComponent, TooltipShowDirective],
+  imports: [
+    CommonModule,
+    RouterModule,
+    MatButtonModule,
+    MatIconModule,
+    MatTooltipModule,
+    OverlayModule,
+  ],
+  exports: [ButtonComponent],
 })
 export class ButtonModule {}

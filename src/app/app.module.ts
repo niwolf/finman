@@ -20,22 +20,24 @@ import localeDe from '@angular/common/locales/de';
 registerLocaleData(localeDe);
 
 @NgModule({
-    declarations: [AppComponent],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        AngularFireModule.initializeApp(environment.firebase),
-        AngularFireAuthModule,
-        AngularFirestoreModule,
-        NavigationModule,
-        DialogsModule,
-        LoginModule,
-        ButtonModule,
-        MatProgressSpinnerModule,
-        ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
-    ],
-    providers: [{ provide: LOCALE_ID, useValue: 'de' }],
-    bootstrap: [AppComponent]
+  declarations: [AppComponent],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
+    AngularFirestoreModule,
+    NavigationModule,
+    DialogsModule,
+    LoginModule,
+    ButtonModule,
+    MatProgressSpinnerModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+    }),
+  ],
+  providers: [{ provide: LOCALE_ID, useValue: 'de' }],
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

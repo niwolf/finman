@@ -3,12 +3,12 @@ import { Inject, LOCALE_ID, Pipe, PipeTransform } from '@angular/core';
 import { Timestamp } from '@firebase/firestore-types';
 
 @Pipe({
-    name: 'firestoreDate'
+  name: 'firestoreDate',
 })
 export class FirestoreDatePipe implements PipeTransform {
-    constructor(@Inject(LOCALE_ID) private locale: string) {}
+  constructor(@Inject(LOCALE_ID) private locale: string) {}
 
-    transform(timestamp: Timestamp, format?: string): string {
-        return formatDate(timestamp.toDate(), format || 'medium', this.locale);
-    }
+  transform(timestamp: Timestamp, format?: string): string {
+    return formatDate(timestamp.toDate(), format || 'medium', this.locale);
+  }
 }

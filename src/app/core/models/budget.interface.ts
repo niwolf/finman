@@ -1,4 +1,4 @@
 export interface Budget {
-    cash: number;
-    account: number;
+  cash: number;
+  account: number;
 }

@@ -9,44 +9,50 @@ import { AuthService } from './core/services/auth.service';
 import { BudgetService } from './core/services/budget.service';
 
 @Component({
-    selector: 'fin-app',
-    templateUrl: './app.component.html',
-    styleUrls: ['./app.component.scss']
+  selector: 'fin-app',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-    user$: Observable<User> = merge(of(JSON.parse(localStorage.getItem('user')) ?? undefined), this.auth.user);
+  user$: Observable<User> = merge(
+    of(JSON.parse(localStorage.getItem('user')) ?? undefined),
+    this.auth.user
+  );
 
-    constructor(
-        private auth: AuthService,
-        private budgetService: BudgetService,
-        private route: ActivatedRoute,
-        private dialog: MatDialog
-    ) {}
+  constructor(
+    private auth: AuthService,
+    private budgetService: BudgetService,
+    private route: ActivatedRoute,
+    private dialog: MatDialog
+  ) {}
 
-    public ngOnInit(): void {
-        this.auth.user
-            .pipe(
-                filter((user) => !!user),
-                switchMap((user) => {
-                    const uid: string = user.uid;
-                    return this.budgetService.getInitialBudget(uid).pipe(
-                        tap((initialBudget) => {
-                            if (!initialBudget) {
-                                const dialogRef = this.dialog.open(InitialBudgetDialogComponent, {
-                                    disableClose: true,
-                                    autoFocus: true
-                                });
+  public ngOnInit(): void {
+    this.auth.user
+      .pipe(
+        filter((user) => !!user),
+        switchMap((user) => {
+          const uid: string = user.uid;
+          return this.budgetService.getInitialBudget(uid).pipe(
+            tap((initialBudget) => {
+              if (!initialBudget) {
+                const dialogRef = this.dialog.open(
+                  InitialBudgetDialogComponent,
+                  {
+                    disableClose: true,
+                    autoFocus: true,
+                  }
+                );
 
-                                dialogRef.afterClosed().subscribe((result) => {
-                                    if (result) {
-                                        this.budgetService.setInitialBudget(uid, result);
-                                    }
-                                });
-                            }
-                        })
-                    );
-                })
-            )
-            .subscribe();
-    }
+                dialogRef.afterClosed().subscribe((result) => {
+                  if (result) {
+                    this.budgetService.setInitialBudget(uid, result);
+                  }
+                });
+              }
+            })
+          );
+        })
+      )
+      .subscribe();
+  }
 }

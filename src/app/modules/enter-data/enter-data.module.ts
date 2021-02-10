@@ -13,20 +13,20 @@ import { EnterDataComponent } from './enter-data.component';
 import { EnterDataRoutingModule } from './enter-data-routing.module';
 
 @NgModule({
-    declarations: [EnterDataComponent],
-    imports: [
-        CommonModule,
-        EnterDataRoutingModule,
-        ReactiveFormsModule,
-        LayoutModule,
-        MatButtonModule,
-        MatSelectModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatDatepickerModule,
-        MatNativeDateModule,
-        MatCardModule
-    ],
-    exports: [EnterDataComponent]
+  declarations: [EnterDataComponent],
+  imports: [
+    CommonModule,
+    EnterDataRoutingModule,
+    ReactiveFormsModule,
+    LayoutModule,
+    MatButtonModule,
+    MatSelectModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatCardModule,
+  ],
+  exports: [EnterDataComponent],
 })
 export class EnterDataModule {}

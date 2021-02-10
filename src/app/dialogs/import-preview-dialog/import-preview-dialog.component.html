@@ -1,30 +1,41 @@
 <h1 mat-dialog-title>Importvorschau</h1>
 <div mat-dialog-content>
-    <table mat-table [dataSource]="data">
-        <mat-selection-column name="select" [selection]="selection"></mat-selection-column>
-        <ng-container matColumnDef="date">
-            <th mat-header-cell *matHeaderCellDef>Datum</th>
-            <td mat-cell *matCellDef="let element">{{ element.date | firestoreDate: 'shortDate' }}</td>
-        </ng-container>
-        <ng-container matColumnDef="value">
-            <th mat-header-cell *matHeaderCellDef>Wert</th>
-            <td mat-cell *matCellDef="let element">{{ element.value | currency: 'EUR' }}</td>
-        </ng-container>
-        <ng-container matColumnDef="title">
-            <th mat-header-cell *matHeaderCellDef>Titel</th>
-            <td mat-cell *matCellDef="let element">
-                <mat-form-field>
-                    <input matInput [(ngModel)]="element.title" />
-                </mat-form-field>
-            </td>
-        </ng-container>
-        <tr mat-header-row *matHeaderRowDef="columns"></tr>
-        <tr mat-row *matRowDef="let row; columns: columns"></tr>
-    </table>
+  <table mat-table [dataSource]="data">
+    <mat-selection-column
+      name="select"
+      [selection]="selection"
+    ></mat-selection-column>
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef>Datum</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.date | firestoreDate: 'shortDate' }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="value">
+      <th mat-header-cell *matHeaderCellDef>Wert</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.value | currency: 'EUR' }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef>Titel</th>
+      <td mat-cell *matCellDef="let element">
+        <mat-form-field>
+          <input matInput [(ngModel)]="element.title" />
+        </mat-form-field>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="columns"></tr>
+    <tr mat-row *matRowDef="let row; columns: columns"></tr>
+  </table>
 </div>
 <div mat-dialog-actions>
-    <button mat-button (click)="close()">Abbrechen</button>
-    <button mat-button [mat-dialog-close]="selection.selected" [disabled]="selection.selected.length === 0">
-        Importieren
-    </button>
+  <button mat-button (click)="close()">Abbrechen</button>
+  <button
+    mat-button
+    [mat-dialog-close]="selection.selected"
+    [disabled]="selection.selected.length === 0"
+  >
+    Importieren
+  </button>
 </div>

@@ -6,8 +6,8 @@ import { FinCommonModule } from '@common/common.module';
 import { ActivityTableComponent } from './activity-table.component';
 
 @NgModule({
-    imports: [CommonModule, FinCommonModule, MatTableModule, MatIconModule],
-    declarations: [ActivityTableComponent],
-    exports: [ActivityTableComponent]
+  imports: [CommonModule, FinCommonModule, MatTableModule, MatIconModule],
+  declarations: [ActivityTableComponent],
+  exports: [ActivityTableComponent],
 })
 export class ActivityTableModule {}

@@ -5,7 +5,12 @@
     <span>Dein Finanz Manager</span>
   </div>
 
-  <img [src]="userImg" class="user-image" alt="user image" [matMenuTriggerFor]="userMenu">
+  <img
+    [src]="userImg"
+    class="user-image"
+    alt="user image"
+    [matMenuTriggerFor]="userMenu"
+  />
 </mat-toolbar>
 
 <mat-menu #userMenu="matMenu">
@@ -16,11 +21,7 @@
 <!-- navigation rail for desktop and tablet devices -->
 <ng-container *ngIf="!(isMobile$ | async)">
   <mat-sidenav-container class="sidenav-container">
-    <mat-sidenav
-      class="sidenav"
-      [attr.role]="'navigation'"
-      mode="side"
-      opened>
+    <mat-sidenav class="sidenav" [attr.role]="'navigation'" mode="side" opened>
       <ng-template [ngTemplateOutlet]="links"></ng-template>
     </mat-sidenav>
     <mat-sidenav-content>
@@ -38,16 +39,49 @@
 </ng-container>
 
 <ng-template #links>
-  <a routerLink="/dashboard" routerLinkActive="active" #rlaDashboard="routerLinkActive" mat-button class="nav-item">
-    <mat-icon [fontSet]="rlaDashboard.isActive ? 'material-icons' : 'material-icons-outlined'">dashboard</mat-icon>
+  <a
+    routerLink="/dashboard"
+    routerLinkActive="active"
+    #rlaDashboard="routerLinkActive"
+    mat-button
+    class="nav-item"
+  >
+    <mat-icon
+      [fontSet]="
+        rlaDashboard.isActive ? 'material-icons' : 'material-icons-outlined'
+      "
+      >dashboard</mat-icon
+    >
     <div>Dashboard</div>
   </a>
-  <a routerLink="/activity" routerLinkActive="active" #rlaActivity="routerLinkActive" mat-button class="nav-item">
-    <mat-icon [fontSet]="rlaActivity.isActive ? 'material-icons' : 'material-icons-outlined'">view_list</mat-icon>
+  <a
+    routerLink="/activity"
+    routerLinkActive="active"
+    #rlaActivity="routerLinkActive"
+    mat-button
+    class="nav-item"
+  >
+    <mat-icon
+      [fontSet]="
+        rlaActivity.isActive ? 'material-icons' : 'material-icons-outlined'
+      "
+      >view_list</mat-icon
+    >
     <div>Umsätze</div>
   </a>
-  <a routerLink="/statistics" routerLinkActive="active" #rlaStatistics="routerLinkActive" mat-button class="nav-item">
-    <mat-icon [fontSet]="rlaStatistics.isActive ? 'material-icons' : 'material-icons-outlined'">pie_chart</mat-icon>
+  <a
+    routerLink="/statistics"
+    routerLinkActive="active"
+    #rlaStatistics="routerLinkActive"
+    mat-button
+    class="nav-item"
+  >
+    <mat-icon
+      [fontSet]="
+        rlaStatistics.isActive ? 'material-icons' : 'material-icons-outlined'
+      "
+      >pie_chart</mat-icon
+    >
     <div>Statistiken</div>
   </a>
 </ng-template>

@@ -4,12 +4,8 @@ import { CommonModule } from '@angular/common';
 import { StatisticsRoutingModule } from './statistics-routing.module';
 import { StatisticsComponent } from './statistics.component';
 
-
 @NgModule({
   declarations: [StatisticsComponent],
-  imports: [
-    CommonModule,
-    StatisticsRoutingModule
-  ]
+  imports: [CommonModule, StatisticsRoutingModule],
 })
-export class StatisticsModule { }
+export class StatisticsModule {}

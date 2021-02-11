@@ -1,9 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {
-  FormsModule,
-  ReactiveFormsModule
-} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -26,19 +23,10 @@ import { MatTableExtensionsModule } from 'angular-material-extensions';
     MatTableModule,
     FormsModule,
     MatCheckboxModule,
-    MatTableExtensionsModule
+    MatTableExtensionsModule,
   ],
-  declarations: [
-    InitialBudgetDialogComponent,
-    ImportPreviewDialogComponent
-  ],
-  exports: [
-    InitialBudgetDialogComponent,
-    ImportPreviewDialogComponent
-  ],
-  entryComponents: [
-    InitialBudgetDialogComponent,
-    ImportPreviewDialogComponent
-  ]
+  declarations: [InitialBudgetDialogComponent, ImportPreviewDialogComponent],
+  exports: [InitialBudgetDialogComponent, ImportPreviewDialogComponent],
+  entryComponents: [InitialBudgetDialogComponent, ImportPreviewDialogComponent],
 })
-export class DialogsModule { }
+export class DialogsModule {}

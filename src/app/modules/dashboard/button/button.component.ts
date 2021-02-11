@@ -1,23 +1,22 @@
-import {
-  Component,
-  HostBinding
-} from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
 import { ConnectedPosition } from '@angular/cdk/overlay';
 import { CsvImportService } from '@core/services/csv-import.service';
 
 @Component({
-  selector:    'fin-button',
+  selector: 'fin-button',
   templateUrl: './button.component.html',
-  styleUrls:   ['./button.component.scss']
+  styleUrls: ['./button.component.scss'],
 })
 export class ButtonComponent {
   toggled = false;
-  positions: ConnectedPosition[] = [{
-    originX: 'center',
-    originY: 'top',
-    overlayX: 'center',
-    overlayY: 'bottom'
-  }];
+  positions: ConnectedPosition[] = [
+    {
+      originX: 'center',
+      originY: 'top',
+      overlayX: 'center',
+      overlayY: 'bottom',
+    },
+  ];
 
   @HostBinding('style.zIndex')
   get zIndex() {

@@ -9,16 +9,10 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { NavigationComponent } from './navigation.component';
 import { RouterModule } from '@angular/router';
 
-
-
 @NgModule({
-  declarations: [
-    NavigationComponent
-  ],
-  exports:      [
-    NavigationComponent
-  ],
-  imports:      [
+  declarations: [NavigationComponent],
+  exports: [NavigationComponent],
+  imports: [
     CommonModule,
     RouterModule,
     MatToolbarModule,
@@ -27,6 +21,6 @@ import { RouterModule } from '@angular/router';
     MatMenuModule,
     MatIconModule,
     MatButtonModule,
-  ]
+  ],
 })
-export class NavigationModule { }
+export class NavigationModule {}

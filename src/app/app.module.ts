@@ -1,8 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import {
-  LOCALE_ID,
-  NgModule
-} from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -23,9 +20,7 @@ import localeDe from '@angular/common/locales/de';
 registerLocaleData(localeDe);
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -38,9 +33,11 @@ registerLocaleData(localeDe);
     LoginModule,
     ButtonModule,
     MatProgressSpinnerModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+    }),
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'de' }],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

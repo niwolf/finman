@@ -2,15 +2,13 @@
   margin-bottom: 15px;
 }
 
-button[mat-fab]
-{
+button[mat-fab] {
   transition: 0.2s ease;
   &.toggled {
     transform: rotate(45deg);
   }
 }
 
-.d-grid
-{
+.d-grid {
   display: grid;
 }

@@ -3,22 +3,21 @@ import {
   ElementRef,
   Input,
   OnChanges,
-  SimpleChanges
+  SimpleChanges,
 } from '@angular/core';
 
 @Directive({
-  selector: '[finColor]'
+  selector: '[finColor]',
 })
-export class ColorDirective implements OnChanges{
-
+export class ColorDirective implements OnChanges {
   @Input('finColor')
   public condition: boolean;
 
   constructor(private elementRef: ElementRef) {}
 
-  public ngOnChanges(changes: SimpleChanges): void
-  {
-    this.elementRef.nativeElement.style.color = this.condition ? 'green' : 'red';
+  public ngOnChanges(changes: SimpleChanges): void {
+    this.elementRef.nativeElement.style.color = this.condition
+      ? 'green'
+      : 'red';
   }
-
 }

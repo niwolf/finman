@@ -1,13 +1,11 @@
-import {Timestamp} from '@firebase/firestore-types';
+import { Timestamp } from '@firebase/firestore-types';
 
-export enum Origin
-{
+export enum Origin {
   cash = 'cash',
-  account = 'account'
+  account = 'account',
 }
 
-export interface Item
-{
+export interface Item {
   title: string;
   value: number;
   date: Timestamp;

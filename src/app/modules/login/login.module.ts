@@ -9,11 +9,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login.component';
 
-
 @NgModule({
-  declarations: [
-    LoginComponent
-  ],
+  declarations: [LoginComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -22,10 +19,8 @@ import { LoginComponent } from './login.component';
     MatButtonModule,
     MatSnackBarModule,
     MatIconModule,
-    MatProgressBarModule
+    MatProgressBarModule,
   ],
-  exports: [
-    LoginComponent
-  ]
+  exports: [LoginComponent],
 })
-export class LoginModule { }
+export class LoginModule {}

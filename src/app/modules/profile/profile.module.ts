@@ -5,14 +5,13 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { ProfileRoutingModule } from './profile-routing.module';
 
-
 @NgModule({
   declarations: [ProfileComponent],
   imports: [
     CommonModule,
     MatGridListModule,
     MatCardModule,
-    ProfileRoutingModule
-  ]
+    ProfileRoutingModule,
+  ],
 })
-export class ProfileModule { }
+export class ProfileModule {}

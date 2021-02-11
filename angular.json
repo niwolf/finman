@@ -21,10 +21,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "allowedCommonJsDependencies": [
-              "md5",
-              "papaparse"
-            ],
+            "allowedCommonJsDependencies": ["md5", "papaparse"],
             "outputPath": "dist/finman",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -113,9 +110,7 @@
               "tsconfig.spec.json",
               "e2e/tsconfig.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "deploy": {

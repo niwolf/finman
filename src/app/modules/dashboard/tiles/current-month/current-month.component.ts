@@ -4,6 +4,9 @@ import { Observable } from 'rxjs';
 import { ItemService } from '../../../../core/services/item.service';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { map, switchMap } from 'rxjs/operators';
+import firebase from 'firebase';
+import User = firebase.User;
+import { isUser } from '@common/rxjs-operators/is-user';
 
 @Component({
   selector: 'fin-current-month',
@@ -15,7 +18,10 @@ export class CurrentMonthComponent {
     expenses: number;
     revenues: number;
     balance: number;
-  }> = this.auth.user.pipe(switchMap((user) => this.currentMonth(user.uid)));
+  }> = this.auth.user.pipe(
+    isUser,
+    switchMap((user: User) => this.currentMonth(user.uid))
+  );
 
   constructor(
     private itemService: ItemService,
@@ -34,7 +40,7 @@ export class CurrentMonthComponent {
       )
       .pipe(
         map((items) => {
-          const reducer: (acc, cur) => number = (acc, cur) =>
+          const reducer: (acc: number, cur: Item) => number = (acc, cur) =>
             (acc += cur.value);
           const expenses: number =
             items.filter((item) => item.value < 0).reduce(reducer, 0) * -1;

@@ -11,7 +11,7 @@ import {
 })
 export class ColorDirective implements OnChanges {
   @Input('finColor')
-  public condition: boolean;
+  public condition = false;
 
   constructor(private elementRef: ElementRef) {}
 

@@ -4,9 +4,10 @@ import { User } from '@firebase/auth-types';
 import { ActivatedRoute } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { InitialBudgetDialogComponent } from './dialogs/initial-budget-dialog/initial-budget-dialog.component';
-import { filter, switchMap, tap } from 'rxjs/operators';
+import { switchMap, tap } from 'rxjs/operators';
 import { AuthService } from './core/services/auth.service';
 import { BudgetService } from './core/services/budget.service';
+import { isUser } from '@common/rxjs-operators/is-user';
 
 @Component({
   selector: 'fin-app',
@@ -14,8 +15,8 @@ import { BudgetService } from './core/services/budget.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  user$: Observable<User> = merge(
-    of(JSON.parse(localStorage.getItem('user')) ?? undefined),
+  user$: Observable<User | undefined> = merge(
+    of(JSON.parse(localStorage.getItem('user') ?? '') ?? undefined),
     this.auth.user
   );
 
@@ -27,9 +28,9 @@ export class AppComponent implements OnInit {
   ) {}
 
   public ngOnInit(): void {
-    this.auth.user
+    this.user$
       .pipe(
-        filter((user) => !!user),
+        isUser,
         switchMap((user) => {
           const uid: string = user.uid;
           return this.budgetService.getInitialBudget(uid).pipe(

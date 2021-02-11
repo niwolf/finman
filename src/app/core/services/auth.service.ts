@@ -1,14 +1,16 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { User, UserCredential } from '@firebase/auth-types';
 import { from, Observable, Subject } from 'rxjs';
 import { takeUntil, tap } from 'rxjs/operators';
+import firebase from 'firebase';
+import User = firebase.User;
+import UserCredential = firebase.auth.UserCredential;
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService implements OnDestroy {
-  public currentUser: User;
+  public currentUser: User | null | undefined = undefined;
 
   private destroy$: Subject<void> = new Subject();
 
@@ -18,7 +20,7 @@ export class AuthService implements OnDestroy {
       .subscribe((user) => (this.currentUser = user));
   }
 
-  public get user(): Observable<User> {
+  public get user(): Observable<User | null> {
     return this.auth.user;
   }
 

@@ -14,7 +14,7 @@ import { Item } from '../models/item.interface';
 export class ItemService {
   constructor(private afs: AngularFirestore) {}
 
-  public getItems(userId, queryFn?: QueryFn): Observable<Item[]> {
+  public getItems(userId: string, queryFn?: QueryFn): Observable<Item[]> {
     return this.getItemCollection(userId, queryFn).valueChanges();
   }
 

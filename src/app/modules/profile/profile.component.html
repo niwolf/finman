@@ -6,9 +6,13 @@
       </mat-card-header>
       <mat-card-content>
         <p>
-          <img [src]="userPic" class="photo" alt="Profile photo" />
+          <img
+            [src]="user$ | async | userImg"
+            class="photo"
+            alt="Profile photo"
+          />
         </p>
-        <p class="content"><b>Email: </b>{{ userMail }}</p>
+        <p class="content"><b>Email: </b>{{ (user$ | async)?.email }}</p>
       </mat-card-content>
     </mat-card>
   </mat-grid-tile>

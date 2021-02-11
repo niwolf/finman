@@ -36,7 +36,7 @@ export class EnterDataComponent {
   }
 
   save(formValue: any) {
-    if (this.dataForm.valid) {
+    if (this.dataForm.valid && this.auth.currentUser) {
       const uid: string = this.auth.currentUser.uid;
       this.itemService
         .addItem(uid, {

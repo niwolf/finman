@@ -1,5 +1,5 @@
 <ng-container *ngIf="user$ | async as user; else loading">
-  <fin-navigation [user]="user">
+  <fin-navigation>
     <router-outlet></router-outlet>
   </fin-navigation>
 </ng-container>

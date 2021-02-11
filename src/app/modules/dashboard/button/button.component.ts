@@ -30,10 +30,7 @@ export class ButtonComponent {
   }
 
   public import(files: FileList | null) {
-    if (!files) {
-      return;
-    }
-    const file: File | null = files.item(0);
+    const file: File | null | undefined = files?.item(0);
     if (file) {
       this.importService.import(file);
     }

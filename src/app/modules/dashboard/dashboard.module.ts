@@ -16,13 +16,12 @@ import { CurrentMonthComponent } from './tiles/current-month/current-month.compo
 import { FinCommonModule } from '@common/common.module';
 import { ButtonModule } from './button/button.module';
 
-
 @NgModule({
   declarations: [
     DashboardComponent,
     BalanceComponent,
     StatsComponent,
-    CurrentMonthComponent
+    CurrentMonthComponent,
   ],
   imports: [
     CommonModule,
@@ -35,7 +34,7 @@ import { ButtonModule } from './button/button.module';
     MatButtonModule,
     LayoutModule,
     ActivityTableModule,
-    ButtonModule
-  ]
+    ButtonModule,
+  ],
 })
-export class DashboardModule { }
+export class DashboardModule {}

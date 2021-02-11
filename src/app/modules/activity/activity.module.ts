@@ -5,7 +5,6 @@ import { ActivityComponent } from './activity.component';
 
 @NgModule({
   imports: [ActivityRoutingModule, ActivityTableModule],
-  declarations: [ActivityComponent]
+  declarations: [ActivityComponent],
 })
-export class ActivityModule
-{}
+export class ActivityModule {}

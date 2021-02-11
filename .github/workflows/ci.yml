@@ -1,10 +1,9 @@
 name: CI
 
-on: [ pull_request ]
+on: [pull_request]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
@@ -24,3 +23,6 @@ jobs:
 
       - name: build
         run: npm run build -- --configuration=ci
+
+      - name: prettier
+        run: npm run prettier

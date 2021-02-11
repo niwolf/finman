@@ -1,26 +1,17 @@
 import { Component } from '@angular/core';
-import {
-  FormControl,
-  FormGroup,
-  Validators
-} from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Origin } from '../../core/models/item.interface';
-import {
-  ActivatedRoute,
-  ParamMap,
-  Router
-} from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ItemService } from '../../core/services/item.service';
 import { AuthService } from '../../core/services/auth.service';
 
 @Component({
-  selector:    'fin-enter-data',
+  selector: 'fin-enter-data',
   templateUrl: './enter-data.component.html',
-  styleUrls:   ['./enter-data.component.scss']
+  styleUrls: ['./enter-data.component.scss'],
 })
-export class EnterDataComponent
-{
+export class EnterDataComponent {
   typeControl = new FormControl('');
   titleControl = new FormControl('', Validators.required);
   valueControl = new FormControl('', [Validators.required, Validators.min(0)]);
@@ -29,30 +20,37 @@ export class EnterDataComponent
   dataForm = new FormGroup({
     title: this.titleControl,
     value: this.valueControl,
-    date:  this.dateControl
+    date: this.dateControl,
   });
 
-  constructor(route: ActivatedRoute,
-              private auth: AuthService,
-              private router: Router,
-              private snack: MatSnackBar,
-              private itemService: ItemService)
-  {
-    route.queryParamMap.subscribe((params: ParamMap) => this.typeControl.setValue(params.get('revenue') ? 1 : -1));
+  constructor(
+    route: ActivatedRoute,
+    private auth: AuthService,
+    private router: Router,
+    private snack: MatSnackBar,
+    private itemService: ItemService
+  ) {
+    route.queryParamMap.subscribe((params: ParamMap) =>
+      this.typeControl.setValue(params.get('revenue') ? 1 : -1)
+    );
   }
 
-  save(formValue: any)
-  {
-    if (this.dataForm.valid)
-    {
+  save(formValue: any) {
+    if (this.dataForm.valid) {
       const uid: string = this.auth.currentUser.uid;
-      this.itemService.addItem(uid, {
-        title:    formValue.title,
-        date:     formValue.date,
-        value:    formValue.value * this.typeControl.value,
-        origin:   Origin.cash
-      }).then(() => this.router.navigate(['/dashboard']))
-          .catch(() => this.snack.open('Eintrag konnte nicht gespeichert werden.', 'OK', {duration: 5000}));
+      this.itemService
+        .addItem(uid, {
+          title: formValue.title,
+          date: formValue.date,
+          value: formValue.value * this.typeControl.value,
+          origin: Origin.cash,
+        })
+        .then(() => this.router.navigate(['/dashboard']))
+        .catch(() =>
+          this.snack.open('Eintrag konnte nicht gespeichert werden.', 'OK', {
+            duration: 5000,
+          })
+        );
     }
   }
 }

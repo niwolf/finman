@@ -1,0 +1,4 @@
+# ignore generated folders
+package.json
+package-lock.json
+dist

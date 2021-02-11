@@ -7,11 +7,11 @@
 <ng-template #loading>
   <mat-progress-spinner
     *ngIf="(user$ | async) === undefined; else login"
-    mode="indeterminate">
+    mode="indeterminate"
+  >
   </mat-progress-spinner>
 </ng-template>
 
 <ng-template #login>
   <fin-login></fin-login>
 </ng-template>
-

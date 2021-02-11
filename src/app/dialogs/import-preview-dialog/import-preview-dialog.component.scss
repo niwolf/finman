@@ -3,7 +3,9 @@ table {
 }
 
 // reset padding of the first cell
-td.mat-cell:first-of-type, td.mat-footer-cell:first-of-type, th.mat-header-cell:first-of-type {
+td.mat-cell:first-of-type,
+td.mat-footer-cell:first-of-type,
+th.mat-header-cell:first-of-type {
   padding-left: 0;
 }
 
@@ -16,7 +18,7 @@ td.mat-cell:first-of-type, td.mat-footer-cell:first-of-type, th.mat-header-cell:
 }
 
 .mat-column-title {
-  mat-form-field{
+  mat-form-field {
     width: 95%;
   }
 }

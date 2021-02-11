@@ -11,14 +11,14 @@ import { TooltipShowDirective } from './tooltip-show.directive';
 
 @NgModule({
   declarations: [ButtonComponent, TooltipShowDirective],
-  imports:      [
+  imports: [
     CommonModule,
     RouterModule,
     MatButtonModule,
     MatIconModule,
     MatTooltipModule,
-    OverlayModule
+    OverlayModule,
   ],
-  exports:      [ButtonComponent]
+  exports: [ButtonComponent],
 })
-export class ButtonModule { }
+export class ButtonModule {}

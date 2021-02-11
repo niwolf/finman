@@ -1,16 +1,10 @@
-import {
-  Directive,
-  Host,
-  HostListener,
-  OnInit
-} from '@angular/core';
+import { Directive, Host, HostListener, OnInit } from '@angular/core';
 import { MatTooltip } from '@angular/material/tooltip';
 
 @Directive({
-  selector: '[finTooltipShow]'
+  selector: '[finTooltipShow]',
 })
 export class TooltipShowDirective implements OnInit {
-
   constructor(@Host() private tooltipDir: MatTooltip) {}
 
   @HostListener('mouseenter', ['$event'])
@@ -19,8 +13,7 @@ export class TooltipShowDirective implements OnInit {
     event.stopImmediatePropagation();
   }
 
-  public ngOnInit()
-  {
+  public ngOnInit() {
     setTimeout(() => this.tooltipDir.show());
   }
 }

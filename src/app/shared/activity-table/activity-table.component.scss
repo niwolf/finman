@@ -1,5 +1,5 @@
-
-.mat-cell, .mat-header-cell {
+.mat-cell,
+.mat-header-cell {
   padding: 0px 10px;
 }
 
@@ -17,7 +17,8 @@
 }
 
 .dense {
-  .mat-header-cell, .mat-cell {
+  .mat-header-cell,
+  .mat-cell {
     padding: 0px 4px;
   }
 }

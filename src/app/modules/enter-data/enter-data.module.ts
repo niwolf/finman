@@ -12,11 +12,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { EnterDataComponent } from './enter-data.component';
 import { EnterDataRoutingModule } from './enter-data-routing.module';
 
-
 @NgModule({
-  declarations: [
-    EnterDataComponent
-  ],
+  declarations: [EnterDataComponent],
   imports: [
     CommonModule,
     EnterDataRoutingModule,
@@ -28,8 +25,8 @@ import { EnterDataRoutingModule } from './enter-data-routing.module';
     MatInputModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatCardModule
+    MatCardModule,
   ],
-  exports:      [EnterDataComponent]
+  exports: [EnterDataComponent],
 })
 export class EnterDataModule {}

@@ -3,16 +3,15 @@ import {
   AngularFirestore,
   AngularFirestoreCollection,
   DocumentReference,
-  QueryFn
+  QueryFn,
 } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { Item } from '../models/item.interface';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ItemService {
-
   constructor(private afs: AngularFirestore) {}
 
   public getItems(userId, queryFn?: QueryFn): Observable<Item[]> {
@@ -23,9 +22,12 @@ export class ItemService {
     return this.getItemCollection(userId).add(item);
   }
 
-  private getItemCollection(userId: string, queryFn?: QueryFn): AngularFirestoreCollection<Item> {
-    return queryFn ?
-      this.afs.collection<Item>(`users/${userId}/items`, queryFn) :
-      this.afs.collection<Item>(`users/${userId}/items`);
+  private getItemCollection(
+    userId: string,
+    queryFn?: QueryFn
+  ): AngularFirestoreCollection<Item> {
+    return queryFn
+      ? this.afs.collection<Item>(`users/${userId}/items`, queryFn)
+      : this.afs.collection<Item>(`users/${userId}/items`);
   }
 }

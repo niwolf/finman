@@ -7,7 +7,7 @@ import * as md5 from 'md5';
   name: 'userImg',
 })
 export class UserImgPipe implements PipeTransform {
-  public transform(user: User | null): string | null {
+  public transform(user: User | null | undefined): string | null {
     if (!user) {
       return null;
     }

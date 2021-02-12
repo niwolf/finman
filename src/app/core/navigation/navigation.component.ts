@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
@@ -12,7 +12,7 @@ import User = firebase.User;
   styleUrls: ['./navigation.component.scss'],
 })
 export class NavigationComponent {
-  user$: Observable<User | null> = this.auth.user;
+  @Input() user: User | null | undefined = undefined;
 
   isMobile$: Observable<boolean> = this.breakpointObserver
     .observe(Breakpoints.XSmall)

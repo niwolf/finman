@@ -15,7 +15,7 @@ import { isUser } from '@common/rxjs-operators/is-user';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  user$: Observable<User | undefined> = merge(
+  user$: Observable<User | null | undefined> = merge(
     of(JSON.parse(localStorage.getItem('user') ?? '') ?? undefined),
     this.auth.user
   );

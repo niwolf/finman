@@ -7,15 +7,18 @@ import * as md5 from 'md5';
   name: 'userImg',
 })
 export class UserImgPipe implements PipeTransform {
-  public transform(user: User | null | undefined): string | null {
+  public transform(user: User | null | undefined): string {
+    const fallbackUrl = `https://secure.gravatar.com/avatar/?d=mp`;
     if (!user) {
-      return null;
+      return fallbackUrl;
     }
-    return (
-      user.photoURL ||
-      (user.email
-        ? `https://secure.gravatar.com/avatar/${md5(user.email)}?d=mp`
-        : null)
-    );
+
+    if (user.photoURL) {
+      return user.photoURL;
+    }
+
+    return user.email
+      ? `https://secure.gravatar.com/avatar/${md5(user.email)}?d=mp`
+      : fallbackUrl;
   }
 }

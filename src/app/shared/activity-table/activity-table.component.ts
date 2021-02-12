@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { CollectionReference, Query } from '@angular/fire/firestore';
 import { Item } from '@core/models/item.interface';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { ItemService } from '@core/services/item.service';

@@ -1,7 +1,7 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { from, Observable, Subject } from 'rxjs';
-import { takeUntil, tap } from 'rxjs/operators';
+import { shareReplay, startWith, takeUntil, tap } from 'rxjs/operators';
 import firebase from 'firebase';
 import User = firebase.User;
 import UserCredential = firebase.auth.UserCredential;
@@ -10,18 +10,22 @@ import UserCredential = firebase.auth.UserCredential;
   providedIn: 'root',
 })
 export class AuthService implements OnDestroy {
-  public currentUser: User | null | undefined = undefined;
+  public currentUser!: User | null | undefined;
+  public user: Observable<User | null | undefined> = this.auth.user.pipe(
+    startWith(this.currentUser),
+    shareReplay()
+  );
 
   private destroy$: Subject<void> = new Subject();
 
   constructor(private auth: AngularFireAuth) {
+    const userFromLocalStorage: string | null = localStorage.getItem('user');
+    this.currentUser = userFromLocalStorage
+      ? JSON.parse(userFromLocalStorage)
+      : undefined;
     this.auth.user
       .pipe(takeUntil(this.destroy$))
       .subscribe((user) => (this.currentUser = user));
-  }
-
-  public get user(): Observable<User | null> {
-    return this.auth.user;
   }
 
   public signIn(email: string, password: string): Observable<UserCredential> {

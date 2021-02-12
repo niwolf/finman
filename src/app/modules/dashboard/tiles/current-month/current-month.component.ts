@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { Item } from '../../../../core/models/item.interface';
 import { Observable } from 'rxjs';
 import { ItemService } from '../../../../core/services/item.service';
-import { AngularFireAuth } from '@angular/fire/auth';
 import { map, switchMap } from 'rxjs/operators';
 import firebase from 'firebase';
 import User = firebase.User;
 import { isUser } from '@common/rxjs-operators/is-user';
+import { AuthService } from '@core/services/auth.service';
 
 @Component({
   selector: 'fin-current-month',
@@ -23,10 +23,7 @@ export class CurrentMonthComponent {
     switchMap((user: User) => this.currentMonth(user.uid))
   );
 
-  constructor(
-    private itemService: ItemService,
-    private auth: AngularFireAuth
-  ) {}
+  constructor(private itemService: ItemService, private auth: AuthService) {}
 
   public currentMonth(
     userId: string

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { merge, Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { User } from '@firebase/auth-types';
 import { MatDialog } from '@angular/material/dialog';
 import { InitialBudgetDialogComponent } from './dialogs/initial-budget-dialog/initial-budget-dialog.component';
@@ -14,10 +14,7 @@ import { isUser } from '@common/rxjs-operators/is-user';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  user$: Observable<User | null | undefined> = merge(
-    of(JSON.parse(localStorage.getItem('user') ?? '') ?? undefined),
-    this.auth.user
-  );
+  user$: Observable<User | null | undefined> = this.auth.user;
 
   constructor(
     private auth: AuthService,

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { merge, Observable, of } from 'rxjs';
 import { User } from '@firebase/auth-types';
-import { ActivatedRoute } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { InitialBudgetDialogComponent } from './dialogs/initial-budget-dialog/initial-budget-dialog.component';
 import { switchMap, tap } from 'rxjs/operators';
@@ -23,7 +22,6 @@ export class AppComponent implements OnInit {
   constructor(
     private auth: AuthService,
     private budgetService: BudgetService,
-    private route: ActivatedRoute,
     private dialog: MatDialog
   ) {}
 

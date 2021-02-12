@@ -2,10 +2,8 @@ import { Component } from '@angular/core';
 import { Item } from '../../../../core/models/item.interface';
 import { Observable } from 'rxjs';
 import { ItemService } from '../../../../core/services/item.service';
-import { map, switchMap } from 'rxjs/operators';
-import firebase from 'firebase';
-import User = firebase.User;
 import { AuthService } from '@core/services/auth.service';
+import { map, switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'fin-current-month',
@@ -18,7 +16,7 @@ export class CurrentMonthComponent {
     revenues: number;
     balance: number;
   }> = this.auth.currentUser$.pipe(
-    switchMap((user: User) => this.currentMonth(user.uid))
+    switchMap((user) => this.currentMonth(user.uid))
   );
 
   constructor(private itemService: ItemService, private auth: AuthService) {}

@@ -4,7 +4,7 @@ import { filter } from 'rxjs/operators';
 import { OperatorFunction } from 'rxjs';
 
 export function userTypeGuard(user: User | null | undefined): user is User {
-  return typeof user === 'object' && user !== null;
+  return !!user && typeof user === 'object' && 'uid' in user;
 }
 
 export const isUser: OperatorFunction<User | null | undefined, User> = filter(

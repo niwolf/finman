@@ -7,7 +7,7 @@ import { AuthService } from '../../core/services/auth.service';
   styleUrls: ['./profile.component.scss'],
 })
 export class ProfileComponent {
-  user$ = this.authService.user;
+  user$ = this.authService.currentUser$;
 
   constructor(private authService: AuthService) {}
 }

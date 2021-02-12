@@ -6,7 +6,6 @@ import { InitialBudgetDialogComponent } from './dialogs/initial-budget-dialog/in
 import { switchMap, tap } from 'rxjs/operators';
 import { AuthService } from './core/services/auth.service';
 import { BudgetService } from './core/services/budget.service';
-import { isUser } from '@common/rxjs-operators/is-user';
 
 @Component({
   selector: 'fin-app',
@@ -14,7 +13,7 @@ import { isUser } from '@common/rxjs-operators/is-user';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  user$: Observable<User | null | undefined> = this.auth.user;
+  user$: Observable<User | null | undefined> = this.auth.user$;
 
   constructor(
     private auth: AuthService,
@@ -23,9 +22,8 @@ export class AppComponent implements OnInit {
   ) {}
 
   public ngOnInit(): void {
-    this.user$
+    this.auth.currentUser$
       .pipe(
-        isUser,
         switchMap((user) => {
           const uid: string = user.uid;
           return this.budgetService.getInitialBudget(uid).pipe(

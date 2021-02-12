@@ -6,7 +6,6 @@ import { map, switchMap } from 'rxjs/operators';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { ItemService } from '@core/services/item.service';
 import { AuthService } from '@core/services/auth.service';
-import { isUser } from '@common/rxjs-operators/is-user';
 
 @Component({
   selector: 'fin-activity-table',
@@ -27,8 +26,7 @@ export class ActivityTableComponent {
       )
     );
 
-  items$: Observable<Item[]> = this.auth.user.pipe(
-    isUser,
+  items$: Observable<Item[]> = this.auth.currentUser$.pipe(
     switchMap((user) =>
       this.itemService.getItems(user.uid, (ref) => this.buildQuery(ref))
     )

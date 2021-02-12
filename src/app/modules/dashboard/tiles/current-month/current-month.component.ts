@@ -5,7 +5,6 @@ import { ItemService } from '../../../../core/services/item.service';
 import { map, switchMap } from 'rxjs/operators';
 import firebase from 'firebase';
 import User = firebase.User;
-import { isUser } from '@common/rxjs-operators/is-user';
 import { AuthService } from '@core/services/auth.service';
 
 @Component({
@@ -18,8 +17,7 @@ export class CurrentMonthComponent {
     expenses: number;
     revenues: number;
     balance: number;
-  }> = this.auth.user.pipe(
-    isUser,
+  }> = this.auth.currentUser$.pipe(
     switchMap((user: User) => this.currentMonth(user.uid))
   );
 

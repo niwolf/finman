@@ -26,8 +26,11 @@ mat-toolbar {
   height: calc(100% - 64px);
 }
 
-.sidenav {
+:host::ng-deep .sidenav .mat-drawer-inner-container {
   width: 72px; // has to be "dp" aka "Density-independent pixels"
+}
+
+.sidenav {
   padding-top: 8px;
 
   .nav-item {

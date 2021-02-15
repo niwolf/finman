@@ -1,7 +1,7 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { from, Observable, Subject } from 'rxjs';
-import { shareReplay, startWith, takeUntil, tap } from 'rxjs/operators';
+import { first, startWith, takeUntil, tap } from 'rxjs/operators';
 import firebase from 'firebase';
 import User = firebase.User;
 import UserCredential = firebase.auth.UserCredential;
@@ -22,11 +22,11 @@ export class AuthService implements OnDestroy {
   /** The currently logged in user. As long as the user is not logged in properly, this stream will not have any value. */
   public currentUser$: Observable<User> = this.auth.user.pipe(
     isUser,
-    shareReplay()
+    first() // we only need the first emit since the user will never change during app lifetime
   );
   /** The currently logged in user. Undefined until the user is properly logged in. */
   public currentUser: User | undefined = undefined;
-
+  /** A stream that emits when this service is destroyed. */
   private destroy$: Subject<void> = new Subject();
 
   constructor(private auth: AngularFireAuth) {

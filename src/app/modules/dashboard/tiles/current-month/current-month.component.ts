@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Item } from '../../../../core/models/item.interface';
 import { Observable } from 'rxjs';
 import { ItemService } from '../../../../core/services/item.service';
@@ -9,6 +9,7 @@ import { map, switchMap } from 'rxjs/operators';
   selector: 'fin-current-month',
   templateUrl: './current-month.component.html',
   styleUrls: ['./current-month.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CurrentMonthComponent {
   public currentMonth$: Observable<{

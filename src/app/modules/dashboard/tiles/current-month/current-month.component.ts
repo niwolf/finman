@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Item } from '../../../../core/models/item.interface';
 import { Observable } from 'rxjs';
 import { ItemService } from '../../../../core/services/item.service';
-import { AngularFireAuth } from '@angular/fire/auth';
+import { AuthService } from '@core/services/auth.service';
 import { map, switchMap } from 'rxjs/operators';
 
 @Component({
@@ -15,12 +15,11 @@ export class CurrentMonthComponent {
     expenses: number;
     revenues: number;
     balance: number;
-  }> = this.auth.user.pipe(switchMap((user) => this.currentMonth(user.uid)));
+  }> = this.auth.currentUser$.pipe(
+    switchMap((user) => this.currentMonth(user.uid))
+  );
 
-  constructor(
-    private itemService: ItemService,
-    private auth: AngularFireAuth
-  ) {}
+  constructor(private itemService: ItemService, private auth: AuthService) {}
 
   public currentMonth(
     userId: string
@@ -34,7 +33,7 @@ export class CurrentMonthComponent {
       )
       .pipe(
         map((items) => {
-          const reducer: (acc, cur) => number = (acc, cur) =>
+          const reducer: (acc: number, cur: Item) => number = (acc, cur) =>
             (acc += cur.value);
           const expenses: number =
             items.filter((item) => item.value < 0).reduce(reducer, 0) * -1;

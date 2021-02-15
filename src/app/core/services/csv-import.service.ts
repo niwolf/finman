@@ -36,7 +36,10 @@ export class CsvImportService {
   private handleParseResult(result: ParseResult<any>): void {
     const items = this.parseSparkasseExport(result);
 
-    const uid: string = this.authService.currentUser.uid;
+    const uid: string | undefined = this.authService.currentUser?.uid;
+    if (!uid) {
+      return;
+    }
     this.getExistingItems(uid, items)
       .pipe(
         map((existingItems) => {
@@ -62,10 +65,10 @@ export class CsvImportService {
           });
           return dialogRef.afterClosed();
         }),
-        filter((itemsToImport) => itemsToImport && itemsToImport.length > 0), // catch cancel click or no selected elements
+        filter((itemsToImport) => itemsToImport?.length > 0), // catch cancel click or no selected elements
         switchMap((itemsToImport) => {
           return combineLatest(
-            itemsToImport.map((item) =>
+            itemsToImport.map((item: Item) =>
               from(this.itemService.addItem(uid, item))
             )
           );
@@ -90,15 +93,16 @@ export class CsvImportService {
     );
     const valueIndex: number = header.indexOf('Betrag');
     const dateIndex: number = header.indexOf('Valutadatum');
+    const datePattern = /(\d{2})\.(\d{2})\.(\d{2})/;
 
     return result.data
       .slice(0, result.data.length - 1)
       .map((entry: string[]) => {
-        const pattern = /(\d{2})\.(\d{2})\.(\d{2})/;
         const dateStr: string = entry[dateIndex];
-        const matches = pattern.exec(dateStr);
-        const date: Date = new Date(+matches[3], +matches[2], +matches[1]);
-        const timestamp: Timestamp = Timestamp.fromDate(date);
+        const matches = datePattern.exec(dateStr);
+        const timestamp: Timestamp = matches
+          ? Timestamp.fromDate(new Date(+matches[3], +matches[2], +matches[1]))
+          : Timestamp.now(); // TODO: need to handle this in another way
         return {
           importId: md5(entry.toString()),
           title: entry[receiverIndex],
@@ -118,7 +122,7 @@ export class CsvImportService {
     );
   }
 
-  private createExistingItemQuery(items: Item[]) {
+  private createExistingItemQuery(items: Item[]): QueryFn {
     const now: number = Timestamp.now().toMillis();
     const startDate: number = items.reduce(
       (min: number, cur: Item) => Math.min(min, cur.date.toMillis()),

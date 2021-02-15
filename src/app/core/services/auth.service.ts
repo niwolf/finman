@@ -1,25 +1,43 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { User, UserCredential } from '@firebase/auth-types';
 import { from, Observable, Subject } from 'rxjs';
-import { takeUntil, tap } from 'rxjs/operators';
+import { first, startWith, takeUntil, tap } from 'rxjs/operators';
+import firebase from 'firebase';
+import User = firebase.User;
+import UserCredential = firebase.auth.UserCredential;
+import { isUser } from '@common/rxjs-operators/is-user';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService implements OnDestroy {
-  public currentUser: User;
-
+  /**
+   * A stream that holds the current user.
+   * !CAUTION: It might emit valid UserInfo before the user is properly logged in, since it tries to read it from localStorage.
+   * If UserInfo is not available in localStorage, undefined will be emitted as first value.
+   *
+   * NOTE: Its single purpose is to show the dashboard already before the user is properly logged in.
+   */
+  public user$!: Observable<User | null | undefined>;
+  /** The currently logged in user. As long as the user is not logged in properly, this stream will not have any value. */
+  public currentUser$: Observable<User> = this.auth.user.pipe(
+    isUser,
+    first() // we only need the first emit since the user will never change during app lifetime
+  );
+  /** The currently logged in user. Undefined until the user is properly logged in. */
+  public currentUser: User | undefined = undefined;
+  /** A stream that emits when this service is destroyed. */
   private destroy$: Subject<void> = new Subject();
 
   constructor(private auth: AngularFireAuth) {
-    this.auth.user
+    const userFromLocalStorage: string | null = localStorage.getItem('user');
+    const currentUser: User | undefined = userFromLocalStorage
+      ? JSON.parse(userFromLocalStorage)
+      : undefined;
+    this.user$ = this.currentUser$.pipe(startWith(currentUser));
+    this.currentUser$
       .pipe(takeUntil(this.destroy$))
       .subscribe((user) => (this.currentUser = user));
-  }
-
-  public get user(): Observable<User> {
-    return this.auth.user;
   }
 
   public signIn(email: string, password: string): Observable<UserCredential> {

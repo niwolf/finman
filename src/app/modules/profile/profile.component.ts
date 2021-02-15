@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import * as md5 from 'md5';
+import { Component } from '@angular/core';
 import { AuthService } from '../../core/services/auth.service';
 
 @Component({
@@ -7,24 +6,8 @@ import { AuthService } from '../../core/services/auth.service';
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss'],
 })
-export class ProfileComponent implements OnInit {
-  userImg: string;
+export class ProfileComponent {
+  user$ = this.authService.currentUser$;
 
-  constructor(public authService: AuthService) {}
-
-  public hasProfilePic = false;
-
-  public ngOnInit(): void {}
-
-  public get userMail(): string {
-    return this.authService.currentUser.email;
-  }
-
-  public get userPic(): any {
-    return (this.userImg =
-      this.authService.currentUser.photoURL ||
-      `https://secure.gravatar.com/avatar/${md5(
-        this.authService.currentUser.email
-      )}?d=mp`);
-  }
+  constructor(private authService: AuthService) {}
 }

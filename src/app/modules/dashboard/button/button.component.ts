@@ -29,7 +29,10 @@ export class ButtonComponent {
     this.toggled = !this.toggled;
   }
 
-  public import(files: FileList) {
-    this.importService.import(files.item(0));
+  public import(files: FileList | null) {
+    const file: File | null | undefined = files?.item(0);
+    if (file) {
+      this.importService.import(file);
+    }
   }
 }

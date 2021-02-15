@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
-import { filter, switchMap } from 'rxjs/operators';
+import { switchMap } from 'rxjs/operators';
 import { BudgetService } from '../../../../core/services/budget.service';
 import { AuthService } from '../../../../core/services/auth.service';
 import { Budget } from '../../../../core/models/budget.interface';
@@ -11,8 +11,7 @@ import { Budget } from '../../../../core/models/budget.interface';
   styleUrls: ['./balance.component.scss'],
 })
 export class BalanceComponent {
-  balance$: Observable<Budget> = this.auth.user.pipe(
-    filter((user) => !!user),
+  balance$: Observable<Budget> = this.auth.currentUser$.pipe(
     switchMap((user) => this.budgetService.getCurrentBudget(user.uid))
   );
 

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CollectionReference, Query } from '@angular/fire/firestore';
 import { Item } from '@core/models/item.interface';
 import { Observable } from 'rxjs';
@@ -12,9 +12,9 @@ import { AuthService } from '@core/services/auth.service';
   templateUrl: './activity-table.component.html',
   styleUrls: ['./activity-table.component.scss'],
 })
-export class ActivityTableComponent implements OnInit {
-  @Input() limit: number;
-  @Input() dense: boolean;
+export class ActivityTableComponent {
+  @Input() limit = 0;
+  @Input() dense = false;
 
   displayedColumns$: Observable<string[]> = this.breakpointObserver
     .observe([Breakpoints.Small, Breakpoints.XSmall])
@@ -26,21 +26,17 @@ export class ActivityTableComponent implements OnInit {
       )
     );
 
-  items: Observable<Item[]>;
+  items$: Observable<Item[]> = this.auth.currentUser$.pipe(
+    switchMap((user) =>
+      this.itemService.getItems(user.uid, (ref) => this.buildQuery(ref))
+    )
+  );
 
   constructor(
     private itemService: ItemService,
     private auth: AuthService,
     private breakpointObserver: BreakpointObserver
   ) {}
-
-  public ngOnInit(): void {
-    this.items = this.auth.user.pipe(
-      switchMap((user) =>
-        this.itemService.getItems(user.uid, (ref) => this.buildQuery(ref))
-      )
-    );
-  }
 
   private buildQuery(ref: CollectionReference): Query {
     let query: Query = ref.orderBy('date', 'desc');

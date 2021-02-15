@@ -8,6 +8,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { NavigationComponent } from './navigation.component';
 import { RouterModule } from '@angular/router';
+import { FinCommonModule } from '@common/common.module';
 
 @NgModule({
   declarations: [NavigationComponent],
@@ -21,6 +22,7 @@ import { RouterModule } from '@angular/router';
     MatMenuModule,
     MatIconModule,
     MatButtonModule,
+    FinCommonModule,
   ],
 })
 export class NavigationModule {}

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { CollectionReference, Query } from '@angular/fire/firestore';
 import { Item } from '@core/models/item.interface';
 import { Observable } from 'rxjs';
@@ -11,6 +11,7 @@ import { AuthService } from '@core/services/auth.service';
   selector: 'fin-activity-table',
   templateUrl: './activity-table.component.html',
   styleUrls: ['./activity-table.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ActivityTableComponent {
   @Input() limit = 0;

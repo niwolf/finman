@@ -9,8 +9,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from 'src/environments/environment';
-import { LoginModule } from './modules/login/login.module';
-import { ButtonModule } from './modules/dashboard/button/button.module';
+import { LoginModule } from './features/login/login.module';
 import { NavigationModule } from './core/navigation/navigation.module';
 import { DialogsModule } from './dialogs/dialogs.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
@@ -31,7 +30,6 @@ registerLocaleData(localeDe);
     NavigationModule,
     DialogsModule,
     LoginModule,
-    ButtonModule,
     MatProgressSpinnerModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,

@@ -10,35 +10,35 @@ const routes: Routes = [
   {
     path: 'dashboard',
     loadChildren: () =>
-      import('./modules/dashboard/dashboard.module').then(
+      import('./features/dashboard/dashboard.module').then(
         (m) => m.DashboardModule
       ),
   },
   {
     path: 'activity',
     loadChildren: () =>
-      import('./modules/activity/activity.module').then(
+      import('./features/activity/activity.module').then(
         (m) => m.ActivityModule
       ),
   },
   {
     path: 'statistics',
     loadChildren: () =>
-      import('./modules/statistics/statistics.module').then(
+      import('./features/statistics/statistics.module').then(
         (m) => m.StatisticsModule
       ),
   },
   {
     path: 'enterData',
     loadChildren: () =>
-      import('./modules/enter-data/enter-data.module').then(
+      import('./features/enter-data/enter-data.module').then(
         (m) => m.EnterDataModule
       ),
   },
   {
     path: 'profile',
     loadChildren: () =>
-      import('./modules/profile/profile.module').then((m) => m.ProfileModule),
+      import('./features/profile/profile.module').then((m) => m.ProfileModule),
   },
 ];
 
